@@ -1,0 +1,17 @@
+meshes/proxyship.vcolmesh	meshes/proxyship.vcolmesh	
+meshes/proxyship.vmesh	meshes/proxyship.vmesh	LODSwitchDistances=
+models/asteroidproxy.anim	models/asteroidproxy.anim	
+models/asteroidproxy.model	models/asteroidproxy.model	LODSwitchDistances=
+models/asteroidproxy.vcolmesh	models/asteroidproxy.vcolmesh	
+models/plane.anim	models/plane.anim	
+models/plane.model	models/plane.model	LODSwitchDistances=
+models/plane.vcolmesh	models/plane.vcolmesh	
+models/ship.anim	models/ship.anim	
+models/ship.model	models/ship.model	LODSwitchDistances=
+models/ship.vcolmesh	models/ship.vcolmesh	
+models/shipproxy.anim	models/shipproxy.anim	
+models/shipproxy.model	models/shipproxy.model	LODSwitchDistances=
+models/shipproxy.vcolmesh	models/shipproxy.vcolmesh	
+textures/asteroid_base.tga	textures/asteroid_base.tga	sRGB=false
+textures/basegrey.tga	textures/basegrey.tga	sRGB=false
+textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
