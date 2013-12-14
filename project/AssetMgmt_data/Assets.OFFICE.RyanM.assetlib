@@ -1,0 +1,545 @@
+{
+    "Configuration": {
+        "Name": "project",
+        "FormatVersion": 2,
+        "LastEditTime": 1387050629820146300
+    },
+    "Assets": {
+        "Meshes/proxyShip.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3217528839,
+                "TimeStamp": 1387051098470290000,
+                "LastEditTime": 1387059568188730200
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Meshes/proxyShip.vmesh": {
+            "AssetType": "StaticMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Meshes/proxyShip.vmesh_data/materials.xml",
+                    "Shaders/BaseShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/baseGrey.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 2605304197,
+                "TimeStamp": 1387051098467289900,
+                "LastEditTime": 1387060141470520100
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/asteroidProxy.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387051996949680100,
+                "LastEditTime": 1387059568032721300
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/asteroidProxy.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/asteroidProxy.model_data/materials.xml",
+                    "Shaders/BaseShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/asteroid_base.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 2473179089,
+                "TimeStamp": 1387051996947680000,
+                "LastEditTime": 1387059568033721400
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/asteroidProxy.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 1583263402,
+                "TimeStamp": 1387051996951680200,
+                "LastEditTime": 1387059568110725800
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/plane.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387060140376457500,
+                "LastEditTime": 1387060141350513200
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/plane.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/plane.model_data/materials.xml",
+                    "Shaders/BaseShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/baseGrey.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 4291631072,
+                "TimeStamp": 1387060140375457400,
+                "LastEditTime": 1387060141516522700
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/plane.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 645195126,
+                "TimeStamp": 1387060140378457600,
+                "LastEditTime": 1387060141351513300
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/ship.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387059468815046400,
+                "LastEditTime": 1387059568111725800
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/ship.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/ship.model_data/materials.xml",
+                    "Shaders/MobileShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/ship_diff.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 2413932659,
+                "TimeStamp": 1387059468812046200,
+                "LastEditTime": 1387060828455813400
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/ship.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3059714048,
+                "TimeStamp": 1387059468818046500,
+                "LastEditTime": 1387059568150728000
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/shipProxy.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387051254472212800,
+                "LastEditTime": 1387059568150728000
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/shipProxy.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/shipProxy.model_data/materials.xml",
+                    "Shaders/BaseShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/baseGrey.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 4244457675,
+                "TimeStamp": 1387051254471212800,
+                "LastEditTime": 1387060141380514900
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/shipProxy.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 464612484,
+                "TimeStamp": 1387051254474213000,
+                "LastEditTime": 1387059568188730200
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Particles/Smoke_A.dds": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 4103217712,
+                "TimeStamp": 1386890022000000000,
+                "LastEditTime": 1387059890744179300
+            },
+            "Texture": {
+                "FileFormat": "DDS",
+                "Width": 512,
+                "Height": 512,
+                "HasAlpha": true,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Particles/SmokeSequence_A.dds": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 399674561,
+                "TimeStamp": 1386890022000000000,
+                "LastEditTime": 1387059889658117200
+            },
+            "Texture": {
+                "FileFormat": "DDS",
+                "Width": 1024,
+                "Height": 1024,
+                "HasAlpha": true,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Textures/asteroid_base.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 4079293754,
+                "TimeStamp": 1387051658082298000,
+                "LastEditTime": 1387059566942659000
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 32,
+                "Height": 32,
+                "HasAlpha": false,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Textures/baseGrey.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3935990424,
+                "TimeStamp": 1387051004595920700,
+                "LastEditTime": 1387060141353513400
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 32,
+                "Height": 32,
+                "HasAlpha": false,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Textures/fx/FX_fireSampleColor.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3372272134,
+                "TimeStamp": 1387061223567412500,
+                "LastEditTime": 1387061224570469800
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 32,
+                "Height": 32,
+                "HasAlpha": false,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Textures/fx/fx_TriMask.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 1539748695,
+                "TimeStamp": 1387060518696096100,
+                "LastEditTime": 1387060519699153500
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 32,
+                "Height": 32,
+                "HasAlpha": true,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Textures/ship_diff.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 2175419972,
+                "TimeStamp": 1387058370195208900,
+                "LastEditTime": 1387059568012720200
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 64,
+                "Height": 64,
+                "HasAlpha": false,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        }
+    },
+    "TrackedFiles": {
+        "Meshes/proxyShip.vmesh_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387051098468289900,
+            "LastEditTime": 1387059566941658900
+        },
+        "Models/asteroidProxy.model_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387051996948680100,
+            "LastEditTime": 1387059566941658900
+        },
+        "Models/plane.model_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387060140376457500,
+            "LastEditTime": 1387060141350513200
+        },
+        "Models/ship.model_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387060827358750600,
+            "LastEditTime": 1387059566941658900
+        },
+        "Models/shipProxy.model_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387051254472212800,
+            "LastEditTime": 1387059566941658900
+        }
+    }
+}
