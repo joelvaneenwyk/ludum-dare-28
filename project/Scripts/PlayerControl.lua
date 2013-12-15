@@ -25,7 +25,7 @@ function OnAfterSceneLoaded(self)
 	self.playerInputMap:MapTrigger("KeyRight", "KEYBOARD", "CT_KB_D")
 	self.playerInputMap:MapTrigger("KeyUp", "KEYBOARD", "CT_KB_W")
 	self.playerInputMap:MapTrigger("KeyDown", "KEYBOARD", "CT_KB_S")
-	self.playerInputMap:MapTrigger("KeyFire", "KEYBOARD", "CT_KB_SPACE")
+	self.playerInputMap:MapTrigger("KeyFire", "KEYBOARD", "CT_KB_SPACE", {once=true})
 
 	-- Create a virtual thumbstick then setup playerInputMap for it
 	if Application:GetPlatformName() ~= "WIN32DX9" and
