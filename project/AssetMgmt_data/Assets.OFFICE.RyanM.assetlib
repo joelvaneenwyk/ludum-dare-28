@@ -393,6 +393,209 @@
                 "TemplateName": "Default"
             }
         },
+        "Models/container.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387142101678531800,
+                "LastEditTime": 1387142103548638700
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/container.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/container.model_data/materials.xml",
+                    "Shaders/BaseShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/ship_diff.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 919366519,
+                "TimeStamp": 1387142101676531700,
+                "LastEditTime": 1387142104045667200
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/container.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 2038525230,
+                "TimeStamp": 1387142101682532000,
+                "LastEditTime": 1387142103549638800
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/menu_arrow.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387137891615729900,
+                "LastEditTime": 1387137892555783700
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/menu_arrow.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/menu_arrow.model_data/materials.xml",
+                    "Shaders/ld28.ShaderLib",
+                    "Textures/baseRed.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 1628743168,
+                "TimeStamp": 1387137891613729800,
+                "LastEditTime": 1387141433321303900
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/menu_arrow.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 1851304134,
+                "TimeStamp": 1387137891616730000,
+                "LastEditTime": 1387137892555783700
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/oneShotTitle.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387148701871041200,
+                "LastEditTime": 1387148702121055500
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/oneShotTitle.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/oneShotTitle.model_data/materials.xml",
+                    "Shaders/BaseShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/ship_diff.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 4170832033,
+                "TimeStamp": 1387148701871041200,
+                "LastEditTime": 1387148702078053000
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/oneShotTitle.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 307353347,
+                "TimeStamp": 1387148701873041300,
+                "LastEditTime": 1387148702122055500
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
         "Models/plane.anim": {
             "AssetType": "Animation",
             "Common": {
@@ -592,6 +795,74 @@
                 "Hash": 464612484,
                 "TimeStamp": 1387051254474213000,
                 "LastEditTime": 1387061299933877000
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/sphere.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387149937282702700,
+                "LastEditTime": 1387149939493829200
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/sphere.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/Sphere.model_data/materials.xml",
+                    "Shaders/BaseShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/ship_diff.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 1051501482,
+                "TimeStamp": 1387149937281702600,
+                "LastEditTime": 1387149939768844900
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/sphere.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3327128918,
+                "TimeStamp": 1387149937284702800,
+                "LastEditTime": 1387149939493829200
             },
             "Transformations": {
                 "TemplateName": "Default"
@@ -867,6 +1138,33 @@
                 "TemplateName": "Default"
             }
         },
+        "Textures/baseRed.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 2165224711,
+                "TimeStamp": 1387141431286187500,
+                "LastEditTime": 1387141433311303300
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 64,
+                "Height": 128,
+                "HasAlpha": true,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
         "Textures/fx/FX_fireSampleColor.tga": {
             "AssetType": "Texture",
             "Common": {
@@ -1034,6 +1332,21 @@
             "TimeStamp": 1387051996948680100,
             "LastEditTime": 1387061298797812000
         },
+        "Models/container.model_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387136971033075600,
+            "LastEditTime": 1387137433769542600
+        },
+        "Models/menu_arrow.model_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387138223754727200,
+            "LastEditTime": 1387137892555783700
+        },
+        "Models/oneShotTitle.model_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387148701871041200,
+            "LastEditTime": 1387148670072222400
+        },
         "Models/plane.model_data/materials.xml": {
             "Hash": 0,
             "TimeStamp": 1387060140376457500,
@@ -1048,6 +1361,11 @@
             "Hash": 0,
             "TimeStamp": 1387051254472212800,
             "LastEditTime": 1387061298797812000
+        },
+        "Shaders/ld28.ShaderLib": {
+            "Hash": 0,
+            "TimeStamp": 1387140783136115500,
+            "LastEditTime": 1387140513493692800
         }
     }
 }
