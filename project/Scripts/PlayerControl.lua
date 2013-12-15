@@ -51,8 +51,12 @@ function OnAfterSceneLoaded(self)
 	self.missileDirection = Vision.hkvVec3(0, 0, 0)
 	self.missileBounces = 0
 	self.missileFired = false
+	
+	self.currentLevel = 0
+	self.asteroidCount = 3
 
-	self.asteroids = {}
+	G.asteroids = {}
+	G.directionChangeTime = 0.3
 	
 	self.asteroidTime = 0
 	local distance = 1600
@@ -98,10 +102,6 @@ function OnThink(self)
 		self.speed = self.speed + moveSpeed
 	end
 
-	--if IsTriggered(self, "KeyDown") or IsTriggered(self, "TouchDown") then
-	--	self.speed = self.speed - moveSpeed
-	--end
-	
 	if IsTriggered(self, "KeyLeft") or IsTriggered(self, "TouchLeft") then
 		rotate = rotate - rotateSpeed
 	end
@@ -202,17 +202,43 @@ end
 
 function UpdateAsteroids(self)
 	local dt = Timer:GetTimeDiff()
-	for i, asteroid in pairs(self.asteroids) do		
+
+	for i, asteroid in pairs(G.asteroids) do		
 		local position = asteroid.entity:GetPosition()
 		position = position + asteroid.direction * asteroid.speed * dt
-		asteroid.entity:SetPosition(position)
+		
+		if position.x > self.extentX then
+			position.x = self.extentX
+			asteroid.direction.x = -asteroid.direction.x
+		elseif position.x < -self.extentX then
+			position.x = -self.extentX
+			asteroid.direction.x = -asteroid.direction.x
+		elseif position.y > self.extentY then
+			position.y = self.extentY
+			asteroid.direction.y = -asteroid.direction.y
+		elseif position.y < -self.extentY then
+			position.y = -self.extentY
+			asteroid.direction.y = -asteroid.direction.y
+		end
+		
+		asteroid.rigidBody:SetPosition(position)
+		
+		asteroid.changeDirectionTimer = asteroid.changeDirectionTimer + dt
 	end
 	
 	self.asteroidTime = self.asteroidTime + dt
-	if self.asteroidTime > Util:GetRandFloat(2) + 0.5 then
+	if self.asteroidTime > Util:GetRandFloat(2) + 0.5 and
+	   table.getn(G.asteroids) < self.asteroidCount then
 		CreateAsteroid(self)
 		self.asteroidTime = 0
 	end
+end
+
+function DeleteAsteroids(self)
+	for i, asteroid in pairs(G.asteroids) do
+		asteroid.entity:Remove()
+	end
+	asteroids = {}
 end
 
 function CreateAsteroid(self)
@@ -221,39 +247,54 @@ function CreateAsteroid(self)
 	local position = Vision.hkvVec3(0, 0, 0)
 	local model = "Models/asteroidProxy.model"
 
+	local asteroid = {}
+	
+	asteroid.direction = Vision.hkvVec3(0, 0, 0)
+	
 	if Util:GetRandFloat() > 0.5 then
 		if Util:GetRandFloat() > 0.5 then
 			position.x = self.extentX * -1
+			asteroid.direction.x = 1
 		else
 			position.x = self.extentX
+			asteroid.direction.x = -1
 		end
+		asteroid.direction.y = Util:GetRandFloat(2) - 1
 		position.y = Util:GetRandFloat(self.extentY)
 	else
 		if Util:GetRandFloat() > 0.5 then
 			position.y = self.extentY * -1
+			asteroid.direction.y = 1
 		else
 			position.y = self.extentY
+			asteroid.direction.y = -1
 		end	
+		asteroid.direction.x = Util:GetRandFloat(2) - 1
 		position.x = Util:GetRandFloat(self.extentX)
 	end
+	asteroid.direction:normalize()
 	
-	local asteroid = {}
-
 	asteroid.entity = Game:CreateEntity(
 		position,
 		"VisBaseEntity_cl",
 		model,
 		"Asteroid" )
 	asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
-	--asteroid.rigidBody:InitCylinder(
-	asteroid.rigidBody:SetMotionType(Physics.MOTIONTYPE_KEYFRAMED)
-	
-	local x = Util:GetRandFloat(2) - 1
-	local y = Util:GetRandFloat(2) - 1
-	asteroid.direction = Vision.hkvVec3(x, y, 0)
-	asteroid.direction:normalize()
+
+	asteroid.rigidBody:InitCylinder(
+		Vision.hkvVec3(0, 0, 10),
+		Vision.hkvVec3(0, 0, -10),
+		50,
+		1,
+		Physics.MOTIONTYPE_KEYFRAMED,
+		Physics.QUALITY_KEYFRAMED_REPORTING)
+
+	asteroid.entity:AddComponentOfType("VScriptComponent", "AsteroidControlScript")
+	asteroid.entity.AsteroidControlScript:SetProperty("ScriptFile", "Scripts/Asteroid.lua")
+	asteroid.entity.AsteroidControlScript:SetOwner(asteroid.entity)
 	
 	asteroid.speed = Util:GetRandFloat(50) + 100
-	
-	table.insert(self.asteroids, asteroid)
+	asteroid.changeDirectionTimer = 0
+
+	table.insert(G.asteroids, asteroid)
 end
