@@ -12,10 +12,23 @@ models/ship.vcolmesh	models/ship.vcolmesh
 models/shipproxy.anim	models/shipproxy.anim	
 models/shipproxy.model	models/shipproxy.model	LODSwitchDistances=
 models/shipproxy.vcolmesh	models/shipproxy.vcolmesh	
-particles/smoke_a.dds	particles/smoke_a.dds	sRGB=false
-particles/smokesequence_a.dds	particles/smokesequence_a.dds	sRGB=false
 textures/asteroid_base.tga	textures/asteroid_base.tga	sRGB=false
 textures/basegrey.tga	textures/basegrey.tga	sRGB=false
 textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
-textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
+particles/smoke_a.dds	particles/smoke_a.dds	sRGB=false
+particles/smokesequence_a.dds	particles/smokesequence_a.dds	sRGB=false
 textures/fx/fx_firesamplecolor.tga	textures/fx/fx_firesamplecolor.tga	sRGB=false
+textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
+models/asteroid01.model	models/asteroid01.model	LODSwitchDistances=
+models/asteroid01.anim	models/asteroid01.anim	
+models/asteroid01.vcolmesh	models/asteroid01.vcolmesh	
+textures/asteroid_color1.tga	textures/asteroid_color1.tga	sRGB=false
+models/asteroid02.model	models/asteroid02.model	LODSwitchDistances=
+models/asteroid02.anim	models/asteroid02.anim	
+models/asteroid02.vcolmesh	models/asteroid02.vcolmesh	
+models/asteroid03.model	models/asteroid03.model	LODSwitchDistances=
+models/asteroid03.anim	models/asteroid03.anim	
+models/asteroid03.vcolmesh	models/asteroid03.vcolmesh	
+models/asteroid04.model	models/asteroid04.model	LODSwitchDistances=
+models/asteroid04.anim	models/asteroid04.anim	
+models/asteroid04.vcolmesh	models/asteroid04.vcolmesh	
