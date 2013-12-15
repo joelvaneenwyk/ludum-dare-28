@@ -14,7 +14,7 @@ models/shipproxy.model	models/shipproxy.model	LODSwitchDistances=
 models/shipproxy.vcolmesh	models/shipproxy.vcolmesh	
 textures/asteroid_base.tga	textures/asteroid_base.tga	sRGB=false
 textures/basegrey.tga	textures/basegrey.tga	sRGB=false
-textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
+textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
 models/asteroid01.anim	models/asteroid01.anim	
 models/asteroid01.model	models/asteroid01.model	LODSwitchDistances=
 models/asteroid01.vcolmesh	models/asteroid01.vcolmesh	
@@ -36,4 +36,4 @@ particles/smoke_a.dds	particles/smoke_a.dds	sRGB=false
 particles/smokesequence_a.dds	particles/smokesequence_a.dds	sRGB=false
 textures/asteroid_color1.tga	textures/asteroid_color1.tga	sRGB=false
 textures/fx/fx_firesamplecolor.tga	textures/fx/fx_firesamplecolor.tga	sRGB=false
-textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
+textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
