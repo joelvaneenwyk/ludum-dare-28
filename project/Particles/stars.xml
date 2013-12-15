@@ -74,7 +74,7 @@
                 <animtime average="3" variation="0.5" />
             </animation>
             <speed average="5" variation="0.5" />
-            <rotation mode="constspeed" initialangle="360,360" rotationspeed="0,5" curveduration="-1" randomcurveofs="FALSE">
+            <rotation mode="constspeed" initialangle="360,360" rotationspeed="5,20" curveduration="-1" randomcurveofs="FALSE">
                 <curve numpoints="2">
                     <point pos="0,12.5664" t_in="0,0" t_out="0,0" />
                     <point pos="1,12.5664" t_in="0,0" t_out="0,0" />
