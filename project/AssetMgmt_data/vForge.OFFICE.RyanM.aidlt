@@ -37,3 +37,4 @@ particles/smokesequence_a.dds	particles/smokesequence_a.dds	sRGB=false
 textures/asteroid_color1.tga	textures/asteroid_color1.tga	sRGB=false
 textures/fx/fx_firesamplecolor.tga	textures/fx/fx_firesamplecolor.tga	sRGB=false
 textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
+textures/fx/fx_shipsamplecolor.tga	textures/fx/fx_shipsamplecolor.tga	sRGB=false

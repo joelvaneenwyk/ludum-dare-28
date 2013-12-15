@@ -894,6 +894,33 @@
                 "TemplateName": "Default"
             }
         },
+        "Textures/fx/FX_shipSampleColor.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3194805822,
+                "TimeStamp": 1387074544077302100,
+                "LastEditTime": 1387074544879347900
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 32,
+                "Height": 32,
+                "HasAlpha": false,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
         "Textures/fx/fx_TriMask.tga": {
             "AssetType": "Texture",
             "Common": {
@@ -946,6 +973,15 @@
             },
             "Transformations": {
                 "TemplateName": "Default"
+            }
+        },
+        "Textures/fx/FX_bulletSampleColor.tga": {
+            "AssetType": "__deleted__",
+            "Common": {
+                "DeleteTime": 1387074544878347900
+            },
+            "File": {
+                "LastEditTime": 1387074544878347900
             }
         }
     },
