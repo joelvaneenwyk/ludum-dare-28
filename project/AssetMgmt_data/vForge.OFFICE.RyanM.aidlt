@@ -32,3 +32,8 @@ models/asteroid03.vcolmesh	models/asteroid03.vcolmesh
 models/asteroid04.model	models/asteroid04.model	LODSwitchDistances=
 models/asteroid04.anim	models/asteroid04.anim	
 models/asteroid04.vcolmesh	models/asteroid04.vcolmesh	
+particles/blastwave.dds	particles/blastwave.dds	sRGB=false
+particles/flare_1.dds	particles/flare_1.dds	sRGB=false
+particles/fog_group.dds	particles/fog_group.dds	sRGB=false
+particles/graylookuptable.dds	particles/graylookuptable.dds	sRGB=false
+particles/smoke.dds	particles/smoke.dds	sRGB=false
