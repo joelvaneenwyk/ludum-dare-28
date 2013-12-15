@@ -221,6 +221,9 @@ function UpdateAsteroids(self)
 			asteroid.direction.y = -asteroid.direction.y
 		end
 		
+		asteroid.rotation = asteroid.rotation + asteroid.rotationSpeed * dt
+		asteroid.rigidBody:SetOrientation( Vision.hkvVec3(0, 0, asteroid.rotation) )
+
 		asteroid.rigidBody:SetPosition(position)
 		
 		asteroid.changeDirectionTimer = asteroid.changeDirectionTimer + dt
@@ -242,8 +245,6 @@ function DeleteAsteroids(self)
 end
 
 function CreateAsteroid(self)
-	local xMax = self.extentX 
-	local yMax = 500
 	local position = Vision.hkvVec3(0, 0, 0)
 	local model = "Models/asteroidProxy.model"
 
@@ -274,18 +275,23 @@ function CreateAsteroid(self)
 	end
 	asteroid.direction:normalize()
 	
+	asteroid.scale = Util:GetRandFloat(1) + 1
 	asteroid.entity = Game:CreateEntity(
 		position,
 		"VisBaseEntity_cl",
 		model,
 		"Asteroid" )
+	asteroid.entity:SetScaling(asteroid.scale)
+	asteroid.rotationSpeed = Util:GetRandFloat(200) - 100
+	asteroid.rotation = 0
+
 	asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
 
 	asteroid.rigidBody:InitCylinder(
 		Vision.hkvVec3(0, 0, 10),
 		Vision.hkvVec3(0, 0, -10),
 		50,
-		1,
+		asteroid.scale,
 		Physics.MOTIONTYPE_KEYFRAMED,
 		Physics.QUALITY_KEYFRAMED_REPORTING)
 
@@ -293,7 +299,7 @@ function CreateAsteroid(self)
 	asteroid.entity.AsteroidControlScript:SetProperty("ScriptFile", "Scripts/Asteroid.lua")
 	asteroid.entity.AsteroidControlScript:SetOwner(asteroid.entity)
 	
-	asteroid.speed = Util:GetRandFloat(50) + 100
+	asteroid.speed = Util:GetRandFloat(100) + 100
 	asteroid.changeDirectionTimer = 0
 
 	table.insert(G.asteroids, asteroid)
