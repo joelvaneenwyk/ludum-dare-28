@@ -5,7 +5,9 @@ function OnCollision(self, info)
 		-- if asteroids collide, then we move them away from each other
 		if self == asteroid.entity or info.ColliderObject == asteroid.rigidBody then
 			if asteroid.changeDirectionTimer > G.directionChangeTime then
-				asteroid.direction = asteroid.direction * -1
+				local offset = asteroid.entity:GetPosition() - info.ColliderObject:GetPosition();
+				offset:normalize()
+				asteroid.direction = offset
 				asteroid.changeDirectionTimer = 0
 			end				
 		end
