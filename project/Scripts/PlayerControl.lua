@@ -246,7 +246,7 @@ end
 
 function CreateAsteroid(self)
 	local position = Vision.hkvVec3(0, 0, 0)
-	local model = "Models/asteroidProxy.model"
+	local model = "Models/asteroid01.model"
 
 	local asteroid = {}
 	
