@@ -16,6 +16,8 @@ function OnAfterSceneLoaded(self)
 
 	local kDeadzone = {deadzone = 0.1}
  
+	G.screenWidth, G.screenHeight = Screen:GetViewportSize()
+
 	self.playerInputMap = Input:CreateMap("InputMap")
  
 	-- Setup the WASD keyboard playerInputMap
@@ -53,6 +55,11 @@ function OnAfterSceneLoaded(self)
 	self.asteroids = {}
 	
 	self.asteroidTime = 0
+	local distance = 1600
+	local p1 = Screen:Project3D(0, 0, distance)
+	local p2 = Screen:Project3D(G.screenWidth, G.screenHeight, distance)
+	self.extentX = math.abs((p2.x - p1.x) / 2)
+	self.extentY = math.abs((p2.y - p1.y) / 2)
 
 	self:SetUseEulerAngles(true)
 end
@@ -74,13 +81,26 @@ function OnThink(self)
 	local delta = Vision.hkvVec3(0, 0, 0)
 	local rotate = 0
 
+	Debug.Draw:Line(
+		Vision.hkvVec3(-self.extentX, -self.extentY, 0),
+		Vision.hkvVec3(self.extentX, -self.extentY, 0) )
+	Debug.Draw:Line(
+		Vision.hkvVec3(-self.extentX, self.extentY, 0),
+		Vision.hkvVec3(self.extentX, self.extentY, 0) )
+	Debug.Draw:Line(
+		Vision.hkvVec3(-self.extentX, -self.extentY, 0),
+		Vision.hkvVec3(-self.extentX, self.extentY, 0) )
+	Debug.Draw:Line(
+		Vision.hkvVec3(self.extentX, -self.extentY, 0),
+		Vision.hkvVec3(self.extentX, self.extentY, 0) )
+
 	if IsTriggered(self, "KeyUp") or IsTriggered(self, "TouchUp") then
 		self.speed = self.speed + moveSpeed
 	end
 
-	if IsTriggered(self, "KeyDown") or IsTriggered(self, "TouchDown") then
-		self.speed = self.speed - moveSpeed
-	end
+	--if IsTriggered(self, "KeyDown") or IsTriggered(self, "TouchDown") then
+	--	self.speed = self.speed - moveSpeed
+	--end
 	
 	if IsTriggered(self, "KeyLeft") or IsTriggered(self, "TouchLeft") then
 		rotate = rotate - rotateSpeed
@@ -96,6 +116,19 @@ function OnThink(self)
 	self.direction:normalize()
 	
 	self.position = self.position + self.direction * self.speed
+	
+	if self.position.x > self.extentX then
+		self.position.x = self.extentX
+	elseif self.position.x < -self.extentX then
+		self.position.x = -self.extentX
+	end
+	
+	if self.position.y > self.extentY then
+		self.position.y = self.extentY
+	elseif self.position.y < -self.extentY then
+		self.position.y = -self.extentY
+	end
+	
 	self:SetPosition(self.position)
 
 	local angle = 0
@@ -124,19 +157,43 @@ function OnThink(self)
 		if isHit == true then 
 			Debug.Draw:Line(rayStart, result["ImpactPoint"], Vision.V_RGBA_BLUE)
 			Debug:PrintLine("Hit type: " ..result["HitType"])
+
 			if result["HitType"] == "Entity" then
 				Debug:PrintLine("Mesh of hit entity: " ..result["HitObject"]:GetMesh():GetName())
 			end 
+
 			Debug:PrintLine("Hit fraction: " ..result["HitFraction"])
 			Debug:PrintLine("Hit position: " ..result["ImpactPoint"])
 			Debug:PrintLine("Hit normal: " ..result["ImpactNormal"])
 			Debug:PrintLine("Dynamic friction of hit object: " ..result["DynamicFriction"])
 			Debug:PrintLine("Restitution of hit object: " ..result["Restitution"])
 			Debug:PrintLine("Physics user data of hit object: " ..result["UserData"])
+
 			self.missilePosition = result["ImpactPoint"]
 			self.missileDirection = result["ImpactNormal"]
+			self.missileDirection.z = 0
+			self.missileDirection:normalize()
+			self.missileBounces = self.missileBounces + 1
 		else
 			self.missilePosition = rayEnd
+		end
+		
+		if self.missilePosition.x > self.extentX then
+			self.missilePosition.x = self.extentX
+			self.missileDirection.x = -self.missileDirection.x
+			self.missileBounces = self.missileBounces + 1
+		elseif self.missilePosition.x < -self.extentX then
+			self.missilePosition.x = -self.extentX
+			self.missileDirection.x = -self.missileDirection.x
+			self.missileBounces = self.missileBounces + 1
+		elseif self.missilePosition.y > self.extentY then
+			self.missilePosition.y = self.extentY
+			self.missileDirection.y = -self.missileDirection.y
+			self.missileBounces = self.missileBounces + 1
+		elseif self.missilePosition.y < -self.extentY then
+			self.missilePosition.y = -self.extentY
+			self.missileDirection.y = -self.missileDirection.y
+			self.missileBounces = self.missileBounces + 1
 		end
 	end
 	
@@ -159,25 +216,25 @@ function UpdateAsteroids(self)
 end
 
 function CreateAsteroid(self)
-	local xMax = 500
+	local xMax = self.extentX 
 	local yMax = 500
 	local position = Vision.hkvVec3(0, 0, 0)
 	local model = "Models/asteroidProxy.model"
 
 	if Util:GetRandFloat() > 0.5 then
 		if Util:GetRandFloat() > 0.5 then
-			position.x = xMax * -1
+			position.x = self.extentX * -1
 		else
-			position.x = xMax
+			position.x = self.extentX
 		end
-		position.y = Util:GetRandFloat(yMax)
+		position.y = Util:GetRandFloat(self.extentY)
 	else
 		if Util:GetRandFloat() > 0.5 then
-			position.y = yMax * -1
+			position.y = self.extentY * -1
 		else
-			position.y = yMax
+			position.y = self.extentY
 		end	
-		position.x = Util:GetRandFloat(xMax)
+		position.x = Util:GetRandFloat(self.extentX)
 	end
 	
 	local asteroid = {}
@@ -188,6 +245,7 @@ function CreateAsteroid(self)
 		model,
 		"Asteroid" )
 	asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
+	--asteroid.rigidBody:InitCylinder(
 	asteroid.rigidBody:SetMotionType(Physics.MOTIONTYPE_KEYFRAMED)
 	
 	local x = Util:GetRandFloat(2) - 1
