@@ -4,7 +4,7 @@
         <defaultemitter type="sphere" radius="10" emitfromsurface="FALSE">
             <startupfillpercentage average="100" variation="0" />
             <fixparticlecount average="-1" variation="0" />
-            <frequency average="70" variation="0" />
+            <frequency average="90" variation="0" />
             <countlookup time="10" randomofs="FALSE" />
             <direction coneangle="0,-1" conemode="alldims" />
         </defaultemitter>
@@ -20,7 +20,7 @@
         </group>
         <particles>
             <particlesorting enabled="FALSE" />
-            <lifetime average="1.3" variation="0.41" />
+            <lifetime average="0.5" variation="0.41" />
             <color />
             <distortion enabled="FALSE" planealigned="FALSE">
                 <fixlength average="-1" variation="0" />
@@ -38,6 +38,64 @@
                 </curve>
                 <start average="1" variation="0.6" />
                 <growth average="10" variation="0.4" />
+            </size>
+            <animation mode="0" startrandomframe="FALSE" smooth="FALSE">
+                <curve numpoints="2">
+                    <point pos="0,0.9933" t_in="0,0" t_out="0,0" />
+                    <point pos="1,0.9961" t_in="0,0" t_out="0,0" />
+                </curve>
+                <animtime average="4" variation="0" />
+            </animation>
+            <speed average="0" variation="0.4" />
+            <rotation mode="constspeed" initialangle="22,360" rotationspeed="15,150" curveduration="0" randomcurveofs="FALSE" />
+            <physics gravity="0,0,10" friction="0.2" emitterspeed="0" constraintbitmask="-1" gravityinertia="TRUE">
+                <inertia average="0" variation="0" />
+            </physics>
+            <ondestroy repeat="FALSE">
+                <newparticlecount average="-1" variation="0" />
+                <newparticletype copyflags="1" />
+            </ondestroy>
+        </particles>
+    </particlelayer>
+    <particlelayer>
+        <description name="behindShip" description="Flame Trail" />
+        <defaultemitter type="sphere" radius="10" emitfromsurface="FALSE">
+            <startupfillpercentage average="100" variation="0" />
+            <fixparticlecount average="-1" variation="0" />
+            <frequency average="300" variation="0" />
+            <countlookup time="10" randomofs="FALSE" />
+            <direction coneangle="0,-1" conemode="alldims" />
+        </defaultemitter>
+        <group topology="Billboards" trailoverlap="1" localspace="FALSE" localpos="0,0,0" localori="0,0,0" tcurvetime="1" tcurveradius="1" usetcurve="FALSE">
+            <groupsorting sortkey="0" />
+            <lifetime average="-1" variation="0" />
+            <timescale average="1" variation="0" />
+            <delay average="0" variation="0" />
+            <texture filename="..\Textures\fx\fx_TriMask.tga" normalmap="" transparency="3" sizeaspect="1" animationsubdiv="1,1" usedframes="1" center="0.5,0.5" />
+            <lighting modcolor="255,255,255,255" applyscenebrightness="1" randomcolor="..\Textures\fx\FX_fireSampleColor.tga" />
+            <geometry />
+            <visibility boundingbox="-100,-100,-100,100,100,100" dynamicInflateInterval="1" depthofs="0" softparticles="FALSE" alwaysinforeground="FALSE" handlewhenvisible="FALSE" filtermask="-1" fadeMode="none" fadeStart="1000" fadeEnd="2000" renderorder="particles" />
+        </group>
+        <particles>
+            <particlesorting enabled="FALSE" />
+            <lifetime average="0.1" variation="0.41" />
+            <color />
+            <distortion enabled="FALSE" planealigned="FALSE">
+                <fixlength average="-1" variation="0" />
+                <speedmultiplier average="-1" variation="0" />
+                <sizemode enabled="FALSE" sizemultiplier="0,0,0,0" />
+            </distortion>
+            <normal enabled="FALSE" dir="0,0,1,1" />
+            <size>
+                <curve numpoints="5">
+                    <point pos="0,0.827124" t_in="0,-0.0033" t_out="0.167449,0.172876" />
+                    <point pos="0.198748,0.989568" t_in="-0.100156,-0.0402384" t_out="0.109671,0" />
+                    <point pos="0.599374,1" t_in="-0.16,0" t_out="0.13302,-0.0596125" />
+                    <point pos="0.898279,0.634873" t_in="-0.0641002,0.122325" t_out="0.0657277,-0.0983607" />
+                    <point pos="1,0.235469" t_in="-0.101721,0.0357675" t_out="0,0.0039" />
+                </curve>
+                <start average="1" variation="0.6" />
+                <growth average="15" variation="0.4" />
             </size>
             <animation mode="0" startrandomframe="FALSE" smooth="FALSE">
                 <curve numpoints="2">

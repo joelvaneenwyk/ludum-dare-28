@@ -14,26 +14,26 @@ models/shipproxy.model	models/shipproxy.model	LODSwitchDistances=
 models/shipproxy.vcolmesh	models/shipproxy.vcolmesh	
 textures/asteroid_base.tga	textures/asteroid_base.tga	sRGB=false
 textures/basegrey.tga	textures/basegrey.tga	sRGB=false
-textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
-particles/smoke_a.dds	particles/smoke_a.dds	sRGB=false
-particles/smokesequence_a.dds	particles/smokesequence_a.dds	sRGB=false
-textures/fx/fx_firesamplecolor.tga	textures/fx/fx_firesamplecolor.tga	sRGB=false
 textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
-models/asteroid01.model	models/asteroid01.model	LODSwitchDistances=
 models/asteroid01.anim	models/asteroid01.anim	
+models/asteroid01.model	models/asteroid01.model	LODSwitchDistances=
 models/asteroid01.vcolmesh	models/asteroid01.vcolmesh	
-textures/asteroid_color1.tga	textures/asteroid_color1.tga	sRGB=false
-models/asteroid02.model	models/asteroid02.model	LODSwitchDistances=
 models/asteroid02.anim	models/asteroid02.anim	
+models/asteroid02.model	models/asteroid02.model	LODSwitchDistances=
 models/asteroid02.vcolmesh	models/asteroid02.vcolmesh	
-models/asteroid03.model	models/asteroid03.model	LODSwitchDistances=
 models/asteroid03.anim	models/asteroid03.anim	
+models/asteroid03.model	models/asteroid03.model	LODSwitchDistances=
 models/asteroid03.vcolmesh	models/asteroid03.vcolmesh	
-models/asteroid04.model	models/asteroid04.model	LODSwitchDistances=
 models/asteroid04.anim	models/asteroid04.anim	
+models/asteroid04.model	models/asteroid04.model	LODSwitchDistances=
 models/asteroid04.vcolmesh	models/asteroid04.vcolmesh	
 particles/blastwave.dds	particles/blastwave.dds	sRGB=false
 particles/flare_1.dds	particles/flare_1.dds	sRGB=false
 particles/fog_group.dds	particles/fog_group.dds	sRGB=false
 particles/graylookuptable.dds	particles/graylookuptable.dds	sRGB=false
 particles/smoke.dds	particles/smoke.dds	sRGB=false
+particles/smoke_a.dds	particles/smoke_a.dds	sRGB=false
+particles/smokesequence_a.dds	particles/smokesequence_a.dds	sRGB=false
+textures/asteroid_color1.tga	textures/asteroid_color1.tga	sRGB=false
+textures/fx/fx_firesamplecolor.tga	textures/fx/fx_firesamplecolor.tga	sRGB=false
+textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
