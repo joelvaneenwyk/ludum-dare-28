@@ -37,4 +37,18 @@ textures/basegrey.tga	textures/basegrey.tga	sRGB=false
 textures/fx/fx_firesamplecolor.tga	textures/fx/fx_firesamplecolor.tga	sRGB=false
 textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
 textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
+models/container.anim	models/container.anim	
+models/container.model	models/container.model	LODSwitchDistances=
+models/container.vcolmesh	models/container.vcolmesh	
+models/menu_arrow.anim	models/menu_arrow.anim	
+models/menu_arrow.model	models/menu_arrow.model	LODSwitchDistances=
+models/menu_arrow.vcolmesh	models/menu_arrow.vcolmesh	
+models/oneshottitle.anim	models/oneshottitle.anim	
+models/oneshottitle.model	models/oneshottitle.model	LODSwitchDistances=
+models/oneshottitle.vcolmesh	models/oneshottitle.vcolmesh	
+models/sphere.anim	models/sphere.anim	
+models/sphere.model	models/sphere.model	LODSwitchDistances=
+models/sphere.vcolmesh	models/sphere.vcolmesh	
+textures/basered.tga	textures/basered.tga	sRGB=false
 textures/fx/fx_shipsamplecolor.tga	textures/fx/fx_shipsamplecolor.tga	sRGB=false
+textures/ship_spec.tga	textures/ship_spec.tga	sRGB=false
