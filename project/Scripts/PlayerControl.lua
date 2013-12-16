@@ -60,6 +60,10 @@ function OnAfterSceneLoaded(self)
 		
 	G.Reset = Reset
 	G.Reset(0.0)
+	
+	self.bounceSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/bounce.wav", false, "bounceSound")
+	G.shipExplosionSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/shipExplosion.wav", false, "shipExplosion")
+	self.asteroidExplosionSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/asteroidExplosion.wav", false, "asteroidExplosionSound")
 end
 
 function OnBeforeSceneUnloaded(self)
@@ -185,6 +189,7 @@ function Update(self, dt)
 			G.missileBounces = G.missileBounces + 1
 		
 			DeleteAsteroid(result.HitObject)
+			self.asteroidExplosionSound:Play()
 
 			Debug.Draw:Line(rayStart, result.ImpactPoint, Vision.V_RGBA_BLUE)
 		end
@@ -193,18 +198,22 @@ function Update(self, dt)
 			newMissilePosition.x = G.extentX
 			G.missileDirection.x = -G.missileDirection.x
 			G.missileBounces = G.missileBounces + 1
+			self.bounceSound:Play()
 		elseif G.missilePosition.x < -G.extentX then
 			newMissilePosition.x = -G.extentX
 			G.missileDirection.x = -G.missileDirection.x
 			G.missileBounces = G.missileBounces + 1
+			self.bounceSound:Play()
 		elseif G.missilePosition.y > G.extentY then
 			newMissilePosition.y = G.extentY
 			G.missileDirection.y = -G.missileDirection.y
 			G.missileBounces = G.missileBounces + 1
+			self.bounceSound:Play()
 		elseif G.missilePosition.y < -G.extentY then
 			newMissilePosition.y = -G.extentY
 			G.missileDirection.y = -G.missileDirection.y
 			G.missileBounces = G.missileBounces + 1
+			self.bounceSound:Play()
 		end
 		
 		Debug:PrintAt(50,25, "Bounces: " .. G.missileBounces .. "/" .. "Limit Here", Vision.V_RGBA_WHITE, self.FontPath)

@@ -18,12 +18,9 @@ function OnCollision(self, info)
 					G.player:GetPosition(),
 					"Particles\\shipExplosion.xml",
 					"shipExplosion" )
-				Game:CreateEffect(
-					asteroid.entity:GetPosition(),
-					"Particles\\asteroidExplosion.xml",
-					"astroidExplosion" )
 				G.player:SetVisible(false)
 				G.player:SetPosition( Vision.hkvVec3(10000, 10000, 10000) )
+				G.shipExplosionSound:Play()
 				G.Reset(2)
 			end
 
