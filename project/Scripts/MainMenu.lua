@@ -31,18 +31,17 @@ function OnAfterSceneLoaded(self)
 	self.menuArrowEntity = Game:GetEntity("menuArrow")
 	
 	self.musicLevel = .75
-    self.musicCrossFadeTime = 1
+    self.musicCrossFadeTime = 2
 	
-	self.menuMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuMusic.mp3", true, "gameMusic")
-	self.menuMusic:SetVolume (.2)
-    self.menuMusic:Play()
-    self.menuMusic:FadeFromTo(.2,self.musicLevel, self.musicCrossFadeTime)
-		
+	G.ResetMenu = true
 
 end
 
 function OnBeforeSceneUnloaded(self)
-	Input:DestroyMap(self.map);
+	Input:DestroyMap(self.map)
+	if self.mask_cursor ~= nil then
+	    Game:DeleteAllUnrefScreenMasks()
+	end
 	if self.gameMusic ~= nil then
 		self.gameMusic:Remove()
 	end
@@ -57,19 +56,27 @@ function OnThink(self)
 	local dt = Timer:GetTimeDiff() 
 
 	if G.ResetMenu == true then
+		self.mask_cursor= Game:CreateScreenMask(0, 0, "Textures\\mouse.tga")
+		self.mask_cursor:SetBlending(Vision.BLEND_ALPHA)
 		self.titleEntity:SetVisible(true)
 		self.titleControlsEntity:SetVisible(true)
 		self.menuArrowEntity:SetVisible(true)
 		self:SetPosition(self.startPos)
 		self.bulletRigid:SetPosition(self.startPos)
 		self:SetVisible(true)
+		
+
 		if self.gameMusic ~= nil then
 			self.gameMusic:FadeFromTo(self.musicLevel,0, self.musicCrossFadeTime)
 		end
-		self.menuMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuMusic.mp3", true, "gameMusic")
-	    self.menuMusic:SetVolume (.2)
-        self.menuMusic:Play()
-        self.menuMusic:FadeFromTo(.2,self.musicLevel, self.musicCrossFadeTime)
+		if self.menuMusic ~= nil then
+			self.menuMusic:FadeFromTo(0,self.musicLevel, self.musicCrossFadeTime)
+		else
+			self.menuMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuMusic.mp3", true, "gameMusic")
+		    self.menuMusic:SetVolume (0)
+		    self.menuMusic:Play()
+		    self.menuMusic:FadeFromTo(0,self.musicLevel, self.musicCrossFadeTime)
+		end
 		
 		G.ResetMenu = false
 	end
@@ -98,23 +105,10 @@ function OnThink(self)
 		self:SetPosition( Vision.hkvVec3(self.point.x, self.point.y, 0) )
 		self.picked = true
 	end
-
-	if (Application:GetPlatformName() == "WIN32DX9" or 
-	   Application:GetPlatformName() == "WIN32DX11") and
-	   G.MainMenu then
-		Debug.Draw:Line2D(x,y,x+10,y+5, Vision.V_RGBA_WHITE)
-		Debug.Draw:Line2D(x,y,x+5,y+10, Vision.V_RGBA_WHITE)
-		Debug.Draw:Line2D(x+10,y+5,x+5,y+10, Vision.V_RGBA_WHITE)
-	end
 	
-	if self.gameMusic ~= nil and self.gameMusic:GetVolume () == 0 then
-          self.gameMusic:Remove()
-          self.gameMusic=nil
-    end
-	if self.menuMusic ~= nil and self.menuMusic:GetVolume () == 0 then
-          self.menuMusic:Remove()
-          self.menuMusic=nil
-    end
+	if self.mask_cursor ~= nil then
+		self.mask_cursor:SetPos(x, y, 0)
+	end
 
 end
 
@@ -138,15 +132,24 @@ function OnCollision(self, info)
 			"Particles/titleControls.xml",
 			"TitleControlsFX")
 			
-	   self.gameMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/gameMusic.mp3", true, "gameMusic")
-	   self.gameMusic:SetVolume (.2)
-       self.gameMusic:Play()
-       self.gameMusic:FadeFromTo(.2,self.musicLevel, self.musicCrossFadeTime)
-	   
+	   if self.gameMusic ~= nil then
+			self.gameMusic:FadeFromTo(0,self.musicLevel, self.musicCrossFadeTime)
+	   else
+		    self.gameMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/gameMusic.mp3", true, "gameMusic")
+		    self.gameMusic:SetVolume (0)
+		    self.gameMusic:Play()
+			self.gameMusic:FadeFromTo(0,self.musicLevel, self.musicCrossFadeTime)
+	   end
+	
+			
 	   if self.menuMusic ~= nil then
 			self.menuMusic:FadeFromTo(self.musicLevel,0, self.musicCrossFadeTime)
 		end
-
+		
+	   	if self.mask_cursor ~= nil then
+			Game:DeleteAllUnrefScreenMasks()
+			self.mask_cursor = nil
+	    end
 	   G.MainMenu = false
 	end
 end

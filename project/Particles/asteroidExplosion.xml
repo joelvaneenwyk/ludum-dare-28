@@ -74,8 +74,8 @@
         <description name="polyBits" />
         <defaultemitter type="point" emitfromsurface="FALSE">
             <startupfillpercentage average="100" variation="0" />
-            <fixparticlecount average="30" variation="0" />
-            <frequency average="600" variation="0" />
+            <fixparticlecount average="60" variation="0" />
+            <frequency average="1200" variation="0" />
             <countlookup time="0.01" randomofs="FALSE" />
             <direction coneangle="0,-1" conemode="alldims" />
         </defaultemitter>
@@ -91,7 +91,7 @@
         </group>
         <particles>
             <particlesorting enabled="FALSE" />
-            <lifetime average="1" variation="0.5" />
+            <lifetime average="1.25" variation="0.5" />
             <color>
                 <colorcurve>
                     <curve_red numpoints="2">
@@ -125,7 +125,7 @@
                     <point pos="1,1" t_in="0,0" t_out="0,0" />
                 </curve>
                 <start average="1" variation="0.5" />
-                <growth average="10" variation="0.5" />
+                <growth average="20" variation="0.5" />
             </size>
             <animation mode="0" startrandomframe="FALSE" smooth="FALSE">
                 <curve numpoints="2">
@@ -135,7 +135,7 @@
                 <animtime average="3" variation="0.5" />
             </animation>
             <speed average="250" variation="0.5" />
-            <rotation mode="constspeed" initialangle="0,360" rotationspeed="-20,20" curveduration="-1" randomcurveofs="FALSE">
+            <rotation mode="constspeed" initialangle="0,360" rotationspeed="-20,360" curveduration="-1" randomcurveofs="FALSE">
                 <curve numpoints="2">
                     <point pos="0,12.5664" t_in="0,0" t_out="0,0" />
                     <point pos="1,12.5664" t_in="0,0" t_out="0,0" />
