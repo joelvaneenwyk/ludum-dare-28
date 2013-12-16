@@ -39,6 +39,7 @@ end
 
 function OnBeforeSceneUnloaded(self)
 	Input:DestroyMap(self.map)
+	Game:DeleteAllUnrefScreenMasks()
 	if self.mask_cursor ~= nil then
 	    Game:DeleteAllUnrefScreenMasks()
 	end
@@ -48,6 +49,7 @@ function OnBeforeSceneUnloaded(self)
 	if self.menuMusic ~= nil then
 		self.menuMusic:Remove()
 	end
+	Fmod:ResetAll ()
 end
 
 function OnThink(self)

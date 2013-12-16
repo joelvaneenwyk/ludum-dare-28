@@ -57,3 +57,4 @@ textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
 textures/mouse.tga	textures/mouse.tga	sRGB=false
 textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
 textures/ship_spec.tga	textures/ship_spec.tga	sRGB=false
+textures/bulleticon.tga	textures/bulleticon.tga	sRGB=false

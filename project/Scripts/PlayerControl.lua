@@ -207,10 +207,12 @@ function Update(self, dt)
 			G.missileBounces = G.missileBounces + 1
 		end
 		
-		Debug:PrintAt(50,25, "Bounces: " .. G.missileBounces, Vision.V_RGBA_WHITE, self.FontPath)
+		Debug:PrintAt(50,25, "Bounces: " .. G.missileBounces .. "/" .. "Limit Here", Vision.V_RGBA_WHITE, self.FontPath)
 		SetMissilePosition(newMissilePosition)
 	end
 	
+	Debug:PrintAt(450,25, "Round: " .. G.currentLevel, Vision.V_RGBA_WHITE, self.FontPath)
+	Debug:PrintAt(700,25, "Missles: ", Vision.V_RGBA_WHITE, self.FontPath)
 	UpdateAsteroids(self)
 end
 

@@ -1238,6 +1238,33 @@
                 "TemplateName": "Default"
             }
         },
+        "Textures/bulletIcon.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 1440118152,
+                "TimeStamp": 1387235585240870900,
+                "LastEditTime": 1387235898991242800
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 64,
+                "Height": 64,
+                "HasAlpha": true,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
         "Textures/fx/FX_bulletSampleColor.tga": {
             "AssetType": "Texture",
             "Common": {
