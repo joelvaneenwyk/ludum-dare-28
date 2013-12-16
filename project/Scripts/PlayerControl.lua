@@ -18,6 +18,7 @@ function OnAfterSceneLoaded(self)
 	G.screenWidth, G.screenHeight = Screen:GetViewportSize()
 
 	self.playerInputMap = Input:CreateMap("InputMap")
+	self.FontPath = "Fonts/agency52"
  
 	-- Setup the WASD keyboard playerInputMap
 	self.playerInputMap:MapTrigger("KeyLeft", "KEYBOARD", "CT_KB_A")
@@ -76,6 +77,7 @@ function IsTriggered(self, key)
 end
 
 function OnThink(self)
+  if G.MainMenu == false then
 	local dt = Timer:GetTimeDiff()
 	
 	-- Handle resetting immediately as some things need to be initialized right away
@@ -199,10 +201,12 @@ function OnThink(self)
 			G.missileBounces = G.missileBounces + 1
 		end
 		
+		Debug:PrintAt(50,25, "Bounces: " .. G.missileBounces, Vision.V_RGBA_WHITE, self.FontPath)
 		SetMissilePosition(newMissilePosition)
 	end
 	
 	UpdateAsteroids(self)
+  end
 end
 
 --== Global game utility functions
@@ -227,8 +231,8 @@ function SetMissilePosition(position)
 end
 
 function Reset(delay)
-	G.player:SetVisible(false)
-	G.player:SetPosition( Vision.hkvVec3(10000, 10000, 10000) )
+	--G.player:SetVisible(false)
+	--G.player:SetPosition( Vision.hkvVec3(10000, 10000, 10000) )
 
 	HideMissile()
 	G.missileFired = false
@@ -257,6 +261,8 @@ function HardReset()
 
 	G.player:SetPosition( Vision.hkvVec3(0, 0, 0) )
 	G.player:SetVisible(true)
+	G.ResetMenu = true
+	G.MainMenu = true
 end
 
 --== Asteroid helper functions

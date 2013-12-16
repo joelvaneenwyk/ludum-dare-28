@@ -1,4 +1,3 @@
-G.MainMenu = true
 
 function OnAfterSceneLoaded(self)
   self.menuMap = Input:CreateMap("MenuMap")
@@ -20,6 +19,11 @@ function OnAfterSceneLoaded(self)
   self.bulletRigid = self:GetComponentOfType("vHavokRigidBody")
   self.bulletOrient = 0
   self.picked = false
+  self.startPos = self:GetPosition()
+  
+  G.MainMenu = true
+  G.ResetMenu = false
+
 end
 
 
@@ -27,6 +31,15 @@ function OnThink(self)
   local x = self.menuMap:GetTrigger("X")
   local y = self.menuMap:GetTrigger("Y")
   local dt = Timer:GetTimeDiff() 
+  
+  if G.ResetMenu == true then
+  	Game:GetEntity("Title"):SetVisible(true)
+    Game:GetEntity("menuArrow"):SetVisible(true)
+	self:SetPosition(self.startPos)
+	self.bulletRigid:SetPosition(self.startPos)
+    self:SetVisible(true)
+	G.ResetMenu = false
+  end
 
   if G.MainMenu == true then
     self.bulletRigid:SetOrientation( Vision.hkvVec3(self.bulletOrient, 0, 0) )
@@ -47,7 +60,7 @@ function OnThink(self)
   end
 
   if self.picked then
-    self.point = Screen:Project3D(x, y, self.pickedDistance)
+    self.point = Screen:Project3D(x, y, 1000)
     --Debug:PrintLine("Click: " .. self.point)
     self:SetPosition( Vision.hkvVec3(self.point.x, self.point.y, 0) )
     self.picked = true
@@ -74,6 +87,8 @@ function OnCollision(self, info)
 		Game:GetEntity("Title"):SetVisible(false)
 		Game:GetEntity("menuArrow"):SetVisible(false)
 		self:SetVisible(false)
+		self:SetPosition(self.startPos)
+		self.bulletRigid:SetPosition(self.startPos)
 		local titleFx = Game:CreateEffect(Vision.hkvVec3(-283,-253,25), "Particles/title.xml", "TitleFX")
 		G.MainMenu = false
 	end
