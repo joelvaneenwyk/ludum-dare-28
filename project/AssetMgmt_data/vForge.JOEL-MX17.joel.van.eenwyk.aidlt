@@ -1,7 +1,5 @@
 fonts/agency52_00.dds	fonts/agency52_00.dds	sRGB=false
 fonts/agency52_01.dds	fonts/agency52_01.dds	sRGB=false
-meshes/proxyship.vcolmesh	meshes/proxyship.vcolmesh	
-meshes/proxyship.vmesh	meshes/proxyship.vmesh	LODSwitchDistances=
 models/asteroid01.anim	models/asteroid01.anim	
 models/asteroid01.model	models/asteroid01.model	LODSwitchDistances=
 models/asteroid01.vcolmesh	models/asteroid01.vcolmesh	
@@ -38,6 +36,9 @@ models/shipproxy.vcolmesh	models/shipproxy.vcolmesh
 models/sphere.anim	models/sphere.anim	
 models/sphere.model	models/sphere.model	LODSwitchDistances=
 models/sphere.vcolmesh	models/sphere.vcolmesh	
+models/titlecontrols.anim	models/titlecontrols.anim	
+models/titlecontrols.model	models/titlecontrols.model	LODSwitchDistances=
+models/titlecontrols.vcolmesh	models/titlecontrols.vcolmesh	
 particles/blastwave.dds	particles/blastwave.dds	sRGB=false
 particles/flare_1.dds	particles/flare_1.dds	sRGB=false
 particles/fog_group.dds	particles/fog_group.dds	sRGB=false
@@ -53,5 +54,6 @@ textures/fx/fx_bulletsamplecolor.tga	textures/fx/fx_bulletsamplecolor.tga	sRGB=f
 textures/fx/fx_firesamplecolor.tga	textures/fx/fx_firesamplecolor.tga	sRGB=false
 textures/fx/fx_shipsamplecolor.tga	textures/fx/fx_shipsamplecolor.tga	sRGB=false
 textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
+textures/mouse.tga	textures/mouse.tga	sRGB=false
 textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
 textures/ship_spec.tga	textures/ship_spec.tga	sRGB=false

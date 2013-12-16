@@ -1,6 +1,10 @@
 ## Anarchy SDK files to ignore
 
+project/AssetMgmt_data/thumbnails
+project/AssetMgmt_data/transformed
 project/Models/asteroid*.model_data/*.hkt
+source/Lib/*
+source/Data
 /Bin/*
 /Build/*
 /ChangeLogs/*

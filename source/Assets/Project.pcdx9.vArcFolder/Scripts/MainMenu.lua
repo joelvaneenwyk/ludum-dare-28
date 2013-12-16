@@ -6,6 +6,8 @@ Purpose: Creates and manages the main menu.
 function OnAfterSceneLoaded(self)
 	self.menuMap = Input:CreateMap("MenuMap")
 	G.screenWidth, G.screenHeight = Screen:GetViewportSize()
+	
+	Debug:Enable(true)
 
 	self.menuMap:MapTrigger("X", "MOUSE", "CT_MOUSE_ABS_X")
 	self.menuMap:MapTrigger("Y", "MOUSE", "CT_MOUSE_ABS_Y")
@@ -25,11 +27,28 @@ function OnAfterSceneLoaded(self)
 	self.startPos = self:GetPosition()
 	
 	self.titleEntity = Game:GetEntity("Title")
+	self.titleControlsEntity = Game:GetEntity("titleControls")
 	self.menuArrowEntity = Game:GetEntity("menuArrow")
+	
+	self.musicLevel = .75
+    self.musicCrossFadeTime = 1
+	
+	self.menuMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuMusic.mp3", true, "gameMusic")
+	self.menuMusic:SetVolume (.2)
+    self.menuMusic:Play()
+    self.menuMusic:FadeFromTo(.2,self.musicLevel, self.musicCrossFadeTime)
+		
+
 end
 
 function OnBeforeSceneUnloaded(self)
 	Input:DestroyMap(self.map);
+	if self.gameMusic ~= nil then
+		self.gameMusic:Remove()
+	end
+	if self.menuMusic ~= nil then
+		self.menuMusic:Remove()
+	end
 end
 
 function OnThink(self)
@@ -39,10 +58,19 @@ function OnThink(self)
 
 	if G.ResetMenu == true then
 		self.titleEntity:SetVisible(true)
+		self.titleControlsEntity:SetVisible(true)
 		self.menuArrowEntity:SetVisible(true)
 		self:SetPosition(self.startPos)
 		self.bulletRigid:SetPosition(self.startPos)
 		self:SetVisible(true)
+		if self.gameMusic ~= nil then
+			self.gameMusic:FadeFromTo(self.musicLevel,0, self.musicCrossFadeTime)
+		end
+		self.menuMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuMusic.mp3", true, "gameMusic")
+	    self.menuMusic:SetVolume (.2)
+        self.menuMusic:Play()
+        self.menuMusic:FadeFromTo(.2,self.musicLevel, self.musicCrossFadeTime)
+		
 		G.ResetMenu = false
 	end
 
@@ -78,6 +106,16 @@ function OnThink(self)
 		Debug.Draw:Line2D(x,y,x+5,y+10, Vision.V_RGBA_WHITE)
 		Debug.Draw:Line2D(x+10,y+5,x+5,y+10, Vision.V_RGBA_WHITE)
 	end
+	
+	if self.gameMusic ~= nil and self.gameMusic:GetVolume () == 0 then
+          self.gameMusic:Remove()
+          self.gameMusic=nil
+    end
+	if self.menuMusic ~= nil and self.menuMusic:GetVolume () == 0 then
+          self.menuMusic:Remove()
+          self.menuMusic=nil
+    end
+
 end
 
 function OnCollision(self, info)
@@ -85,16 +123,31 @@ function OnCollision(self, info)
 	   G.MainMenu == true then
 		self.titleEntity:SetVisible(false)
 		self.menuArrowEntity:SetVisible(false)
+        self.titleControlsEntity:SetVisible(false)
 
 		self:SetVisible(false)
-		self:SetPosition(self.startPos)
-		self.bulletRigid:SetPosition(self.startPos)
+		self:SetPosition( Vision.hkvVec3(10000,10000,10000) )
+		self.bulletRigid:SetPosition( Vision.hkvVec3(10000,10000,10000) )
 
 		local titleFx = Game:CreateEffect(
 			Vision.hkvVec3(-283, -253, 25),
 			"Particles/title.xml",
 			"TitleFX")
-		G.MainMenu = false
+		local titleControlFx = Game:CreateEffect(
+			self.titleControlsEntity:GetPosition(),
+			"Particles/titleControls.xml",
+			"TitleControlsFX")
+			
+	   self.gameMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/gameMusic.mp3", true, "gameMusic")
+	   self.gameMusic:SetVolume (.2)
+       self.gameMusic:Play()
+       self.gameMusic:FadeFromTo(.2,self.musicLevel, self.musicCrossFadeTime)
+	   
+	   if self.menuMusic ~= nil then
+			self.menuMusic:FadeFromTo(self.musicLevel,0, self.musicCrossFadeTime)
+		end
+
+	   G.MainMenu = false
 	end
 end
 

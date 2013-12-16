@@ -2,12 +2,28 @@
     "Profiles": {
         "pcdx9": {
             "Platform": "DX9"
+        },
+        "ios": {
+            "Platform": "iOS"
+        },
+        "android": {
+            "Platform": "ANDROID"
         }
     },
     "TransformTemplates": {
         "Prefab": {
             "Default": {
                 "pcdx9": {
+                    "None": {
+
+                    }
+                },
+                "ios": {
+                    "None": {
+
+                    }
+                },
+                "android": {
                     "None": {
 
                     }
@@ -20,6 +36,16 @@
                     "None": {
 
                     }
+                },
+                "ios": {
+                    "None": {
+
+                    }
+                },
+                "android": {
+                    "None": {
+
+                    }
                 }
             }
         },
@@ -29,12 +55,32 @@
                     "None": {
 
                     }
+                },
+                "ios": {
+                    "None": {
+
+                    }
+                },
+                "android": {
+                    "None": {
+
+                    }
                 }
             }
         },
         "Unknown": {
             "Default": {
                 "pcdx9": {
+                    "None": {
+
+                    }
+                },
+                "ios": {
+                    "None": {
+
+                    }
+                },
+                "android": {
                     "None": {
 
                     }
@@ -53,12 +99,44 @@
                         "MinimumSize": 0,
                         "MaximumSize": 0
                     }
+                },
+                "ios": {
+                    "TextureTransformationRule": {
+                        "Compression": "Quality",
+                        "Usage": "Undefined",
+                        "RemoveAlphaChannel": false,
+                        "CreateMipMaps": true,
+                        "DownscaleLevel": 0,
+                        "MinimumSize": 0,
+                        "MaximumSize": 0
+                    }
+                },
+                "android": {
+                    "TextureTransformationRule": {
+                        "Compression": "Quality",
+                        "Usage": "Undefined",
+                        "RemoveAlphaChannel": false,
+                        "CreateMipMaps": true,
+                        "DownscaleLevel": 0,
+                        "MinimumSize": 0,
+                        "MaximumSize": 0
+                    }
                 }
             }
         },
         "StaticMesh": {
             "Default": {
                 "pcdx9": {
+                    "None": {
+
+                    }
+                },
+                "ios": {
+                    "None": {
+
+                    }
+                },
+                "android": {
                     "None": {
 
                     }
@@ -71,12 +149,32 @@
                     "CollectionTransformationRule": {
 
                     }
+                },
+                "ios": {
+                    "CollectionTransformationRule": {
+
+                    }
+                },
+                "android": {
+                    "CollectionTransformationRule": {
+
+                    }
                 }
             }
         },
         "CollisionMesh": {
             "Default": {
                 "pcdx9": {
+                    "None": {
+
+                    }
+                },
+                "ios": {
+                    "None": {
+
+                    }
+                },
+                "android": {
                     "None": {
 
                     }

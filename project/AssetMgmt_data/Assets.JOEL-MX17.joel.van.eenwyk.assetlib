@@ -873,6 +873,74 @@
                 "TemplateName": "Default"
             }
         },
+        "Models/titleControls.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387223003639757000,
+                "LastEditTime": 1387223271039494300
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/titleControls.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/titleControls.model_data/materials.xml",
+                    "Shaders/BaseShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/ship_diff.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3280675542,
+                "TimeStamp": 1387223003658758900,
+                "LastEditTime": 1387223271088499200
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/titleControls.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3821114801,
+                "TimeStamp": 1387223003681761200,
+                "LastEditTime": 1387223272351625500
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
         "Particles/BlastWave.dds": {
             "AssetType": "Texture",
             "Common": {
@@ -1423,6 +1491,11 @@
             "Hash": 0,
             "TimeStamp": 1387060021286742500,
             "LastEditTime": 1387061298797812000
+        },
+        "Models/titleControls.model_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387220429919520200,
+            "LastEditTime": 1387220404685997100
         },
         "Shaders/ld28.ShaderLib": {
             "Hash": 0,

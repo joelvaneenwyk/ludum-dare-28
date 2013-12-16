@@ -36,6 +36,9 @@ models/shipproxy.vcolmesh	Models/shipProxy.vcolmesh
 models/sphere.anim	Models/sphere.anim	
 models/sphere.model	Models/sphere.model	LODSwitchDistances=
 models/sphere.vcolmesh	Models/sphere.vcolmesh	
+models/titlecontrols.anim	Models/titleControls.anim	
+models/titlecontrols.model	Models/titleControls.model	LODSwitchDistances=
+models/titlecontrols.vcolmesh	Models/titleControls.vcolmesh	
 particles/blastwave.dds	AssetMgmt_data/transformed/blastwave41r24b8clgdtc.dds	sRGB=false
 particles/flare_1.dds	AssetMgmt_data/transformed/flare_1gqjshl4clgdtc.dds	sRGB=false
 particles/fog_group.dds	AssetMgmt_data/transformed/fog_grouph48r7x4clgdtc.dds	sRGB=false
@@ -51,5 +54,6 @@ textures/fx/fx_bulletsamplecolor.tga	AssetMgmt_data/transformed/fx_bulletsamplec
 textures/fx/fx_firesamplecolor.tga	AssetMgmt_data/transformed/fx_firesamplecolordl06b0sclgdtc.dds	sRGB=false
 textures/fx/fx_shipsamplecolor.tga	AssetMgmt_data/transformed/fx_shipsamplecolorcxw6z7sclgdtc.dds	sRGB=false
 textures/fx/fx_trimask.tga	AssetMgmt_data/transformed/fx_trimask5rkpmbxclgdtc.dds	sRGB=false
+textures/mouse.tga	AssetMgmt_data/transformed/mouse43m3h38clgdtc.dds	sRGB=false
 textures/ship_diff.tga	AssetMgmt_data/transformed/ship_diffbz2b0d0clgdtc.dds	sRGB=false
 textures/ship_spec.tga	AssetMgmt_data/transformed/ship_spec519hb9jclgdtc.dds	sRGB=false
