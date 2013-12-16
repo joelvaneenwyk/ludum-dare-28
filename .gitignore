@@ -3,8 +3,8 @@
 project/AssetMgmt_data/thumbnails
 project/AssetMgmt_data/transformed
 project/Models/asteroid*.model_data/*.hkt
-source/Lib/*
 source/Data
+source/Lib
 /Bin/*
 /Build/*
 /ChangeLogs/*
