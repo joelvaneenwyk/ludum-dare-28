@@ -1,3 +1,5 @@
+fonts/agency52_00.dds	fonts/agency52_00.dds	sRGB=false
+fonts/agency52_01.dds	fonts/agency52_01.dds	sRGB=false
 meshes/proxyship.vcolmesh	meshes/proxyship.vcolmesh	
 meshes/proxyship.vmesh	meshes/proxyship.vmesh	LODSwitchDistances=
 models/asteroid01.anim	models/asteroid01.anim	
@@ -53,5 +55,7 @@ textures/fx/fx_shipsamplecolor.tga	textures/fx/fx_shipsamplecolor.tga	sRGB=false
 textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
 textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
 textures/ship_spec.tga	textures/ship_spec.tga	sRGB=false
-fonts/agency52_00.dds	fonts/agency52_00.dds	sRGB=false
-fonts/agency52_01.dds	fonts/agency52_01.dds	sRGB=false
+models/titlecontrols.anim	models/titlecontrols.anim	
+models/titlecontrols.model	models/titlecontrols.model	LODSwitchDistances=
+models/titlecontrols.vcolmesh	models/titlecontrols.vcolmesh	
+textures/mouse.tga	textures/mouse.tga	sRGB=false

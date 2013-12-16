@@ -19,7 +19,7 @@
             "File": {
                 "Hash": 2101243564,
                 "TimeStamp": 1387216498127419100,
-                "LastEditTime": 1387216726288618800
+                "LastEditTime": 1387219667906419200
             },
             "Texture": {
                 "FileFormat": "DDS",
@@ -46,7 +46,7 @@
             "File": {
                 "Hash": 2885365960,
                 "TimeStamp": 1387216498131419100,
-                "LastEditTime": 1387216727105700500
+                "LastEditTime": 1387219668994419200
             },
             "Texture": {
                 "FileFormat": "DDS",
@@ -921,6 +921,74 @@
                 "TemplateName": "Default"
             }
         },
+        "Models/titleControls.anim": {
+            "AssetType": "Animation",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 592976672,
+                "TimeStamp": 1387220429919520200,
+                "LastEditTime": 1387220431001628400
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/titleControls.model": {
+            "AssetType": "Model",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+                    "Models/titleControls.model_data/materials.xml",
+                    "Shaders/BaseShaders.ShaderLib",
+                    "Shaders/vMaterial.ShaderLib",
+                    "Textures/ship_diff.tga"
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3280675542,
+                "TimeStamp": 1387220429919520200,
+                "LastEditTime": 1387220430977626000
+            },
+            "Model": {
+                "LODSwitchDistances": [
+
+                ]
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
+        "Models/titleControls.vcolmesh": {
+            "AssetType": "CollisionMesh",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 3821114801,
+                "TimeStamp": 1387220429919520200,
+                "LastEditTime": 1387220431005628800
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
         "Particles/BlastWave.dds": {
             "AssetType": "Texture",
             "Common": {
@@ -1326,6 +1394,33 @@
                 "TemplateName": "Default"
             }
         },
+        "Textures/mouse.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 1103916826,
+                "TimeStamp": 1387218629563601000,
+                "LastEditTime": 1387218758667416600
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 32,
+                "Height": 32,
+                "HasAlpha": true,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
         "Textures/ship_diff.tga": {
             "AssetType": "Texture",
             "Common": {
@@ -1431,6 +1526,11 @@
             "Hash": 0,
             "TimeStamp": 1387060021286742500,
             "LastEditTime": 1387061298797812000
+        },
+        "Models/titleControls.model_data/materials.xml": {
+            "Hash": 0,
+            "TimeStamp": 1387220429919520200,
+            "LastEditTime": 1387220404685997100
         },
         "Shaders/ld28.ShaderLib": {
             "Hash": 0,

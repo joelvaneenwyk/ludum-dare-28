@@ -1,0 +1,78 @@
+fonts/agency52_00.dds#android-default	AssetMgmt_data/transformed/agency52_007vhmgpjclgdtc.etc	sRGB=false
+fonts/agency52_00.dds#android-pvr	AssetMgmt_data/transformed/agency52_007vhmgpjclgdtc.pvr	sRGB=false
+fonts/agency52_01.dds#android-default	AssetMgmt_data/transformed/agency52_01brztjt0clgdtc.etc	sRGB=false
+fonts/agency52_01.dds#android-pvr	AssetMgmt_data/transformed/agency52_01brztjt0clgdtc.pvr	sRGB=false
+meshes/proxyship.vcolmesh	Meshes/proxyShip.vcolmesh	
+meshes/proxyship.vmesh	Meshes/proxyShip.vmesh	LODSwitchDistances=
+models/asteroid01.anim	Models/asteroid01.anim	
+models/asteroid01.model	Models/asteroid01.model	LODSwitchDistances=
+models/asteroid01.vcolmesh	Models/asteroid01.vcolmesh	
+models/asteroid02.anim	Models/asteroid02.anim	
+models/asteroid02.model	Models/asteroid02.model	LODSwitchDistances=
+models/asteroid02.vcolmesh	Models/asteroid02.vcolmesh	
+models/asteroid03.anim	Models/asteroid03.anim	
+models/asteroid03.model	Models/asteroid03.model	LODSwitchDistances=
+models/asteroid03.vcolmesh	Models/asteroid03.vcolmesh	
+models/asteroid04.anim	Models/asteroid04.anim	
+models/asteroid04.model	Models/asteroid04.model	LODSwitchDistances=
+models/asteroid04.vcolmesh	Models/asteroid04.vcolmesh	
+models/asteroidproxy.anim	Models/asteroidProxy.anim	
+models/asteroidproxy.model	Models/asteroidProxy.model	LODSwitchDistances=
+models/asteroidproxy.vcolmesh	Models/asteroidProxy.vcolmesh	
+models/container.anim	Models/container.anim	
+models/container.model	Models/container.model	LODSwitchDistances=
+models/container.vcolmesh	Models/container.vcolmesh	
+models/menu_arrow.anim	Models/menu_arrow.anim	
+models/menu_arrow.model	Models/menu_arrow.model	LODSwitchDistances=
+models/menu_arrow.vcolmesh	Models/menu_arrow.vcolmesh	
+models/oneshottitle.anim	Models/oneShotTitle.anim	
+models/oneshottitle.model	Models/oneShotTitle.model	LODSwitchDistances=
+models/oneshottitle.vcolmesh	Models/oneShotTitle.vcolmesh	
+models/plane.anim	Models/plane.anim	
+models/plane.model	Models/plane.model	LODSwitchDistances=
+models/plane.vcolmesh	Models/plane.vcolmesh	
+models/ship.anim	Models/ship.anim	
+models/ship.model	Models/ship.model	LODSwitchDistances=
+models/ship.vcolmesh	Models/ship.vcolmesh	
+models/shipproxy.anim	Models/shipProxy.anim	
+models/shipproxy.model	Models/shipProxy.model	LODSwitchDistances=
+models/shipproxy.vcolmesh	Models/shipProxy.vcolmesh	
+models/sphere.anim	Models/sphere.anim	
+models/sphere.model	Models/sphere.model	LODSwitchDistances=
+models/sphere.vcolmesh	Models/sphere.vcolmesh	
+particles/blastwave.dds#android-default	AssetMgmt_data/transformed/blastwave41r24b8clgdtc.rgba	sRGB=false
+particles/blastwave.dds#android-pvr	AssetMgmt_data/transformed/blastwave41r24b8clgdtc.pvr	sRGB=false
+particles/flare_1.dds#android-default	AssetMgmt_data/transformed/flare_1gqjshl4clgdtc.rgba	sRGB=false
+particles/flare_1.dds#android-pvr	AssetMgmt_data/transformed/flare_1gqjshl4clgdtc.pvr	sRGB=false
+particles/fog_group.dds#android-default	AssetMgmt_data/transformed/fog_grouph48r7x4clgdtc.rgba	sRGB=false
+particles/fog_group.dds#android-pvr	AssetMgmt_data/transformed/fog_grouph48r7x4clgdtc.pvr	sRGB=false
+particles/graylookuptable.dds#android-default	AssetMgmt_data/transformed/graylookuptableh5zhzs4clgdtc.rgba	sRGB=false
+particles/graylookuptable.dds#android-pvr	AssetMgmt_data/transformed/graylookuptableh5zhzs4clgdtc.pvr	sRGB=false
+particles/smoke.dds#android-default	AssetMgmt_data/transformed/smoke9hkp3rjclgdtc.rgba	sRGB=false
+particles/smoke.dds#android-pvr	AssetMgmt_data/transformed/smoke9hkp3rjclgdtc.pvr	sRGB=false
+particles/smoke_a.dds#android-default	AssetMgmt_data/transformed/smoke_ah94k260clgdtc.rgba	sRGB=false
+particles/smoke_a.dds#android-pvr	AssetMgmt_data/transformed/smoke_ah94k260clgdtc.pvr	sRGB=false
+particles/smokesequence_a.dds#android-default	AssetMgmt_data/transformed/smokesequence_a1hnnds4clgdtc.rgba	sRGB=false
+particles/smokesequence_a.dds#android-pvr	AssetMgmt_data/transformed/smokesequence_a1hnnds4clgdtc.pvr	sRGB=false
+textures/asteroid_base.tga#android-default	AssetMgmt_data/transformed/asteroid_baseh698p78clgdtc.etc	sRGB=false
+textures/asteroid_base.tga#android-pvr	AssetMgmt_data/transformed/asteroid_baseh698p78clgdtc.pvr	sRGB=false
+textures/asteroid_color1.tga#android-default	AssetMgmt_data/transformed/asteroid_color1fby519jclgdtc.etc	sRGB=false
+textures/asteroid_color1.tga#android-pvr	AssetMgmt_data/transformed/asteroid_color1fby519jclgdtc.pvr	sRGB=false
+textures/basegrey.tga#android-default	AssetMgmt_data/transformed/basegreygp6mlm0clgdtc.etc	sRGB=false
+textures/basegrey.tga#android-pvr	AssetMgmt_data/transformed/basegreygp6mlm0clgdtc.pvr	sRGB=false
+textures/basered.tga#android-default	AssetMgmt_data/transformed/basered823pp0xclgdtc.rgba	sRGB=false
+textures/basered.tga#android-pvr	AssetMgmt_data/transformed/basered823pp0xclgdtc.pvr	sRGB=false
+textures/fx/fx_bulletsamplecolor.tga#android-default	AssetMgmt_data/transformed/fx_bulletsamplecolor72zddvxclgdtc.etc	sRGB=false
+textures/fx/fx_bulletsamplecolor.tga#android-pvr	AssetMgmt_data/transformed/fx_bulletsamplecolor72zddvxclgdtc.pvr	sRGB=false
+textures/fx/fx_firesamplecolor.tga#android-default	AssetMgmt_data/transformed/fx_firesamplecolordl06b0sclgdtc.etc	sRGB=false
+textures/fx/fx_firesamplecolor.tga#android-pvr	AssetMgmt_data/transformed/fx_firesamplecolordl06b0sclgdtc.pvr	sRGB=false
+textures/fx/fx_shipsamplecolor.tga#android-default	AssetMgmt_data/transformed/fx_shipsamplecolorcxw6z7sclgdtc.etc	sRGB=false
+textures/fx/fx_shipsamplecolor.tga#android-pvr	AssetMgmt_data/transformed/fx_shipsamplecolorcxw6z7sclgdtc.pvr	sRGB=false
+textures/fx/fx_trimask.tga#android-default	AssetMgmt_data/transformed/fx_trimask5rkpmbxclgdtc.rgba	sRGB=false
+textures/fx/fx_trimask.tga#android-pvr	AssetMgmt_data/transformed/fx_trimask5rkpmbxclgdtc.pvr	sRGB=false
+textures/mouse.tga#android-default	AssetMgmt_data/transformed/mouse43m3h38clgdtc.rgba	sRGB=false
+textures/mouse.tga#android-pvr	AssetMgmt_data/transformed/mouse43m3h38clgdtc.pvr	sRGB=false
+textures/ship_diff.tga#android-default	AssetMgmt_data/transformed/ship_diffbz2b0d0clgdtc.etc	sRGB=false
+textures/ship_diff.tga#android-pvr	AssetMgmt_data/transformed/ship_diffbz2b0d0clgdtc.pvr	sRGB=false
+textures/ship_spec.tga#android-default	AssetMgmt_data/transformed/ship_spec519hb9jclgdtc.etc	sRGB=false
+textures/ship_spec.tga#android-pvr	AssetMgmt_data/transformed/ship_spec519hb9jclgdtc.pvr	sRGB=false
