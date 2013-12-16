@@ -7,13 +7,11 @@
 // ------------------------------------------------------TKBMS v1.0
 
 #include "GameApplicationPCH.h"
-#include <Vision/Runtime/Framework/VisionApp/VAppImpl.hpp>
 
+#include <Vision/Runtime/Framework/VisionApp/VAppImpl.hpp>
 #include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
 
-// Use the following line to initialize a plugin that is statically linked.
-// Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
-VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
+#include <Vision/Runtime/EnginePlugins/Havok/HavokPhysicsEnginePlugin/vHavokPhysicsIncludes.hpp>
 
 class ProjectTemplateApp : public VAppImpl
 {
@@ -59,16 +57,15 @@ void ProjectTemplateApp::SetupAppConfig(VisAppConfig_cl& config)
   config.m_videoConfig.m_iYRes = deviceMode.dmPelsHeight;
   config.m_videoConfig.m_bFullScreen = true;
   */
-#endif
-  
+#endif  
 }
 
 void ProjectTemplateApp::PreloadPlugins()
 {
-  // Use the following line to load a plugin. Remember that, except on Windows platform, in addition
-  // you still need to statically link your plugin library (e.g. on mobile platforms) through project
-  // Properties, Linker, Additional Dependencies.
-  VISION_PLUGIN_ENSURE_LOADED(GamePlugin);
+	VISION_PLUGIN_ENSURE_LOADED(vHavok);
+
+	VFileAccessManager::GetInstance()->AddSearchPath(":template_root/Assets/Base.pcdx9.vArcFolder");
+	VFileAccessManager::GetInstance()->AddSearchPath(":template_root/Assets/Project.pcdx9.vArcFolder");
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -76,12 +73,10 @@ void ProjectTemplateApp::PreloadPlugins()
 //---------------------------------------------------------------------------------------------------------
 void ProjectTemplateApp::Init()
 {
-  // Set filename and paths to our stand alone version.
-  // Note: "/Data/Vision/Base" is always added by the sample framework
-  VisAppLoadSettings settings("Scenes/main.pcdx9.vscene");
-  settings.m_customSearchPaths.Append(":template_root/Assets/Base.pcdx9.vArcFolder");
-  settings.m_customSearchPaths.Append(":template_root/Assets/Project.pcdx9.vArcFolder");
-  LoadScene(settings);
+	VisAppLoadSettings settings("Scenes/main.pcdx9.vscene");
+	settings.m_customSearchPaths.Append(":template_root/Assets/Base.pcdx9.vArcFolder");
+	settings.m_customSearchPaths.Append(":template_root/Assets/Project.pcdx9.vArcFolder");
+	LoadScene(settings);
 }
 
 //---------------------------------------------------------------------------------------------------------
