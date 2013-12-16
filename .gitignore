@@ -2,7 +2,7 @@
 
 source/
 
-#project/Models/asteroid*.model_data/*.hkt
+project/Models/asteroid*.model_data/*.hkt
 /Bin/*
 /Build/*
 /ChangeLogs/*
