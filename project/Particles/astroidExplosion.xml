@@ -54,7 +54,7 @@
                     <point pos="1,0.9967" t_in="-0.192,-0" t_out="0,0" />
                 </curve>
                 <start average="1" variation="0" />
-                <growth average="250" variation="0.5" />
+                <growth average="400" variation="0.5" />
             </size>
             <animation mode="0" startrandomframe="FALSE" smooth="FALSE">
                 <animtime average="3" variation="0.5" />
@@ -74,8 +74,8 @@
         <description name="polyBits" />
         <defaultemitter type="point" emitfromsurface="FALSE">
             <startupfillpercentage average="100" variation="0" />
-            <fixparticlecount average="30" variation="0" />
-            <frequency average="600" variation="0" />
+            <fixparticlecount average="70" variation="0" />
+            <frequency average="1200" variation="0" />
             <countlookup time="0.01" randomofs="FALSE" />
             <direction coneangle="0,-1" conemode="alldims" />
         </defaultemitter>
@@ -125,7 +125,7 @@
                     <point pos="1,1" t_in="0,0" t_out="0,0" />
                 </curve>
                 <start average="1" variation="0.5" />
-                <growth average="10" variation="0.5" />
+                <growth average="35" variation="0.5" />
             </size>
             <animation mode="0" startrandomframe="FALSE" smooth="FALSE">
                 <curve numpoints="2">
