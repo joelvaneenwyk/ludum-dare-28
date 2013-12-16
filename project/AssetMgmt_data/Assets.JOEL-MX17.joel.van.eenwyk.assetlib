@@ -59,54 +59,6 @@
                 "TemplateName": "Default"
             }
         },
-        "Meshes/proxyShip.vcolmesh": {
-            "AssetType": "CollisionMesh",
-            "Common": {
-                "Tags": "__NEW_ASSET__",
-                "Dependencies": [
-
-                ],
-                "Variants": [
-
-                ]
-            },
-            "File": {
-                "Hash": 3217528839,
-                "TimeStamp": 1387153892033691000,
-                "LastEditTime": 1387215492353632500
-            },
-            "Transformations": {
-                "TemplateName": "Default"
-            }
-        },
-        "Meshes/proxyShip.vmesh": {
-            "AssetType": "StaticMesh",
-            "Common": {
-                "Tags": "__NEW_ASSET__",
-                "Dependencies": [
-                    "Meshes/proxyShip.vmesh_data/materials.xml",
-                    "Shaders/BaseShaders.ShaderLib",
-                    "Shaders/vMaterial.ShaderLib",
-                    "Textures/baseGrey.tga"
-                ],
-                "Variants": [
-
-                ]
-            },
-            "File": {
-                "Hash": 2605304197,
-                "TimeStamp": 1387153892043691600,
-                "LastEditTime": 1387215491844581600
-            },
-            "Model": {
-                "LODSwitchDistances": [
-
-                ]
-            },
-            "Transformations": {
-                "TemplateName": "Default"
-            }
-        },
         "Models/asteroid01.anim": {
             "AssetType": "Animation",
             "Common": {
@@ -1326,6 +1278,33 @@
                 "TemplateName": "Default"
             }
         },
+        "Textures/mouse.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 1103916826,
+                "TimeStamp": 1387220055999997900,
+                "LastEditTime": 1387220092770674600
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 32,
+                "Height": 32,
+                "HasAlpha": true,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
         "Textures/ship_diff.tga": {
             "AssetType": "Texture",
             "Common": {
@@ -1379,14 +1358,27 @@
             "Transformations": {
                 "TemplateName": "Default"
             }
+        },
+        "Meshes/proxyShip.vcolmesh": {
+            "AssetType": "__deleted__",
+            "Common": {
+                "DeleteTime": 1387220424176811900
+            },
+            "File": {
+                "LastEditTime": 1387220424176811900
+            }
+        },
+        "Meshes/proxyShip.vmesh": {
+            "AssetType": "__deleted__",
+            "Common": {
+                "DeleteTime": 1387220424176811900
+            },
+            "File": {
+                "LastEditTime": 1387220424176811900
+            }
         }
     },
     "TrackedFiles": {
-        "Meshes/proxyShip.vmesh_data/materials.xml": {
-            "Hash": 0,
-            "TimeStamp": 1387051172756200400,
-            "LastEditTime": 1387061298797812000
-        },
         "Models/asteroid01.model_data/materials.xml": {
             "Hash": 0,
             "TimeStamp": 1387068103278909500,

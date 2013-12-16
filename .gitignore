@@ -1,7 +1,5 @@
 ## Anarchy SDK files to ignore
 
-source/
-
 project/Models/asteroid*.model_data/*.hkt
 /Bin/*
 /Build/*

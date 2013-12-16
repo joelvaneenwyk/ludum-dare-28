@@ -1,0 +1,11 @@
+<root>
+    <Resources Version="1" Count="7" PathType="Project">
+        <Resource Manager="Animations" Filename="Models/ship.anim" Size="1024" />
+        <Resource Manager="FILE" Filename="Models/ship.model_data\materials.xml" OwnerRes="5" Size="518" />
+        <Resource Manager="EffectLibs" Filename="Shaders\MobileShaders.ShaderLib" Size="3540544" />
+        <Resource Manager="Textures" Filename="Textures\ship_diff.tga" CustomInt="1,64" Size="21844" />
+        <Resource Manager="Textures" Filename="Textures\ship_spec.tga" CustomInt="1,0" Size="21844" />
+        <Resource Manager="Static/Dynamic Meshes" Filename="Models/ship.model" CustomInt="1,2" Size="56" />
+        <Resource Manager="EffectLibs" Filename="Shaders\vMaterial.ShaderLib" Size="392352" />
+    </Resources>
+</root>
