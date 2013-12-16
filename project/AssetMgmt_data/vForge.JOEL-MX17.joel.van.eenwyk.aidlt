@@ -53,3 +53,5 @@ textures/fx/fx_shipsamplecolor.tga	textures/fx/fx_shipsamplecolor.tga	sRGB=false
 textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
 textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
 textures/ship_spec.tga	textures/ship_spec.tga	sRGB=false
+fonts/agency52_00.dds	fonts/agency52_00.dds	sRGB=false
+fonts/agency52_01.dds	fonts/agency52_01.dds	sRGB=false

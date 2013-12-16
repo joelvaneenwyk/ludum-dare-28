@@ -1,6 +1,6 @@
 --[[
 Author: Joel Van Eenwyk
-Purpose: Controls the player
+Purpose: Controls the player, creates asteroids, and handles game score
 --]]
 
 function OnExpose(self)
@@ -77,9 +77,15 @@ function IsTriggered(self, key)
 end
 
 function OnThink(self)
-  if G.MainMenu == false then
-	local dt = Timer:GetTimeDiff()
-	
+	if not G.MainMenu then
+		local dt = Timer:GetTimeDiff()
+		Update(self, dt)
+	end
+end
+
+--== Global game utility functions
+
+function Update(self, dt)
 	-- Handle resetting immediately as some things need to be initialized right away
 	if G.reset then
 		G.resetTime = G.resetTime - dt
@@ -206,10 +212,7 @@ function OnThink(self)
 	end
 	
 	UpdateAsteroids(self)
-  end
 end
-
---== Global game utility functions
 
 function HideMissile()
 	G.missileEffect:SetPaused(true)
@@ -261,6 +264,7 @@ function HardReset()
 
 	G.player:SetPosition( Vision.hkvVec3(0, 0, 0) )
 	G.player:SetVisible(true)
+
 	G.ResetMenu = true
 	G.MainMenu = true
 end
@@ -380,7 +384,7 @@ function CreateAsteroid()
 
 	-- set the mesh after the rigid body is created so that a default rigid body isn't generated
 	asteroid.entity:SetMesh(model)
-
+	
 	local aabb = asteroid.entity:GetCollisionBoundingBox()	
 	local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0
 	local success = asteroid.rigidBody:InitFromFile(collision, radius / 100.0)
