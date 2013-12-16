@@ -350,7 +350,6 @@
             "Common": {
                 "Tags": "__NEW_ASSET__",
                 "Dependencies": [
-                    "Models/asteroidProxy.model_data/materials.xml",
                     "Shaders/BaseShaders.ShaderLib",
                     "Shaders/vMaterial.ShaderLib",
                     "Textures/asteroid_base.tga"
@@ -362,7 +361,7 @@
             "File": {
                 "Hash": 2473179089,
                 "TimeStamp": 1387153892657726700,
-                "LastEditTime": 1387154106755972400
+                "LastEditTime": 1387158504575513300
             },
             "Model": {
                 "LODSwitchDistances": [
@@ -758,7 +757,6 @@
             "Common": {
                 "Tags": "__NEW_ASSET__",
                 "Dependencies": [
-                    "Models/shipProxy.model_data/materials.xml",
                     "Shaders/BaseShaders.ShaderLib",
                     "Shaders/vMaterial.ShaderLib",
                     "Textures/baseGrey.tga"
@@ -770,7 +768,7 @@
             "File": {
                 "Hash": 4244457675,
                 "TimeStamp": 1387153894122810500,
-                "LastEditTime": 1387154106868978900
+                "LastEditTime": 1387158505398560400
             },
             "Model": {
                 "LODSwitchDistances": [
@@ -1355,11 +1353,6 @@
             "TimeStamp": 1387068185685622900,
             "LastEditTime": 1387068186099646500
         },
-        "Models/asteroidProxy.model_data/materials.xml": {
-            "Hash": 0,
-            "TimeStamp": 1387055965200747700,
-            "LastEditTime": 1387061298797812000
-        },
         "Models/container.model_data/materials.xml": {
             "Hash": 0,
             "TimeStamp": 1387136971033075600,
@@ -1383,11 +1376,6 @@
         "Models/ship.model_data/materials.xml": {
             "Hash": 0,
             "TimeStamp": 1387060021286742500,
-            "LastEditTime": 1387061298797812000
-        },
-        "Models/shipProxy.model_data/materials.xml": {
-            "Hash": 0,
-            "TimeStamp": 1387051324751894100,
             "LastEditTime": 1387061298797812000
         },
         "Shaders/ld28.ShaderLib": {

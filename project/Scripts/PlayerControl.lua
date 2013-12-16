@@ -363,7 +363,7 @@ function CreateAsteroid()
 	asteroid.entity = Game:CreateEntity(
 		position,
 		"VisBaseEntity_cl",
-		model,
+		"",
 		"Asteroid" )
 	asteroid.entity:SetScaling(asteroid.scale)
 	asteroid.rotationSpeed = Util:GetRandFloat(200) - 100
@@ -371,6 +371,9 @@ function CreateAsteroid()
 
 	asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
 	asteroid.rigidBody:SetDebugRendering(true)
+
+	-- set the mesh after the rigid body is created so that a default rigid body isn't generated
+	asteroid.entity:SetMesh(model)
 
 	local aabb = asteroid.entity:GetCollisionBoundingBox()	
 	local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0

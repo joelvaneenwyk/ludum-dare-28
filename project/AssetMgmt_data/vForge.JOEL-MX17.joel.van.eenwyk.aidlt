@@ -15,6 +15,15 @@ models/asteroid04.vcolmesh	models/asteroid04.vcolmesh
 models/asteroidproxy.anim	models/asteroidproxy.anim	
 models/asteroidproxy.model	models/asteroidproxy.model	LODSwitchDistances=
 models/asteroidproxy.vcolmesh	models/asteroidproxy.vcolmesh	
+models/container.anim	models/container.anim	
+models/container.model	models/container.model	LODSwitchDistances=
+models/container.vcolmesh	models/container.vcolmesh	
+models/menu_arrow.anim	models/menu_arrow.anim	
+models/menu_arrow.model	models/menu_arrow.model	LODSwitchDistances=
+models/menu_arrow.vcolmesh	models/menu_arrow.vcolmesh	
+models/oneshottitle.anim	models/oneshottitle.anim	
+models/oneshottitle.model	models/oneshottitle.model	LODSwitchDistances=
+models/oneshottitle.vcolmesh	models/oneshottitle.vcolmesh	
 models/plane.anim	models/plane.anim	
 models/plane.model	models/plane.model	LODSwitchDistances=
 models/plane.vcolmesh	models/plane.vcolmesh	
@@ -24,6 +33,9 @@ models/ship.vcolmesh	models/ship.vcolmesh
 models/shipproxy.anim	models/shipproxy.anim	
 models/shipproxy.model	models/shipproxy.model	LODSwitchDistances=
 models/shipproxy.vcolmesh	models/shipproxy.vcolmesh	
+models/sphere.anim	models/sphere.anim	
+models/sphere.model	models/sphere.model	LODSwitchDistances=
+models/sphere.vcolmesh	models/sphere.vcolmesh	
 particles/blastwave.dds	particles/blastwave.dds	sRGB=false
 particles/flare_1.dds	particles/flare_1.dds	sRGB=false
 particles/fog_group.dds	particles/fog_group.dds	sRGB=false
@@ -34,21 +46,10 @@ particles/smokesequence_a.dds	particles/smokesequence_a.dds	sRGB=false
 textures/asteroid_base.tga	textures/asteroid_base.tga	sRGB=false
 textures/asteroid_color1.tga	textures/asteroid_color1.tga	sRGB=false
 textures/basegrey.tga	textures/basegrey.tga	sRGB=false
+textures/basered.tga	textures/basered.tga	sRGB=false
+textures/fx/fx_bulletsamplecolor.tga	textures/fx/fx_bulletsamplecolor.tga	sRGB=false
 textures/fx/fx_firesamplecolor.tga	textures/fx/fx_firesamplecolor.tga	sRGB=false
+textures/fx/fx_shipsamplecolor.tga	textures/fx/fx_shipsamplecolor.tga	sRGB=false
 textures/fx/fx_trimask.tga	textures/fx/fx_trimask.tga	sRGB=false
 textures/ship_diff.tga	textures/ship_diff.tga	sRGB=false
-models/container.anim	models/container.anim	
-models/container.model	models/container.model	LODSwitchDistances=
-models/container.vcolmesh	models/container.vcolmesh	
-models/menu_arrow.anim	models/menu_arrow.anim	
-models/menu_arrow.model	models/menu_arrow.model	LODSwitchDistances=
-models/menu_arrow.vcolmesh	models/menu_arrow.vcolmesh	
-models/oneshottitle.anim	models/oneshottitle.anim	
-models/oneshottitle.model	models/oneshottitle.model	LODSwitchDistances=
-models/oneshottitle.vcolmesh	models/oneshottitle.vcolmesh	
-models/sphere.anim	models/sphere.anim	
-models/sphere.model	models/sphere.model	LODSwitchDistances=
-models/sphere.vcolmesh	models/sphere.vcolmesh	
-textures/basered.tga	textures/basered.tga	sRGB=false
-textures/fx/fx_shipsamplecolor.tga	textures/fx/fx_shipsamplecolor.tga	sRGB=false
 textures/ship_spec.tga	textures/ship_spec.tga	sRGB=false
