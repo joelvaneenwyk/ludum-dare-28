@@ -50,5 +50,6 @@ models/sphere.anim	models/sphere.anim
 models/sphere.model	models/sphere.model	LODSwitchDistances=
 models/sphere.vcolmesh	models/sphere.vcolmesh	
 textures/basered.tga	textures/basered.tga	sRGB=false
+textures/fx/fx_bulletsamplecolor.tga	textures/fx/fx_bulletsamplecolor.tga	sRGB=false
 textures/fx/fx_shipsamplecolor.tga	textures/fx/fx_shipsamplecolor.tga	sRGB=false
 textures/ship_spec.tga	textures/ship_spec.tga	sRGB=false
