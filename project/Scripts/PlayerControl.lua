@@ -49,15 +49,26 @@ function OnAfterSceneLoaded(self)
 	local p2 = Screen:Project3D(G.screenWidth, G.screenHeight, distance)
 	G.extentX = math.abs((p2.x - p1.x) / 2)
 	G.extentY = math.abs((p2.y - p1.y) / 2)
+
+	G.missileEffectOffset = Vision.hkvVec3(1000, 1000, 1000)
+	G.missilePosition = Vision.hkvVec3(0, 0, 0)
+	G.missileEffect = Game:CreateEffect(
+		Vision.hkvVec3(0, 0, 0),
+		"Particles\\bulletTrail.xml",
+		"astroidExplosion" )
 		
 	G.Reset = Reset
 	G.Reset(0.0)
-
 end
 
 function OnBeforeSceneUnloaded(self)
 	Input:DestroyVirtualThumbStick()
 	Input:DestroyMap(self.playerInputMap)
+	
+	-- #todo should this be removed?
+	--if G.missileEffect then
+	--	G.missileEffect:Remove()
+	--end
 end
 
 function IsTriggered(self, key)
@@ -134,17 +145,16 @@ function OnThink(self)
 
 	G.speed = G.speed * 0.9
 		
-	if (IsTriggered(self, "KeyFire") or IsTriggered(self, "TouchFire")) then
-		G.missilePosition = position
+	if (IsTriggered(self, "KeyFire") or IsTriggered(self, "TouchFire")) then		
 		G.missileDirection = G.direction
 		G.missileBounces = 0
 		G.missileFired = true
 		G.missilePath = {}
+		
+		ShowMissile()
+		SetMissilePosition(position)
+		
 		table.insert(G.missilePath, G.missileDirection)
-		G.missileEffect = Game:CreateEffect(
-			G.missilePosition,
-			"Particles\\shipThruster.xml",
-			"astroidExplosion" )
 	end
 	
 	if G.missileFired then		
@@ -157,8 +167,10 @@ function OnThink(self)
 		Debug.Draw:Box(rayStart, 10)
 		Debug.Draw:Line(rayStart, rayEnd, Vision.V_RGBA_WHITE)
 		
+		local newMissilePosition = rayEnd
+		
 		if isHit == true then 
-			G.missilePosition = result.ImpactPoint
+			newMissilePosition = result.ImpactPoint
 			G.missileDirection = result.ImpactNormal
 			G.missileDirection.z = 0
 			G.missileDirection:normalize()
@@ -167,27 +179,27 @@ function OnThink(self)
 			DeleteAsteroid(result.HitObject)
 
 			Debug.Draw:Line(rayStart, result.ImpactPoint, Vision.V_RGBA_BLUE)
-		else
-			G.missilePosition = rayEnd
 		end
 		
 		if G.missilePosition.x > G.extentX then
-			G.missilePosition.x = G.extentX
+			newMissilePosition.x = G.extentX
 			G.missileDirection.x = -G.missileDirection.x
 			G.missileBounces = G.missileBounces + 1
 		elseif G.missilePosition.x < -G.extentX then
-			G.missilePosition.x = -G.extentX
+			newMissilePosition.x = -G.extentX
 			G.missileDirection.x = -G.missileDirection.x
 			G.missileBounces = G.missileBounces + 1
 		elseif G.missilePosition.y > G.extentY then
-			G.missilePosition.y = G.extentY
+			newMissilePosition.y = G.extentY
 			G.missileDirection.y = -G.missileDirection.y
 			G.missileBounces = G.missileBounces + 1
 		elseif G.missilePosition.y < -G.extentY then
-			G.missilePosition.y = -G.extentY
+			newMissilePosition.y = -G.extentY
 			G.missileDirection.y = -G.missileDirection.y
 			G.missileBounces = G.missileBounces + 1
 		end
+		
+		SetMissilePosition(newMissilePosition)
 	end
 	
 	UpdateAsteroids(self)
@@ -195,7 +207,30 @@ end
 
 --== Global game utility functions
 
+function HideMissile()
+	G.missileEffect:SetPaused(true)
+	G.missileEffect:SetVisible(false)
+	SetMissilePosition(G.missileEffectOffset)
+end
+
+function ShowMissile()
+	if not G.missileEffect:IsVisible() then
+		SetMissilePosition(-G.missileEffectOffset)
+		G.missileEffect:SetVisible(true)
+		G.missileEffect:SetPaused(false)
+	end
+end
+
+function SetMissilePosition(position)	
+	G.missileEffect:IncPosition(position - G.missilePosition)
+	G.missilePosition = position
+end
+
 function Reset(delay)
+	G.player:SetVisible(false)
+	G.player:SetPosition( Vision.hkvVec3(10000, 10000, 10000) )
+
+	HideMissile()
 	G.missileFired = false
 
 	G.reset = true
@@ -209,7 +244,6 @@ function HardReset()
 	
 	G.direction = Vision.hkvVec3(0, 1, 0)
 	G.speed = 0
-	G.missilePosition = Vision.hkvVec3(0, 0, 0)
 	G.missileDirection = Vision.hkvVec3(0, 0, 0)
 	G.missileBounces = 0
 	G.missilePath = {}
@@ -268,11 +302,11 @@ function DeleteAsteroid(asteroidToDelete)
 	if G.asteroids then
 		for asteroidIndex, asteroid in pairs(G.asteroids) do
 			if asteroid.entity == asteroidToDelete then
-				Game:CreateEffect(
+				local explosion = Game:CreateEffect(
 					asteroid.entity:GetPosition(),
 					"Particles\\asteroidExplosion.xml",
 					"asteroidExplosion" )
-
+				explosion:SetScaling( asteroid.entity:GetScaling().x )
 				asteroid.entity:Remove()
 				table.remove(G.asteroids, asteroidIndex)
 				break
@@ -293,7 +327,7 @@ end
 
 function CreateAsteroid()
 	local position = Vision.hkvVec3(0, 0, -5.0)
-	local variation = 4 --Util:GetRandInt(3) + 1
+	local variation = Util:GetRandInt(3) + 1
 	local model = "Models/asteroid0" .. variation .. ".model"
 	local collision = "Models/asteroid_collision.hkt"
 

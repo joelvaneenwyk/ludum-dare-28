@@ -1166,6 +1166,33 @@
                 "TemplateName": "Default"
             }
         },
+        "Textures/fx/FX_bulletSampleColor.tga": {
+            "AssetType": "Texture",
+            "Common": {
+                "Tags": "__NEW_ASSET__",
+                "Dependencies": [
+
+                ],
+                "Variants": [
+
+                ]
+            },
+            "File": {
+                "Hash": 1903791319,
+                "TimeStamp": 1387154371332105300,
+                "LastEditTime": 1387156364001079500
+            },
+            "Texture": {
+                "FileFormat": "TGA",
+                "Width": 32,
+                "Height": 32,
+                "HasAlpha": false,
+                "sRGB": false
+            },
+            "Transformations": {
+                "TemplateName": "Default"
+            }
+        },
         "Textures/fx/FX_fireSampleColor.tga": {
             "AssetType": "Texture",
             "Common": {
