@@ -4,6 +4,7 @@ Purpose: Controls the player, creates asteroids, and handles game score
 --]]
 
 DISABLE_RIGID_BODIES = false
+DEBUG_DRAW = false
 
 function OnExpose(self)
 	self.MissileVelocity = 600
@@ -87,25 +88,41 @@ function Update(self, dt)
 		end
 	end
 	
+	Debug:PrintAt(
+		50, 25,
+		"Bounces: " .. G.missileBounces .. "/" .. G.maxBounces,
+		Vision.V_RGBA_WHITE,
+		self.FontPath )
+	Debug:PrintAt(450, 25, "Round: " .. G.currentLevel, Vision.V_RGBA_WHITE, self.FontPath)
+	Debug:PrintAt(700, 25, "Missles: ", Vision.V_RGBA_WHITE, self.FontPath)
+
+	UpdateAsteroids(self)
+	
+	if DEBUG_DRAW then
+		Debug.Draw:Line(
+			Vision.hkvVec3(-G.extentX, -G.extentY, 0),
+			Vision.hkvVec3(G.extentX, -G.extentY, 0) )
+		Debug.Draw:Line(
+			Vision.hkvVec3(-G.extentX, G.extentY, 0),
+			Vision.hkvVec3(G.extentX, G.extentY, 0) )
+		Debug.Draw:Line(
+			Vision.hkvVec3(-G.extentX, -G.extentY, 0),
+			Vision.hkvVec3(-G.extentX, G.extentY, 0) )
+		Debug.Draw:Line(
+			Vision.hkvVec3(G.extentX, -G.extentY, 0),
+			Vision.hkvVec3(G.extentX, G.extentY, 0) )
+	end
+
+	if G.reset then
+		return
+	end
+
 	local moveSpeed = self.MoveSpeed * dt
 	local rotateSpeed = self.RotateSpeed * dt
 	
 	local delta = Vision.hkvVec3(0, 0, 0)
 	local rotate = 0
-
-	Debug.Draw:Line(
-		Vision.hkvVec3(-G.extentX, -G.extentY, 0),
-		Vision.hkvVec3(G.extentX, -G.extentY, 0) )
-	Debug.Draw:Line(
-		Vision.hkvVec3(-G.extentX, G.extentY, 0),
-		Vision.hkvVec3(G.extentX, G.extentY, 0) )
-	Debug.Draw:Line(
-		Vision.hkvVec3(-G.extentX, -G.extentY, 0),
-		Vision.hkvVec3(-G.extentX, G.extentY, 0) )
-	Debug.Draw:Line(
-		Vision.hkvVec3(G.extentX, -G.extentY, 0),
-		Vision.hkvVec3(G.extentX, G.extentY, 0) )
-
+	
 	if IsTriggered(self, "KeyUp") or IsTriggered(self, "TouchUp") then
 		G.speed = G.speed + moveSpeed
 	end
@@ -216,16 +233,6 @@ function Update(self, dt)
 			DeleteAsteroids()
 		end
 	end
-	
-	Debug:PrintAt(
-		50, 25,
-		"Bounces: " .. G.missileBounces .. "/" .. G.maxBounces,
-		Vision.V_RGBA_WHITE,
-		self.FontPath )
-	Debug:PrintAt(450, 25, "Round: " .. G.currentLevel, Vision.V_RGBA_WHITE, self.FontPath)
-	Debug:PrintAt(700, 25, "Missles: ", Vision.V_RGBA_WHITE, self.FontPath)
-
-	UpdateAsteroids(self)
 end
 
 function HideMissile()
@@ -410,7 +417,7 @@ function CreateAsteroid()
 		asteroid.entity:SetMesh(model)
 	else
 		asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
-		asteroid.rigidBody:SetDebugRendering(false)
+		asteroid.rigidBody:SetDebugRendering(DEBUG_DRAW)
 
 		-- set the mesh after the rigid body is created so that a default rigid body isn't generated
 		asteroid.entity:SetMesh(model)
