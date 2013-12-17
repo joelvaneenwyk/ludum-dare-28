@@ -3,7 +3,6 @@ Author: Joel Van Eenwyk
 Purpose: Controls the player, creates asteroids, and handles game score
 --]]
 
-DISABLE_RIGID_BODIES = false
 DEBUG_DRAW = false
 
 function OnExpose(self)
@@ -27,6 +26,7 @@ function OnAfterSceneLoaded(self)
 	self.playerInputMap:MapTrigger("KeyLeft", "KEYBOARD", "CT_KB_A")
 	self.playerInputMap:MapTrigger("KeyRight", "KEYBOARD", "CT_KB_D")
 	self.playerInputMap:MapTrigger("KeyUp", "KEYBOARD", "CT_KB_W")
+	self.playerInputMap:MapTrigger("Reset", "KEYBOARD", "CT_KB_R")
 	self.playerInputMap:MapTrigger("KeyDown", "KEYBOARD", "CT_KB_S")
 	self.playerInputMap:MapTrigger("KeyFire", "KEYBOARD", "CT_KB_SPACE", {once=true})
 
@@ -79,6 +79,10 @@ end
 --== Global game utility functions
 
 function Update(self, dt)
+	if IsTriggered(self, "Reset") then
+		Reset(0)
+	end	
+
 	-- Handle resetting immediately as some things need to be initialized right away
 	if G.reset then
 		G.resetTime = G.resetTime - dt
@@ -86,15 +90,20 @@ function Update(self, dt)
 			HardReset()
 			G.reset = false
 		end
-	end
-	
+	end	
+		
 	Debug:PrintAt(
 		50, 25,
 		"Bounces: " .. G.missileBounces .. "/" .. G.maxBounces,
 		Vision.V_RGBA_WHITE,
 		self.FontPath )
 	Debug:PrintAt(450, 25, "Round: " .. G.currentLevel, Vision.V_RGBA_WHITE, self.FontPath)
-	Debug:PrintAt(700, 25, "Missles: ", Vision.V_RGBA_WHITE, self.FontPath)
+	
+	local missiles = 1
+	if G.missileFired then
+		missiles = 0
+	end
+	Debug:PrintAt(700, 25, "Missles: " .. missiles, Vision.V_RGBA_WHITE, self.FontPath)
 
 	UpdateAsteroids(self)
 	
@@ -111,10 +120,6 @@ function Update(self, dt)
 		Debug.Draw:Line(
 			Vision.hkvVec3(G.extentX, -G.extentY, 0),
 			Vision.hkvVec3(G.extentX, G.extentY, 0) )
-	end
-
-	if G.reset then
-		return
 	end
 
 	local moveSpeed = self.MoveSpeed * dt
@@ -230,6 +235,12 @@ function Update(self, dt)
 		elseif table.getn(G.asteroids) == 0 then
 			G.currentLevel = G.currentLevel + 1
 			G.missileFired = false
+			G.asteroidSpawning = true
+			G.maxBounces = G.maxBounces + 6
+			G.asteroidCount = G.asteroidCount + 2
+			G.asteroidTime = 0
+			G.missileBounces = 0
+			HideMissile()
 			DeleteAsteroids()
 		end
 	end
@@ -276,9 +287,9 @@ function HardReset()
 	G.missileFireTimer = 0.1
 
 	G.currentLevel = 1
-	G.asteroidCount = 3
+	G.asteroidCount = 2
 	G.asteroidSpawning = true
-	G.maxBounces = 8
+	G.maxBounces = 12
 	G.asteroidTime = 0
 
 	G.directionChangeTime = 0.3
@@ -412,20 +423,15 @@ function CreateAsteroid()
 	asteroid.speed = Util:GetRandFloat(100) + 100
 	asteroid.changeDirectionTimer = 0
 
-	if DISABLE_RIGID_BODIES then
-		-- set the mesh after the rigid body is created so that a default rigid body isn't generated
-		asteroid.entity:SetMesh(model)
-	else
-		asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
-		asteroid.rigidBody:SetDebugRendering(DEBUG_DRAW)
+	asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
+	asteroid.rigidBody:SetDebugRendering(DEBUG_DRAW)
 
-		-- set the mesh after the rigid body is created so that a default rigid body isn't generated
-		asteroid.entity:SetMesh(model)
-		
-		local aabb = asteroid.entity:GetCollisionBoundingBox()	
-		local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0
-		local success = asteroid.rigidBody:InitFromFile(collision, radius / 100.0)
-	end
+	-- set the mesh after the rigid body is created so that a default rigid body isn't generated
+	asteroid.entity:SetMesh(model)
+	
+	local aabb = asteroid.entity:GetCollisionBoundingBox()	
+	local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0
+	local success = asteroid.rigidBody:InitFromFile(collision, radius / 100.0)
 	
 	table.insert(G.asteroids, asteroid)
 end
