@@ -4,40 +4,31 @@ Purpose: Creates and manages the main menu.
 --]]
 
 function OnAfterSceneLoaded(self)
-	self.menuMap = Input:CreateMap("MenuMap")
-	G.screenWidth, G.screenHeight = Screen:GetViewportSize()
-	
-
-	self.menuMap:MapTrigger("Activate", "KEYBOARD", "CT_KB_ENTER", {once = true})
-
-	
 	self.titleEntity = Game:GetEntity("Title")
 	self.titleControlsEntity = Game:GetEntity("titleControls")
+	self.titleEntity:SetVisible(false)
+    self.titleControlsEntity:SetVisible(false)
 	
 	self.musicLevel = .75
     self.musicCrossFadeTime = 2
 	
 	self.menuBlowup =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuBlowup.wav", false, "menuBlowup")
 	self.menuBullet =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuBulletCollide.wav", false, "menuBullet")
-	
-	G.ResetMenu = true
-
 end
 
 function OnBeforeSceneUnloaded(self)
-	Input:DestroyMap(self.map)
 	if self.gameMusic ~= nil then
 		self.gameMusic:Remove()
 	end
+
 	if self.menuMusic ~= nil then
 		self.menuMusic:Remove()
 	end
+
 	Fmod:ResetAll ()
 end
 
 function OnThink(self)
-	local x = self.menuMap:GetTrigger("X")
-	local y = self.menuMap:GetTrigger("Y")
 	local dt = Timer:GetTimeDiff() 
 
 	if G.ResetMenu == true then
@@ -51,7 +42,7 @@ function OnThink(self)
 			self.menuMusic:FadeFromTo(0,self.musicLevel, self.musicCrossFadeTime)
 		else
 			self.menuMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuMusic.mp3", true, "gameMusic")
-		    self.menuMusic:SetVolume (0)
+		    self.mG.enuMusic:SetVolume (0)
 		    self.menuMusic:Play()
 		    self.menuMusic:FadeFromTo(0,self.musicLevel, self.musicCrossFadeTime)
 		end
@@ -59,13 +50,9 @@ function OnThink(self)
 		G.ResetMenu = false
 	end
 
-
-	if self.menuMap:GetTrigger("Activate") > 0 and 
-	G.MainMenu == true then
+	if G.EndMainMenu then
 		self.titleEntity:SetVisible(false)
         self.titleControlsEntity:SetVisible(false)
-
-		--self.menuBullet:Play()
 
 		local titleFx = Game:CreateEffect(
 			Vision.hkvVec3(-283, -253, 25),
@@ -83,24 +70,15 @@ function OnThink(self)
 		    self.gameMusic:SetVolume (0)
 		    self.gameMusic:Play()
 			self.gameMusic:FadeFromTo(0,self.musicLevel, self.musicCrossFadeTime)
-	   end
-	
+	   end	
 			
 	   if self.menuMusic ~= nil then
 			self.menuMusic:FadeFromTo(self.musicLevel,0, self.musicCrossFadeTime)
 		end
 		
-	   	if self.mask_cursor ~= nil then
-			Game:DeleteAllUnrefScreenMasks()
-			self.mask_cursor = nil
-	    end
-
 	   self.menuBlowup:Play()
+	  
 	   G.MainMenu = false
+	   G.EndMainMenu = false
 	end
-
 end
-
-
-
-

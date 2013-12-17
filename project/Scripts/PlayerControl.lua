@@ -4,6 +4,7 @@ Purpose: Controls the player, creates asteroids, and handles game score
 --]]
 
 DEBUG_DRAW = false
+USE_MAIN_MENU = true
 
 function OnExpose(self)
 	self.MissileVelocity = 600
@@ -15,20 +16,12 @@ end
 function OnAfterSceneLoaded(self)
 	Debug:Enable(true)
 
-	local kDeadzone = {deadzone = 0.1}
- 
 	G.screenWidth, G.screenHeight = Screen:GetViewportSize()
 
-	self.playerInputMap = Input:CreateMap("InputMap")
 	self.FontPath = "Fonts/agency52"
- 
-	-- Setup the WASD keyboard playerInputMap
-	self.playerInputMap:MapTrigger("KeyLeft", "KEYBOARD", "CT_KB_A")
-	self.playerInputMap:MapTrigger("KeyRight", "KEYBOARD", "CT_KB_D")
-	self.playerInputMap:MapTrigger("KeyUp", "KEYBOARD", "CT_KB_W")
-	self.playerInputMap:MapTrigger("Reset", "KEYBOARD", "CT_KB_R")
-	self.playerInputMap:MapTrigger("KeyDown", "KEYBOARD", "CT_KB_S")
-	self.playerInputMap:MapTrigger("KeyFire", "KEYBOARD", "CT_KB_SPACE", {once=true})
+
+	Input:SetKeyAsSingleHit(Vision.KEY_SPACE)
+	Input:SetKeyAsSingleHit(Vision.KEY_ENTER)
 
 	self:SetUseEulerAngles(true)
 
@@ -40,50 +33,34 @@ function OnAfterSceneLoaded(self)
 	G.extentX = math.abs((p2.x - p1.x) / 2)
 	G.extentY = math.abs((p2.y - p1.y) / 2)
 
+	G.shipExplosionSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/shipExplosion.wav", false, "shipExplosion")
+
+	self.bounceSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/bounce.wav", false, "bounceSound")
+	self.asteroidExplosionSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/asteroidExplosion.wav", false, "asteroidExplosionSound")
+
 	G.missileEffectOffset = Vision.hkvVec3(1000, 1000, 1000)
 	G.missilePosition = Vision.hkvVec3(0, 0, 0)
 	G.missileEffect = Game:CreateEffect(
 		Vision.hkvVec3(0, 0, 0),
 		"Particles\\bulletTrail.xml",
 		"astroidExplosion" )
-		
+	HideMissile()
+
 	G.Reset = Reset
-	G.Reset(0.0)
-	
-	self.bounceSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/bounce.wav", false, "bounceSound")
-	G.shipExplosionSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/shipExplosion.wav", false, "shipExplosion")
-	self.asteroidExplosionSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/asteroidExplosion.wav", false, "asteroidExplosionSound")
+	HardReset()
 end
 
 function OnBeforeSceneUnloaded(self)
-	Input:DestroyVirtualThumbStick()
-	Input:DestroyMap(self.playerInputMap)
-	
 	-- #todo should this be removed?
 	--if G.missileEffect then
 	--	G.missileEffect:Remove()
 	--end
 end
 
-function IsTriggered(self, key)
-	return (self.playerInputMap:GetTrigger(key) > 0)
-end
-
 function OnThink(self)
-	if not G.MainMenu then
-		local dt = Timer:GetTimeDiff()
-		Update(self, dt)
-	end
-end
-
---== Global game utility functions
-
-function Update(self, dt)
-	if IsTriggered(self, "Reset") then
-		Reset(0)
-	end	
-
-	-- Handle resetting immediately as some things need to be initialized right away
+	local dt = Timer:GetTimeDiff()
+	
+	-- handle resetting immediately as some things need to be initialized right away
 	if G.reset then
 		G.resetTime = G.resetTime - dt
 		if G.resetTime <= 0 then
@@ -91,92 +68,36 @@ function Update(self, dt)
 			G.reset = false
 		end
 	end	
+
+	if Input:IsKeyPressed(Vision.KEY_ENTER) then
+		G.EndMainMenu = true
+	end
+
+	if not G.MainMenu then
+		Update(self, dt)
+	end
+end
+
+--== Global game utility functions
+
+function Update(self, dt)
+	if Input:IsKeyPressed(Vision.KEY_R) then
+		Reset(0)
+	end
+
+	UpdatePlayer(self, dt)
+	UpdateAsteroids(self, dt)
+	DrawHUD(self)
 		
-	Debug:PrintAt(
-		50, 25,
-		"Bounces: " .. G.missileBounces .. "/" .. G.maxBounces,
-		Vision.V_RGBA_WHITE,
-		self.FontPath )
-	Debug:PrintAt(450, 25, "Round: " .. G.currentLevel, Vision.V_RGBA_WHITE, self.FontPath)
-	
-	local missiles = 1
-	if G.missileFired then
-		missiles = 0
-	end
-	Debug:PrintAt(700, 25, "Missles: " .. missiles, Vision.V_RGBA_WHITE, self.FontPath)
-
-	UpdateAsteroids(self)
-	
-	if DEBUG_DRAW then
-		Debug.Draw:Line(
-			Vision.hkvVec3(-G.extentX, -G.extentY, 0),
-			Vision.hkvVec3(G.extentX, -G.extentY, 0) )
-		Debug.Draw:Line(
-			Vision.hkvVec3(-G.extentX, G.extentY, 0),
-			Vision.hkvVec3(G.extentX, G.extentY, 0) )
-		Debug.Draw:Line(
-			Vision.hkvVec3(-G.extentX, -G.extentY, 0),
-			Vision.hkvVec3(-G.extentX, G.extentY, 0) )
-		Debug.Draw:Line(
-			Vision.hkvVec3(G.extentX, -G.extentY, 0),
-			Vision.hkvVec3(G.extentX, G.extentY, 0) )
-	end
-
-	local moveSpeed = self.MoveSpeed * dt
-	local rotateSpeed = self.RotateSpeed * dt
-	
-	local delta = Vision.hkvVec3(0, 0, 0)
-	local rotate = 0
-	
-	if IsTriggered(self, "KeyUp") or IsTriggered(self, "TouchUp") then
-		G.speed = G.speed + moveSpeed
-	end
-
-	if IsTriggered(self, "KeyLeft") or IsTriggered(self, "TouchLeft") then
-		rotate = rotate - rotateSpeed
-	end
-
-	if IsTriggered(self, "KeyRight") or IsTriggered(self, "TouchRight") then
-		rotate = rotate + rotateSpeed
-	end
-	
-	local right = G.direction:cross(Vision.hkvVec3(0, 0, 1))
-	
-	G.direction = G.direction + right * rotate
-	G.direction:normalize()
-	
-	local position = self:GetPosition() + G.direction * G.speed
-	
-	if position.x > G.extentX then
-		position.x = G.extentX
-	elseif position.x < -G.extentX then
-		position.x = -G.extentX
-	end
-	
-	if position.y > G.extentY then
-		position.y = G.extentY
-	elseif position.y < -G.extentY then
-		position.y = -G.extentY
-	end
-	
-	self:SetPosition(position)
-
-	local angle = 0
-	angle = math.atan2(G.direction.y, G.direction.x)
-	self:SetOrientation(math.deg(angle) - 90, 0, 0)
-
-	G.speed = G.speed * 0.9
-		
-	if (IsTriggered(self, "KeyFire") or IsTriggered(self, "TouchFire")) and
-	   (not G.missileFired) and
-	   (not G.asteroidSpawning) then		
+	if Input:IsKeyPressed(Vision.KEY_SPACE) and
+	   (not G.missileFired) then		
 		G.missileDirection = G.direction
 		G.missileBounces = 0
 		G.missileFired = true
 		G.missilePath = {}
 		
 		ShowMissile()
-		SetMissilePosition(position)
+		SetMissilePosition( self:GetPosition() )
 		
 		table.insert(G.missilePath, G.missileDirection)
 	end
@@ -246,6 +167,84 @@ function Update(self, dt)
 	end
 end
 
+function UpdatePlayer(self, dt)	
+	local moveSpeed = self.MoveSpeed * dt
+	local rotateSpeed = self.RotateSpeed * dt
+	
+	local delta = Vision.hkvVec3(0, 0, 0)
+	local rotate = 0
+	
+	if Input:IsKeyPressed(Vision.KEY_W) then
+		G.speed = G.speed + moveSpeed
+	end
+
+	if Input:IsKeyPressed(Vision.KEY_A) then
+		rotate = rotate - rotateSpeed
+	end
+
+	if Input:IsKeyPressed(Vision.KEY_D) then
+		rotate = rotate + rotateSpeed
+	end
+	
+	local right = G.direction:cross(Vision.hkvVec3(0, 0, 1))
+	
+	G.direction = G.direction + right * rotate
+	G.direction:normalize()
+	
+	local position = self:GetPosition() + G.direction * G.speed
+	
+	if position.x > G.extentX then
+		position.x = G.extentX
+	elseif position.x < -G.extentX then
+		position.x = -G.extentX
+	end
+	
+	if position.y > G.extentY then
+		position.y = G.extentY
+	elseif position.y < -G.extentY then
+		position.y = -G.extentY
+	end
+	
+	self:SetPosition(position)
+
+	G.speed = G.speed * 0.9
+
+	local angle = 0
+	angle = math.atan2(G.direction.y, G.direction.x)
+	self:SetOrientation(math.deg(angle) - 90, 0, 0)
+end
+
+function DrawHUD(self)
+	local missiles = 1
+
+	if G.missileFired then
+		missiles = 0
+	end
+
+	Debug:PrintAt(
+		50, 25,
+		"Bounces: " .. G.missileBounces .. "/" .. G.maxBounces,
+		Vision.V_RGBA_WHITE,
+		self.FontPath )
+	Debug:PrintAt(450, 25, "Round: " .. G.currentLevel, Vision.V_RGBA_WHITE, self.FontPath)
+	Debug:PrintAt(700, 25, "Missles: " .. missiles, Vision.V_RGBA_WHITE, self.FontPath)
+	
+	if DEBUG_DRAW then
+		Debug.Draw:Line(
+			Vision.hkvVec3(-G.extentX, -G.extentY, 0),
+			Vision.hkvVec3(G.extentX, -G.extentY, 0) )
+		Debug.Draw:Line(
+			Vision.hkvVec3(-G.extentX, G.extentY, 0),
+			Vision.hkvVec3(G.extentX, G.extentY, 0) )
+		Debug.Draw:Line(
+			Vision.hkvVec3(-G.extentX, -G.extentY, 0),
+			Vision.hkvVec3(-G.extentX, G.extentY, 0) )
+		Debug.Draw:Line(
+			Vision.hkvVec3(G.extentX, -G.extentY, 0),
+			Vision.hkvVec3(G.extentX, G.extentY, 0) )
+	end
+end
+
 function HideMissile()
 	G.missileEffect:SetPaused(true)
 	G.missileEffect:SetVisible(false)
@@ -297,15 +296,13 @@ function HardReset()
 	G.player:SetPosition( Vision.hkvVec3(0, 0, 0) )
 	G.player:SetVisible(true)
 
-	G.ResetMenu = true
-	G.MainMenu = true
+	G.ResetMenu = USE_MAIN_MENU
+	G.MainMenu = USE_MAIN_MENU
 end
 
 --== Asteroid helper functions
 
-function UpdateAsteroids(self)
-	local dt = Timer:GetTimeDiff()
-
+function UpdateAsteroids(self, dt)
 	for i, asteroid in pairs(G.asteroids) do		
 		local position = asteroid.entity:GetPosition()
 		position = position + asteroid.direction * asteroid.speed * dt

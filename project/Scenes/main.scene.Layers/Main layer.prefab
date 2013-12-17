@@ -1,0 +1,317 @@
+<root>
+  <info createdby="vForge version 2013.2.5.1" />
+  <header version="0" name="" description="" category="" convertible="True" autosavebinary="True" relativefilenames="False" />
+  <thumbnail type="jpg" size="1651">/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAQADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5UooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q==</thumbnail>
+  <shape class="EntityShape">
+    <property name="ModelFile" value="Models/ship.model" />
+    <property name="CustomMaterialSet" value="&lt;None&gt;" />
+    <property name="EntityClass" value="VisBaseEntity_cl" />
+    <property name="ClassDefinitionTemplate" value="" />
+    <property name="EntityPropertyString" value="" />
+    <property name="ScaleX" value="1" />
+    <property name="ScaleY" value="1" />
+    <property name="ScaleZ" value="1" />
+    <property name="UniformScaling" value="1" />
+    <property name="NavMeshUsage" value="IncludeInNavMesh" />
+    <property name="VisibleBitmask" value="4294967295" />
+    <property name="NearClipDistance" value="0" />
+    <property name="FarClipDistance" value="0" />
+    <property name="RenderOrderPriority" value="0" />
+    <property name="CastDynamicShadows" value="False" />
+    <property name="CastStaticShadows" value="False" />
+    <property name="LightInfluenceBitmask" value="1" />
+    <property name="AmbientColor" value="0,0,0,255" />
+    <property name="ShowLightgridWidget" value="False" />
+    <property name="SampleOfsX" value="0" />
+    <property name="SampleOfsY" value="0" />
+    <property name="SampleOfsZ" value="0" />
+    <property name="ObjectKey" value="mainShip" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="0,0,0" />
+    <property name="Orientation" value="0,0,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="ship.model" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16127477955961028610" />
+    <component class="VScriptComponent" paramstring="ComponentID=;ScriptFile=Scripts\092PlayerControl.lua;MissileScale=0.2;MissileVelocity=800;MoveSpeed=50;RotateSpeed=2;" visible="True" serializable="True" editable="True" removable="True" />
+    <component class="vHavokRigidBody" paramstring="ComponentID=;Shape_Type=Cylinder;Shape_Radius=0;Shape_BoxSize=0,0,0;Shape_Height=0;Shape_PivotOffset=0,0,0;Shape_CenterOfMass=0,0,0;Havok_NoDeactivate=False;Havok_Mass=10;Havok_InertiaTensorComputeMode=Volume;Havok_SurfaceThickness=0.1;Havok_InertiaTensorAxisScaling=1,1,1;Havok_InertiaTensorScaling=1;Havok_Friction=0.5;Havok_Restitution=0.4;Havok_LinearDamping=0;Havok_AngularDamping=0.05;Havok_FileResourceName=;Debug_Render=False;Debug_Color=50,255,50,255;Havok_TakeRbDataFromFile=False;Havok_MotionType=Keyframed;Shape_PivotOffsetAutoAlign=True;Havok_CollisionLayer=1;Havok_CollisionGroup=0;Havok_SubSystemId=0;Havok_SubSystemDontCollideWith=0;Havok_QualityType=Keyframed_Reporting;Havok_MaxKinematicVelocity=600;Havok_AlwaysInitAsDynamic=False;Havok_Active=True;Havok_WeldingType=None;Havok_TightFit=False;" visible="True" serializable="True" editable="True" removable="True" />
+    <shape class="ParticleGroupShape">
+      <property name="EffectFile" value="Particles\shipThruster.xml" />
+      <property name="VisibleBitmask" value="4294967295" />
+      <property name="AmbientColor" value="255,255,255,255" />
+      <property name="Paused" value="False" />
+      <property name="Halted" value="False" />
+      <property name="ApplyTimeOfDayLighting" value="False" />
+      <property name="RandomBaseSeed" value="0" />
+      <property name="WindSpeed" value="0,0,0" />
+      <property name="ObjectKey" value="" />
+      <property name="Visible" value="True" />
+      <property name="Position" value="0,-69.97762,13.08929" />
+      <property name="Orientation" value="0,0,0" />
+      <property name="Scaling" value="1,1,1" />
+      <property name="TextLabel" value="" />
+      <property name="ShapeName" value="shipThruster" />
+      <property name="UserDataString" value="" />
+      <property name="ExportShape" value="True" />
+      <property name="UniqueID" value="16127477955961028615" />
+      <linktarget class="LinkTargetConstraint" name="affected by" ID="ConstraintTarget_1" />
+      <linktarget class="LinkTargetTriggerComponent" name="Pause" ID="Pause" />
+      <linktarget class="LinkTargetTriggerComponent" name="Resume" ID="Resume" />
+      <linktarget class="LinkTargetTriggerComponent" name="Restart" ID="Restart" />
+    </shape>
+    <shape class="ConstraintShape">
+      <property name="ConstraintType" value="Fan" />
+      <property name="OnCollide" value="Bounce" />
+      <property name="Persistance" value="0.2" />
+      <property name="AffectBitmask" value="4294967295" />
+      <property name="Radius" value="50" />
+      <property name="Inside" value="False" />
+      <property name="InfiniteExtent" value="True" />
+      <property name="Intensity" value="100" />
+      <property name="ConeAngle" value="45" />
+      <property name="Length" value="531.9663" />
+      <property name="Randomness" value="0" />
+      <property name="BoxSize" value="150,150,50" />
+      <property name="ReflectionNoise" value="0" />
+      <property name="ObjectKey" value="" />
+      <property name="Visible" value="True" />
+      <property name="Position" value="0,133.8302,-98.70054" />
+      <property name="Orientation" value="-90,0,-90" />
+      <property name="Scaling" value="4.30467,2,2" />
+      <property name="TextLabel" value="" />
+      <property name="ShapeName" value="Constraint_Fan" />
+      <property name="UserDataString" value="" />
+      <property name="ExportShape" value="True" />
+      <property name="UniqueID" value="16127477955961028626" />
+      <linksource class="LinkSourceConstraint" name="affects" ID="ConstraintSource_1" />
+    </shape>
+  </shape>
+  <shape class="EntityShape">
+    <property name="ModelFile" value="" />
+    <property name="CustomMaterialSet" value="&lt;None&gt;" />
+    <property name="EntityClass" value="VisBaseEntity_cl" />
+    <property name="ClassDefinitionTemplate" value="" />
+    <property name="EntityPropertyString" value="" />
+    <property name="ScaleX" value="1" />
+    <property name="ScaleY" value="1" />
+    <property name="ScaleZ" value="1" />
+    <property name="UniformScaling" value="1" />
+    <property name="NavMeshUsage" value="IncludeInNavMesh" />
+    <property name="VisibleBitmask" value="4294967295" />
+    <property name="NearClipDistance" value="0" />
+    <property name="FarClipDistance" value="0" />
+    <property name="RenderOrderPriority" value="0" />
+    <property name="CastDynamicShadows" value="False" />
+    <property name="CastStaticShadows" value="False" />
+    <property name="LightInfluenceBitmask" value="1" />
+    <property name="AmbientColor" value="0,0,0,255" />
+    <property name="ShowLightgridWidget" value="False" />
+    <property name="SampleOfsX" value="0" />
+    <property name="SampleOfsY" value="0" />
+    <property name="SampleOfsZ" value="0" />
+    <property name="ObjectKey" value="" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="0,0,0" />
+    <property name="Orientation" value="180,0,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="Camera" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16127477955961028613" />
+    <component class="VOrbitCamera" paramstring="ComponentID=;Enabled=True;Collides=False;Follow=False;FollowFixed=True;Zoom=False;DepthOfField=False;InitialYaw=0;InitialPitch=90;MinimumPitch=-89;MaximumPitch=89;CameraDistance=1000;MinimalDistance=100;MaximalDistance=1000;RelativeLookAtHeight=0.5;CameraSensitivity=200;MoveSmoothness=0.3;" visible="True" serializable="True" editable="True" removable="True" />
+  </shape>
+  <shape class="DynLightShape">
+    <property name="LightAttenuationCurve" value="Smooth" />
+    <property name="CustomAttenuationCurveTexture" value="\Atten\smooth.dds" />
+    <property name="Multiplier" value="1" />
+    <property name="DistanceFadeEnd" value="0" />
+    <property name="DistanceFadeStart" value="0" />
+    <property name="UseSpecular" value="True" />
+    <property name="LightType" value="Directional" />
+    <property name="SpotAngle" value="45" />
+    <property name="ProjectedTexture" value="" />
+    <property name="Radius" value="1000" />
+    <property name="Triggered" value="True" />
+    <property name="LightColor" value="241,202,129,255" />
+    <property name="CastStaticShadows" value="True" />
+    <property name="UsesLightMasks" value="False" />
+    <property name="AnimationCurve" value="" />
+    <property name="AnimationTiming" value="1" />
+    <property name="AnimationPhase" value="0" />
+    <property name="RemoveLightAfterAnimation" value="False" />
+    <property name="WorldInfluenceMask" value="255" />
+    <property name="ObjectInfluenceMask" value="255" />
+    <property name="VisibleBitmask" value="4294967295" />
+    <property name="IsStatic" value="False" />
+    <property name="ExportWhenNotRelevant" value="False" />
+    <property name="PreviewAsDynamicLight" value="True" />
+    <property name="TurnOffAfterLighting" value="True" />
+    <property name="ObjectKey" value="" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="-231.7327,0,894.866" />
+    <property name="Orientation" value="0,48,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="DynamicDirectionalLight" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16127477955961028614" />
+    <linktarget class="LinkTargetTriggerComponent" name="ToggleOn" ID="ToggleOn" />
+    <linktarget class="LinkTargetTriggerComponent" name="ToggleOff" ID="ToggleOff" />
+  </shape>
+  <shape class="ParticleGroupShape">
+    <property name="EffectFile" value="Particles\stars.xml" />
+    <property name="VisibleBitmask" value="4294967295" />
+    <property name="AmbientColor" value="0,0,0,255" />
+    <property name="Paused" value="False" />
+    <property name="Halted" value="False" />
+    <property name="ApplyTimeOfDayLighting" value="False" />
+    <property name="RandomBaseSeed" value="0" />
+    <property name="WindSpeed" value="0,0,0" />
+    <property name="ObjectKey" value="" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="0,0,-93.567" />
+    <property name="Orientation" value="0,0,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="stars" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16127477955961028616" />
+    <linktarget class="LinkTargetConstraint" name="affected by" ID="ConstraintTarget_1" />
+    <linktarget class="LinkTargetTriggerComponent" name="Pause" ID="Pause" />
+    <linktarget class="LinkTargetTriggerComponent" name="Resume" ID="Resume" />
+    <linktarget class="LinkTargetTriggerComponent" name="Restart" ID="Restart" />
+  </shape>
+  <shape class="LightGridBoxShape">
+    <property name="PreviewCells" value="False" />
+    <property name="ShowIndicators" value="False" />
+    <property name="BoxSizeX" value="4000" />
+    <property name="BoxSizeY" value="4000" />
+    <property name="BoxSizeZ" value="1000" />
+    <property name="SubDivX" value="32" />
+    <property name="SubDivY" value="32" />
+    <property name="SubDivZ" value="8" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="0,0,0" />
+    <property name="Orientation" value="0,0,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="LightGridBox" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16127477955961028618" />
+  </shape>
+  <shape class="ConstraintShape">
+    <property name="ConstraintType" value="Plane" />
+    <property name="OnCollide" value="Bounce" />
+    <property name="Persistance" value="0.8" />
+    <property name="AffectBitmask" value="4294967295" />
+    <property name="Radius" value="50" />
+    <property name="Inside" value="False" />
+    <property name="InfiniteExtent" value="True" />
+    <property name="Intensity" value="100" />
+    <property name="ConeAngle" value="45" />
+    <property name="Length" value="200" />
+    <property name="Randomness" value="0" />
+    <property name="BoxSize" value="150,150,50" />
+    <property name="ReflectionNoise" value="0" />
+    <property name="ObjectKey" value="" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="0,-1644.041,-1029.979" />
+    <property name="Orientation" value="0,0,-90" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="Constraint_Plane" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16127477955961028619" />
+    <linksource class="LinkSourceConstraint" name="affects" ID="ConstraintSource_1" />
+  </shape>
+  <shape class="ConstraintShape">
+    <property name="ConstraintType" value="Plane" />
+    <property name="OnCollide" value="Bounce" />
+    <property name="Persistance" value="0.8" />
+    <property name="AffectBitmask" value="4294967295" />
+    <property name="Radius" value="50" />
+    <property name="Inside" value="False" />
+    <property name="InfiniteExtent" value="True" />
+    <property name="Intensity" value="100" />
+    <property name="ConeAngle" value="45" />
+    <property name="Length" value="200" />
+    <property name="Randomness" value="0" />
+    <property name="BoxSize" value="150,150,50" />
+    <property name="ReflectionNoise" value="0" />
+    <property name="ObjectKey" value="" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="0,2118.927,-1029.979" />
+    <property name="Orientation" value="180,0,-90" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="Constraint_Plane1" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16127477955961028621" />
+    <linksource class="LinkSourceConstraint" name="affects" ID="ConstraintSource_1" />
+  </shape>
+  <shape class="ConstraintShape">
+    <property name="ConstraintType" value="Plane" />
+    <property name="OnCollide" value="Bounce" />
+    <property name="Persistance" value="0.8" />
+    <property name="AffectBitmask" value="4294967295" />
+    <property name="Radius" value="50" />
+    <property name="Inside" value="False" />
+    <property name="InfiniteExtent" value="True" />
+    <property name="Intensity" value="100" />
+    <property name="ConeAngle" value="45" />
+    <property name="Length" value="200" />
+    <property name="Randomness" value="0" />
+    <property name="BoxSize" value="150,150,50" />
+    <property name="ReflectionNoise" value="0" />
+    <property name="ObjectKey" value="" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="1448.717,393.6843,-1029.979" />
+    <property name="Orientation" value="90,0,-90" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="Constraint_Plane2" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16127477955961028622" />
+    <linksource class="LinkSourceConstraint" name="affects" ID="ConstraintSource_1" />
+  </shape>
+  <shape class="ConstraintShape">
+    <property name="ConstraintType" value="Plane" />
+    <property name="OnCollide" value="Bounce" />
+    <property name="Persistance" value="0.8" />
+    <property name="AffectBitmask" value="4294967295" />
+    <property name="Radius" value="50" />
+    <property name="Inside" value="False" />
+    <property name="InfiniteExtent" value="True" />
+    <property name="Intensity" value="100" />
+    <property name="ConeAngle" value="45" />
+    <property name="Length" value="200" />
+    <property name="Randomness" value="0" />
+    <property name="BoxSize" value="150,150,50" />
+    <property name="ReflectionNoise" value="0" />
+    <property name="ObjectKey" value="" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="-2647.131,393.6843,-1029.979" />
+    <property name="Orientation" value="270,0,-90" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="Constraint_Plane3" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16127477955961028623" />
+    <linksource class="LinkSourceConstraint" name="affects" ID="ConstraintSource_1" />
+  </shape>
+  <link sourceshape="16127477955961028626" source="ConstraintSource_1" targetshape="16127477955961028616" target="ConstraintTarget_1" />
+  <link sourceshape="16127477955961028619" source="ConstraintSource_1" targetshape="16127477955961028616" target="ConstraintTarget_1" />
+  <link sourceshape="16127477955961028621" source="ConstraintSource_1" targetshape="16127477955961028616" target="ConstraintTarget_1" />
+  <link sourceshape="16127477955961028622" source="ConstraintSource_1" targetshape="16127477955961028616" target="ConstraintTarget_1" />
+  <link sourceshape="16127477955961028623" source="ConstraintSource_1" targetshape="16127477955961028616" target="ConstraintTarget_1" />
+</root>

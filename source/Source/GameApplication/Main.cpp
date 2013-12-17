@@ -71,6 +71,7 @@ void ProjectTemplateApp::SetupAppConfig(VisAppConfig_cl& config)
 void ProjectTemplateApp::PreloadPlugins()
 {
 	VISION_PLUGIN_ENSURE_LOADED(vHavok);
+	VISION_PLUGIN_ENSURE_LOADED(vFmodEnginePlugin);
 	AddFileSystems();
 }
 
@@ -89,17 +90,6 @@ void ProjectTemplateApp::Init()
 //---------------------------------------------------------------------------------------------------------
 void ProjectTemplateApp::OnAfterSceneLoaded(bool bLoadingSuccessful)
 {
-  // Define some help text
-  //VArray<const char*> help;
-  //help.Append("How to use this demo...");
-  //help.Append("");
-  //RegisterAppModule(new VHelp(help));
-
-  // Create a mouse controlled camera (set above the ground so that we can see the ground)
-  //Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(0.0f, 0.0f, 170.0f));
-
-  // Add other initial game code here
-  // [...]
 }
 
 //---------------------------------------------------------------------------------------------------------
