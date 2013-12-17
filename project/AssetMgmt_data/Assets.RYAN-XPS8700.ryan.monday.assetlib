@@ -886,8 +886,8 @@
             },
             "File": {
                 "Hash": 592976672,
-                "TimeStamp": 1387220429919520200,
-                "LastEditTime": 1387223271039494300
+                "TimeStamp": 1387239040126339000,
+                "LastEditTime": 1387239075264852500
             },
             "Transformations": {
                 "TemplateName": "Default"
@@ -908,9 +908,9 @@
                 ]
             },
             "File": {
-                "Hash": 3280675542,
-                "TimeStamp": 1387220429919520200,
-                "LastEditTime": 1387223271088499200
+                "Hash": 2509236331,
+                "TimeStamp": 1387239040126339000,
+                "LastEditTime": 1387239075303856400
             },
             "Model": {
                 "LODSwitchDistances": [
@@ -933,9 +933,9 @@
                 ]
             },
             "File": {
-                "Hash": 3821114801,
-                "TimeStamp": 1387220429919520200,
-                "LastEditTime": 1387223272351625500
+                "Hash": 3229609712,
+                "TimeStamp": 1387239040126339000,
+                "LastEditTime": 1387239075336859700
             },
             "Transformations": {
                 "TemplateName": "Default"
