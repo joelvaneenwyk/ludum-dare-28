@@ -5,6 +5,7 @@ project/AssetMgmt_data/transformed
 project/Models/asteroid*.model_data/*.hkt
 source/Data
 source/Lib
+source/Output
 /Bin/*
 /Build/*
 /ChangeLogs/*

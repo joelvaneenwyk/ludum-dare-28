@@ -1,20 +1,57 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProjectTemplate", "GameApplication\ProjectTemplateDX9_win32_vs2010.vcxproj", "{57A549C5-5B49-47F4-8650-7F147D8B4C06}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LD28", "GameApplication\ProjectTemplateDX9_win32_vs2010.vcxproj", "{57A549C5-5B49-47F4-8650-7F147D8B4C06}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Package", "Package\Package.pyproj", "{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug DLL|Any CPU = Debug DLL|Any CPU
+		Debug DLL|Mixed Platforms = Debug DLL|Mixed Platforms
 		Debug DLL|Win32 = Debug DLL|Win32
+		Dev DLL|Any CPU = Dev DLL|Any CPU
+		Dev DLL|Mixed Platforms = Dev DLL|Mixed Platforms
 		Dev DLL|Win32 = Dev DLL|Win32
+		Release DLL|Any CPU = Release DLL|Any CPU
+		Release DLL|Mixed Platforms = Release DLL|Mixed Platforms
 		Release DLL|Win32 = Release DLL|Win32
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Debug DLL|Any CPU.ActiveCfg = Debug DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Debug DLL|Mixed Platforms.ActiveCfg = Debug DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Debug DLL|Mixed Platforms.Build.0 = Debug DLL|Win32
 		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Debug DLL|Win32.ActiveCfg = Debug DLL|Win32
 		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Debug DLL|Win32.Build.0 = Debug DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Dev DLL|Any CPU.ActiveCfg = Dev DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Dev DLL|Mixed Platforms.ActiveCfg = Dev DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Dev DLL|Mixed Platforms.Build.0 = Dev DLL|Win32
 		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Dev DLL|Win32.ActiveCfg = Dev DLL|Win32
 		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Dev DLL|Win32.Build.0 = Dev DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release DLL|Any CPU.ActiveCfg = Release DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release DLL|Mixed Platforms.ActiveCfg = Release DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release DLL|Mixed Platforms.Build.0 = Release DLL|Win32
 		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release DLL|Win32.ActiveCfg = Release DLL|Win32
 		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release DLL|Win32.Build.0 = Release DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release|Any CPU.ActiveCfg = Release DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release|Mixed Platforms.ActiveCfg = Release DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release|Mixed Platforms.Build.0 = Release DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release|Win32.ActiveCfg = Release DLL|Win32
+		{57A549C5-5B49-47F4-8650-7F147D8B4C06}.Release|Win32.Build.0 = Release DLL|Win32
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Debug DLL|Any CPU.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Debug DLL|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Debug DLL|Win32.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Dev DLL|Any CPU.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Dev DLL|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Dev DLL|Win32.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Release DLL|Any CPU.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Release DLL|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Release DLL|Win32.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{86A7836E-C35F-48EC-881C-4B8E1FF04FBC}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

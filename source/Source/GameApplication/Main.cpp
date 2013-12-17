@@ -16,16 +16,24 @@
 class ProjectTemplateApp : public VAppImpl
 {
 public:
-  ProjectTemplateApp() {}
-  virtual ~ProjectTemplateApp() {}
+	ProjectTemplateApp()
+	{
+	}
 
-  virtual void SetupAppConfig(VisAppConfig_cl& config) HKV_OVERRIDE;
-  virtual void PreloadPlugins() HKV_OVERRIDE;
+	virtual ~ProjectTemplateApp()
+	{
+	}
 
-  virtual void Init() HKV_OVERRIDE;
-  virtual void OnAfterSceneLoaded(bool bLoadingSuccessful);
-  virtual bool Run() HKV_OVERRIDE;
-  virtual void DeInit() HKV_OVERRIDE;
+	virtual void SetupAppConfig(VisAppConfig_cl& config) HKV_OVERRIDE;
+	virtual void PreloadPlugins() HKV_OVERRIDE;
+
+	virtual void Init() HKV_OVERRIDE;
+	virtual void OnAfterSceneLoaded(bool bLoadingSuccessful);
+	virtual bool Run() HKV_OVERRIDE;
+	virtual void DeInit() HKV_OVERRIDE;
+
+protected:
+	bool AddFileSystems();
 };
 
 VAPP_IMPLEMENT_SAMPLE(ProjectTemplateApp);
@@ -63,9 +71,7 @@ void ProjectTemplateApp::SetupAppConfig(VisAppConfig_cl& config)
 void ProjectTemplateApp::PreloadPlugins()
 {
 	VISION_PLUGIN_ENSURE_LOADED(vHavok);
-
-	VFileAccessManager::GetInstance()->AddSearchPath(":template_root/Assets/Base.pcdx9.vArcFolder");
-	VFileAccessManager::GetInstance()->AddSearchPath(":template_root/Assets/Project.pcdx9.vArcFolder");
+	AddFileSystems();
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -74,8 +80,7 @@ void ProjectTemplateApp::PreloadPlugins()
 void ProjectTemplateApp::Init()
 {
 	VisAppLoadSettings settings("Scenes/main.pcdx9.vscene");
-	settings.m_customSearchPaths.Append(":template_root/Assets/Base.pcdx9.vArcFolder");
-	settings.m_customSearchPaths.Append(":template_root/Assets/Project.pcdx9.vArcFolder");
+	AddFileSystems();
 	LoadScene(settings);
 }
 
@@ -85,13 +90,13 @@ void ProjectTemplateApp::Init()
 void ProjectTemplateApp::OnAfterSceneLoaded(bool bLoadingSuccessful)
 {
   // Define some help text
-  VArray<const char*> help;
-  help.Append("How to use this demo...");
-  help.Append("");
-  RegisterAppModule(new VHelp(help));
+  //VArray<const char*> help;
+  //help.Append("How to use this demo...");
+  //help.Append("");
+  //RegisterAppModule(new VHelp(help));
 
   // Create a mouse controlled camera (set above the ground so that we can see the ground)
-  Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(0.0f, 0.0f, 170.0f));
+  //Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(0.0f, 0.0f, 170.0f));
 
   // Add other initial game code here
   // [...]
@@ -109,4 +114,39 @@ void ProjectTemplateApp::DeInit()
 {
   // De-Initialization
   // [...]
+}
+
+bool ProjectTemplateApp::AddFileSystems()
+{
+	bool failed = false;
+
+	VStaticString<FS_MAX_PATH> sPackagePath = "/Project.pcdx9.vArc";
+	VStaticString<FS_MAX_PATH> sProjectPath;
+
+	VStaticString<FS_MAX_PATH> sRootPath;
+	if (VPathHelper::MakeAbsoluteDir("", sRootPath.AsChar()) != NULL)
+	{
+		sProjectPath = sRootPath;
+		sProjectPath += sPackagePath;
+		if (!VFileHelper::Exists(sProjectPath))
+		{
+			if (VPathHelper::MakeAbsoluteDir("../../../../Assets", sRootPath.AsChar()) != NULL)
+			{
+				sProjectPath = sRootPath;
+				sProjectPath += sPackagePath;
+				if (!VFileHelper::Exists(sProjectPath))
+				{
+					failed = true;
+				}
+			}
+		}
+	}
+
+	if (!failed)
+	{
+		bool success = Vision::File.AddFileSystem("template_root", sProjectPath, VFileSystemFlags::ADD_SEARCH_PATH);
+		VASSERT(success);
+	}
+
+	return !failed;
 }

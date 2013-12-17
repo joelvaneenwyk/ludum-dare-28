@@ -3,6 +3,8 @@ Author: Joel Van Eenwyk
 Purpose: Controls the player, creates asteroids, and handles game score
 --]]
 
+DISABLE_RIGID_BODIES = false
+
 function OnExpose(self)
 	self.MissileVelocity = 600
 	self.MissileScale = 0.2
@@ -26,20 +28,6 @@ function OnAfterSceneLoaded(self)
 	self.playerInputMap:MapTrigger("KeyUp", "KEYBOARD", "CT_KB_W")
 	self.playerInputMap:MapTrigger("KeyDown", "KEYBOARD", "CT_KB_S")
 	self.playerInputMap:MapTrigger("KeyFire", "KEYBOARD", "CT_KB_SPACE", {once=true})
-
-	-- Create a virtual thumbstick then setup playerInputMap for it
-	if Application:GetPlatformName() ~= "WIN32DX9" and
-	   Application:GetPlatformName() ~= "WIN32DX11" then	
-		Input:CreateVirtualThumbStick()
-		self.playerInputMap:MapTriggerAxis("TouchLeft", "VirtualThumbStick", "CT_PAD_LEFT_THUMB_STICK_LEFT", kDeadzone)
-		self.playerInputMap:MapTriggerAxis("TouchRight", "VirtualThumbStick", "CT_PAD_LEFT_THUMB_STICK_RIGHT", kDeadzone)
-		self.playerInputMap:MapTriggerAxis("TouchUp", "VirtualThumbStick", "CT_PAD_LEFT_THUMB_STICK_UP", kDeadzone)
-		self.playerInputMap:MapTriggerAxis("TouchDown", "VirtualThumbStick", "CT_PAD_LEFT_THUMB_STICK_DOWN", kDeadzone)
-		self.playerInputMap:MapTrigger(
-			"TouchFire",
-			{ (G.screenWidth * 0.5), (G.screenHeight * 0.5), G.screenWidth, G.screenHeight },
-			"CT_TOUCH_ANY")
-	end
 
 	self:SetUseEulerAngles(true)
 
@@ -157,7 +145,9 @@ function Update(self, dt)
 
 	G.speed = G.speed * 0.9
 		
-	if (IsTriggered(self, "KeyFire") or IsTriggered(self, "TouchFire")) then		
+	if (IsTriggered(self, "KeyFire") or IsTriggered(self, "TouchFire")) and
+	   (not G.missileFired) and
+	   (not G.asteroidSpawning) then		
 		G.missileDirection = G.direction
 		G.missileBounces = 0
 		G.missileFired = true
@@ -216,12 +206,25 @@ function Update(self, dt)
 			self.bounceSound:Play()
 		end
 		
-		Debug:PrintAt(50,25, "Bounces: " .. G.missileBounces .. "/" .. "Limit Here", Vision.V_RGBA_WHITE, self.FontPath)
 		SetMissilePosition(newMissilePosition)
+		
+		if G.missileBounces >= G.maxBounces then
+			Reset(2.0)
+		elseif table.getn(G.asteroids) == 0 then
+			G.currentLevel = G.currentLevel + 1
+			G.missileFired = false
+			DeleteAsteroids()
+		end
 	end
 	
-	Debug:PrintAt(450,25, "Round: " .. G.currentLevel, Vision.V_RGBA_WHITE, self.FontPath)
-	Debug:PrintAt(700,25, "Missles: ", Vision.V_RGBA_WHITE, self.FontPath)
+	Debug:PrintAt(
+		50, 25,
+		"Bounces: " .. G.missileBounces .. "/" .. G.maxBounces,
+		Vision.V_RGBA_WHITE,
+		self.FontPath )
+	Debug:PrintAt(450, 25, "Round: " .. G.currentLevel, Vision.V_RGBA_WHITE, self.FontPath)
+	Debug:PrintAt(700, 25, "Missles: ", Vision.V_RGBA_WHITE, self.FontPath)
+
 	UpdateAsteroids(self)
 end
 
@@ -245,9 +248,6 @@ function SetMissilePosition(position)
 end
 
 function Reset(delay)
-	--G.player:SetVisible(false)
-	--G.player:SetPosition( Vision.hkvVec3(10000, 10000, 10000) )
-
 	HideMissile()
 	G.missileFired = false
 
@@ -258,6 +258,7 @@ end
 function HardReset()
 	DeleteAsteroids()
 
+	G.missileFired = false
 	G.missileFireTimer = 0
 	
 	G.direction = Vision.hkvVec3(0, 1, 0)
@@ -267,8 +268,10 @@ function HardReset()
 	G.missilePath = {}
 	G.missileFireTimer = 0.1
 
-	G.currentLevel = 0
+	G.currentLevel = 1
 	G.asteroidCount = 3
+	G.asteroidSpawning = true
+	G.maxBounces = 8
 	G.asteroidTime = 0
 
 	G.directionChangeTime = 0.3
@@ -304,18 +307,23 @@ function UpdateAsteroids(self)
 		end
 		
 		asteroid.rotation = asteroid.rotation + asteroid.rotationSpeed * dt
-		asteroid.rigidBody:SetOrientation( Vision.hkvVec3(0, 0, asteroid.rotation) )
-
-		asteroid.rigidBody:SetPosition(position)
+		
+		if DISABLE_RIGID_BODIES then
+			asteroid.entity:SetPosition(position)
+		else
+			asteroid.rigidBody:SetOrientation( Vision.hkvVec3(0, 0, asteroid.rotation) )
+			asteroid.rigidBody:SetPosition(position)
+		end
 		
 		asteroid.changeDirectionTimer = asteroid.changeDirectionTimer + dt
 	end
 	
 	G.asteroidTime = G.asteroidTime + dt
 	if G.asteroidTime > Util:GetRandFloat(2) + 0.5 and
-	   table.getn(G.asteroids) < G.asteroidCount then
+	   G.asteroidSpawning then
 		CreateAsteroid(self)
 		G.asteroidTime = 0
+		G.asteroidSpawning = (table.getn(G.asteroids) < G.asteroidCount)
 	end
 end
 
@@ -390,26 +398,27 @@ function CreateAsteroid()
 	asteroid.rotationSpeed = Util:GetRandFloat(200) - 100
 	asteroid.rotation = 0
 
-	asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
-	asteroid.rigidBody:SetDebugRendering(true)
-
-	-- set the mesh after the rigid body is created so that a default rigid body isn't generated
-	asteroid.entity:SetMesh(model)
+	asteroid.entity:AddComponentOfType("VScriptComponent", "AsteroidControlScript")
+	asteroid.entity.AsteroidControlScript:SetProperty("ScriptFile", "Scripts/Asteroid.lua")
+	asteroid.entity.AsteroidControlScript:SetOwner(asteroid.entity)
 	
-	local aabb = asteroid.entity:GetCollisionBoundingBox()	
-	local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0
-	local success = asteroid.rigidBody:InitFromFile(collision, radius / 100.0)
+	asteroid.speed = Util:GetRandFloat(100) + 100
+	asteroid.changeDirectionTimer = 0
 
-	if success then
-		asteroid.entity:AddComponentOfType("VScriptComponent", "AsteroidControlScript")
-		asteroid.entity.AsteroidControlScript:SetProperty("ScriptFile", "Scripts/Asteroid.lua")
-		asteroid.entity.AsteroidControlScript:SetOwner(asteroid.entity)
-		
-		asteroid.speed = Util:GetRandFloat(100) + 100
-		asteroid.changeDirectionTimer = 0
-
-		table.insert(G.asteroids, asteroid)
+	if DISABLE_RIGID_BODIES then
+		-- set the mesh after the rigid body is created so that a default rigid body isn't generated
+		asteroid.entity:SetMesh(model)
 	else
-		asteroid.entity:Remove()
+		asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
+		asteroid.rigidBody:SetDebugRendering(false)
+
+		-- set the mesh after the rigid body is created so that a default rigid body isn't generated
+		asteroid.entity:SetMesh(model)
+		
+		local aabb = asteroid.entity:GetCollisionBoundingBox()	
+		local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0
+		local success = asteroid.rigidBody:InitFromFile(collision, radius / 100.0)
 	end
+	
+	table.insert(G.asteroids, asteroid)
 end
