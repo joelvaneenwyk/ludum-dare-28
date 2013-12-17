@@ -51,10 +51,9 @@ function OnAfterSceneLoaded(self)
 end
 
 function OnBeforeSceneUnloaded(self)
-	-- #todo should this be removed?
-	--if G.missileEffect then
-	--	G.missileEffect:Remove()
-	--end
+	if G.missileEffect then
+		G.missileEffect:Remove()
+	end
 end
 
 function OnThink(self)
@@ -69,7 +68,7 @@ function OnThink(self)
 		end
 	end	
 
-	if Input:IsKeyPressed(Vision.KEY_ENTER) then
+	if Input:IsKeyPressed(Vision.KEY_ENTER) and G.MainMenu then
 		G.EndMainMenu = true
 	end
 
@@ -90,7 +89,8 @@ function Update(self, dt)
 	DrawHUD(self)
 		
 	if Input:IsKeyPressed(Vision.KEY_SPACE) and
-	   (not G.missileFired) then		
+	   (not G.missileFired) and
+	   (not G.reset) then		
 		G.missileDirection = G.direction
 		G.missileBounces = 0
 		G.missileFired = true
@@ -209,8 +209,7 @@ function UpdatePlayer(self, dt)
 
 	G.speed = G.speed * 0.9
 
-	local angle = 0
-	angle = math.atan2(G.direction.y, G.direction.x)
+	local angle = math.atan2(G.direction.y, G.direction.x)
 	self:SetOrientation(math.deg(angle) - 90, 0, 0)
 end
 
@@ -296,6 +295,9 @@ function HardReset()
 	G.player:SetPosition( Vision.hkvVec3(0, 0, 0) )
 	G.player:SetVisible(true)
 
+	local angle = math.atan2(G.direction.y, G.direction.x)
+	G.player:SetOrientation(math.deg(angle) - 90, 0, 0)
+	
 	G.ResetMenu = USE_MAIN_MENU
 	G.MainMenu = USE_MAIN_MENU
 end
