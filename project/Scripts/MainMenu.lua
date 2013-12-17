@@ -33,6 +33,9 @@ function OnAfterSceneLoaded(self)
 	self.musicLevel = .75
     self.musicCrossFadeTime = 2
 	
+	self.menuBlowup =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuBlowup.wav", false, "menuBlowup")
+	self.menuBullet =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuBulletCollide.wav", false, "menuBullet")
+	
 	G.ResetMenu = true
 
 end
@@ -124,6 +127,8 @@ function OnCollision(self, info)
 		self:SetVisible(false)
 		self:SetPosition( Vision.hkvVec3(10000,10000,10000) )
 		self.bulletRigid:SetPosition( Vision.hkvVec3(10000,10000,10000) )
+		
+		--self.menuBullet:Play()
 
 		local titleFx = Game:CreateEffect(
 			Vision.hkvVec3(-283, -253, 25),
@@ -152,6 +157,8 @@ function OnCollision(self, info)
 			Game:DeleteAllUnrefScreenMasks()
 			self.mask_cursor = nil
 	    end
+
+	   self.menuBlowup:Play()
 	   G.MainMenu = false
 	end
 end
