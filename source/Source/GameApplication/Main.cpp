@@ -13,6 +13,8 @@
 
 #include <Vision/Runtime/EnginePlugins/Havok/HavokPhysicsEnginePlugin/vHavokPhysicsIncludes.hpp>
 
+#include <Vision/Runtime/Framework/VisionApp/Modules/VLoadingScreen.hpp>
+
 class ProjectTemplateApp : public VAppImpl
 {
 public:
@@ -80,6 +82,11 @@ void ProjectTemplateApp::PreloadPlugins()
 //---------------------------------------------------------------------------------------------------------
 void ProjectTemplateApp::Init()
 {
+	VLoadingScreen *loadingScreen = GetAppModule<VLoadingScreen>();
+
+	VLoadingScreenBase::Settings loadingScreenSettings("Textures/Anarchy_Splash_1024x512.dds");
+	loadingScreen->SetSettings(loadingScreenSettings);
+
 	VisAppLoadSettings settings("Scenes/main.pcdx9.vscene");
 	AddFileSystems();
 	LoadScene(settings);

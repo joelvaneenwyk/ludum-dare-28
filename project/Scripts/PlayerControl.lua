@@ -6,6 +6,8 @@ Purpose: Controls the player, creates asteroids, and handles game score
 DEBUG_DRAW = false
 USE_MAIN_MENU = true
 
+TEST_ASTEROID_GENERATION = false
+
 function OnExpose(self)
 	self.MissileVelocity = 600
 	self.MissileScale = 0.2
@@ -58,7 +60,14 @@ end
 
 function OnThink(self)
 	local dt = Timer:GetTimeDiff()
-	
+
+	if TEST_ASTEROID_GENERATION then
+		CreateAsteroid()
+		if Util:GetRandFloat() < 0.2 then
+			DeleteAsteroids()
+		end
+	end
+
 	-- handle resetting immediately as some things need to be initialized right away
 	if G.reset then
 		G.resetTime = G.resetTime - dt
@@ -73,21 +82,21 @@ function OnThink(self)
 	end
 
 	if not G.MainMenu then
-		Update(self, dt)
+		if Input:IsKeyPressed(Vision.KEY_R) then
+		  Reset(0)
+		end
+
+		DrawHUD(self)
+		
+		UpdatePlayer(self, dt)
+		UpdateAsteroids(self, dt)
+		UpdateMissiles(self, dt)
 	end
 end
 
 --== Global game utility functions
 
-function Update(self, dt)
-	if Input:IsKeyPressed(Vision.KEY_R) then
-		Reset(0)
-	end
-
-	UpdatePlayer(self, dt)
-	UpdateAsteroids(self, dt)
-	DrawHUD(self)
-		
+function UpdateMissiles(self, dt)
 	if Input:IsKeyPressed(Vision.KEY_SPACE) and
 	   (not G.missileFired) and
 	   (not G.reset) then		
@@ -164,6 +173,15 @@ function Update(self, dt)
 			HideMissile()
 			DeleteAsteroids()
 		end
+	end	
+
+	-- Create asteroids after they could be deleted
+	G.asteroidTime = G.asteroidTime + dt
+	if G.asteroidTime > Util:GetRandFloat(2) + 0.5 and
+		G.asteroidSpawning then
+		G.asteroidTime = 0
+		G.asteroidSpawning = (table.getn(G.asteroids) < G.asteroidCount)
+		CreateAsteroid(self)
 	end
 end
 
@@ -325,38 +343,30 @@ function UpdateAsteroids(self, dt)
 		
 		asteroid.rotation = asteroid.rotation + asteroid.rotationSpeed * dt
 		
-		if DISABLE_RIGID_BODIES then
-			asteroid.entity:SetPosition(position)
-		else
+		if asteroid.rigidBody then
 			asteroid.rigidBody:SetOrientation( Vision.hkvVec3(0, 0, asteroid.rotation) )
 			asteroid.rigidBody:SetPosition(position)
 		end
 		
 		asteroid.changeDirectionTimer = asteroid.changeDirectionTimer + dt
 	end
-	
-	G.asteroidTime = G.asteroidTime + dt
-	if G.asteroidTime > Util:GetRandFloat(2) + 0.5 and
-	   G.asteroidSpawning then
-		CreateAsteroid(self)
-		G.asteroidTime = 0
-		G.asteroidSpawning = (table.getn(G.asteroids) < G.asteroidCount)
-	end
 end
 
 function DeleteAsteroid(asteroidToDelete)
-	if G.asteroids then
-		for asteroidIndex, asteroid in pairs(G.asteroids) do
-			if asteroid.entity == asteroidToDelete then
-				local explosion = Game:CreateEffect(
-					asteroid.entity:GetPosition(),
-					"Particles\\asteroidExplosion.xml",
-					"asteroidExplosion" )
-				explosion:SetScaling( asteroid.entity:GetScaling().x )
-				asteroid.entity:Remove()
-				table.remove(G.asteroids, asteroidIndex)
-				break
-			end
+	if G.asteroids == nil then
+		return
+	end
+
+	for asteroidIndex, asteroid in pairs(G.asteroids) do
+		if asteroid.entity == asteroidToDelete then
+			local explosion = Game:CreateEffect(
+				asteroid.entity:GetPosition(),
+				"Particles\\asteroidExplosion.xml",
+				"asteroidExplosion" )
+			explosion:SetScaling( asteroid.entity:GetScaling().x )
+			asteroid.entity:Remove()
+			table.remove(G.asteroids, asteroidIndex)
+			break
 		end
 	end
 end
@@ -411,26 +421,36 @@ function CreateAsteroid()
 		"VisBaseEntity_cl",
 		"",
 		"Asteroid" )
-	asteroid.entity:SetScaling(asteroid.scale)
-	asteroid.rotationSpeed = Util:GetRandFloat(200) - 100
-	asteroid.rotation = 0
 
-	asteroid.entity:AddComponentOfType("VScriptComponent", "AsteroidControlScript")
-	asteroid.entity.AsteroidControlScript:SetProperty("ScriptFile", "Scripts/Asteroid.lua")
-	asteroid.entity.AsteroidControlScript:SetOwner(asteroid.entity)
-	
-	asteroid.speed = Util:GetRandFloat(100) + 100
-	asteroid.changeDirectionTimer = 0
+	if asteroid.entity ~= nil then
+		asteroid.entity:SetScaling(asteroid.scale)
+		asteroid.rotationSpeed = Util:GetRandFloat(200) - 100
+		asteroid.rotation = 0
+		asteroid.speed = Util:GetRandFloat(100) + 100
+		asteroid.changeDirectionTimer = 0
 
-	asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
-	asteroid.rigidBody:SetDebugRendering(DEBUG_DRAW)
+		asteroid.script = asteroid.entity:AddComponentOfType("VScriptComponent")
 
-	-- set the mesh after the rigid body is created so that a default rigid body isn't generated
-	asteroid.entity:SetMesh(model)
-	
-	local aabb = asteroid.entity:GetCollisionBoundingBox()	
-	local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0
-	local success = asteroid.rigidBody:InitFromFile(collision, radius / 100.0)
-	
-	table.insert(G.asteroids, asteroid)
+		if asteroid.script ~= nil then
+			asteroid.script:SetProperty("ScriptFile", "Scripts/Asteroid.lua")
+			asteroid.script:SetOwner(asteroid.entity)
+
+			asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
+
+			if asteroid.rigidBody ~= nil then
+				asteroid.rigidBody:SetDebugRendering(DEBUG_DRAW)
+
+				-- set the mesh after the rigid body is created so that a default rigid body isn't generated
+				asteroid.entity:SetMesh(model)
+
+				local aabb = asteroid.entity:GetCollisionBoundingBox()	
+				local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0
+				local success = asteroid.rigidBody:InitFromFile(collision, radius / 100.0)
+
+				if success then
+					table.insert(G.asteroids, asteroid)
+				end
+			end
+		end
+	end
 end

@@ -68,6 +68,44 @@ COMMAND_LINE_OPTIONS = (
     )
 
 
+def run(arguments, verbose=False, current_directory=""):
+    if current_directory == "":
+        current_directory = os.path.dirname(arguments[0])
+
+    disable_capture = True
+    
+    if disable_capture:
+        child = subprocess.Popen(arguments, cwd=current_directory)
+    else:
+        child = subprocess.Popen(arguments, shell=True, stdout=subprocess.PIPE, cwd=current_directory)
+
+    output = ""
+
+    if disable_capture:
+        child.communicate()
+    else:
+        while True:
+            try:
+                output_character = child.stdout.read(1)
+
+                # handle the Python 3.0 case where it's returned as a series of bytes
+                if isinstance(output_character, bytes):
+                    output_character = output_character.decode("utf-8")
+
+                if output_character == '' and child.poll() != None:
+                    break
+
+                if verbose:
+                    sys.stdout.write(output_character)
+                    sys.stdout.flush()
+
+                output += output_character
+            except:
+                # just catch everything and break out of the loop
+                break
+
+    return output
+
 def setupLogging():
     """Setup our logging support"""
     LOGGER.propagate = False
@@ -96,6 +134,14 @@ def makeExes(verbose):
             LOGGER.error("Exe generation failed for %s", src)
 
 
+def upx(file):
+    upxPath = "C:\\Havok\\ProjectAnarchy\\tools\\upx\\upx.exe"
+    _, extension = os.path.splitext(file)
+    extension = extension.lower()
+    if os.path.exists(upxPath) and (extension == '.dll' or extension == 'exe'):
+        run([upxPath, file], True)
+    return True
+
 def makePackage(packagePath):
     """
     Iterate over the src,dest pairs in PACKAGE_PATHS adding to zip.
@@ -112,6 +158,7 @@ def makePackage(packagePath):
         """Adds 'src' file to zip file at 'dest'"""
         LOGGER.info("Add to zip: %s (%s)", src, dest)
         try:
+            upx(src)
             packageZip.write(src, dest)
         except:
             LOGGER.error("Failed to add [%s] to zip file." % src)

@@ -10,7 +10,7 @@ function OnAfterSceneLoaded(self)
     self.titleControlsEntity:SetVisible(false)
 	
 	self.musicLevel = .75
-    self.musicCrossFadeTime = 2
+	self.musicCrossFadeTime = 2
 	
 	self.menuBlowup =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuBlowup.wav", false, "menuBlowup")
 	self.menuBullet =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuBulletCollide.wav", false, "menuBullet")
@@ -42,7 +42,7 @@ function OnThink(self)
 			self.menuMusic:FadeFromTo(0,self.musicLevel, self.musicCrossFadeTime)
 		else
 			self.menuMusic = Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/menuMusic.mp3", true, "gameMusic")
-		    self.mG.enuMusic:SetVolume (0)
+		    self.menuMusic:SetVolume (0)
 		    self.menuMusic:Play()
 		    self.menuMusic:FadeFromTo(0,self.musicLevel, self.musicCrossFadeTime)
 		end
