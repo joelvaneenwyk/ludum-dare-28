@@ -11,6 +11,25 @@
         }
     },
     "TransformTemplates": {
+        "Animated Texture": {
+            "Default": {
+                "pcdx9": {
+                    "None": {
+
+                    }
+                },
+                "android": {
+                    "None": {
+
+                    }
+                },
+                "ios": {
+                    "None": {
+
+                    }
+                }
+            }
+        },
         "Prefab": {
             "Default": {
                 "pcdx9": {

@@ -1,7 +1,5 @@
 fonts/agency52_00.dds	AssetMgmt_data/transformed/agency52_007vhmgpjclgdtc.dds	sRGB=false
 fonts/agency52_01.dds	AssetMgmt_data/transformed/agency52_01brztjt0clgdtc.dds	sRGB=false
-meshes/proxyship.vcolmesh	Meshes/proxyShip.vcolmesh	
-meshes/proxyship.vmesh	Meshes/proxyShip.vmesh	LODSwitchDistances=
 models/asteroid01.anim	Models/asteroid01.anim	
 models/asteroid01.model	Models/asteroid01.model	LODSwitchDistances=
 models/asteroid01.vcolmesh	Models/asteroid01.vcolmesh	
@@ -38,6 +36,9 @@ models/shipproxy.vcolmesh	Models/shipProxy.vcolmesh
 models/sphere.anim	Models/sphere.anim	
 models/sphere.model	Models/sphere.model	LODSwitchDistances=
 models/sphere.vcolmesh	Models/sphere.vcolmesh	
+models/titlecontrols.anim	Models/titleControls.anim	
+models/titlecontrols.model	Models/titleControls.model	LODSwitchDistances=
+models/titlecontrols.vcolmesh	Models/titleControls.vcolmesh	
 particles/blastwave.dds	AssetMgmt_data/transformed/blastwave41r24b8clgdtc.dds	sRGB=false
 particles/flare_1.dds	AssetMgmt_data/transformed/flare_1gqjshl4clgdtc.dds	sRGB=false
 particles/fog_group.dds	AssetMgmt_data/transformed/fog_grouph48r7x4clgdtc.dds	sRGB=false
@@ -49,6 +50,7 @@ textures/asteroid_base.tga	AssetMgmt_data/transformed/asteroid_baseh698p78clgdtc
 textures/asteroid_color1.tga	AssetMgmt_data/transformed/asteroid_color1fby519jclgdtc.dds	sRGB=false
 textures/basegrey.tga	AssetMgmt_data/transformed/basegreygp6mlm0clgdtc.dds	sRGB=false
 textures/basered.tga	AssetMgmt_data/transformed/basered823pp0xclgdtc.dds	sRGB=false
+textures/bulleticon.tga	AssetMgmt_data/transformed/bulleticon5cpmpk0clgdtc.dds	sRGB=false
 textures/fx/fx_bulletsamplecolor.tga	AssetMgmt_data/transformed/fx_bulletsamplecolor72zddvxclgdtc.dds	sRGB=false
 textures/fx/fx_firesamplecolor.tga	AssetMgmt_data/transformed/fx_firesamplecolordl06b0sclgdtc.dds	sRGB=false
 textures/fx/fx_shipsamplecolor.tga	AssetMgmt_data/transformed/fx_shipsamplecolorcxw6z7sclgdtc.dds	sRGB=false

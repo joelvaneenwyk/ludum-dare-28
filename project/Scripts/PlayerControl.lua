@@ -6,8 +6,6 @@ Purpose: Controls the player, creates asteroids, and handles game score
 DEBUG_DRAW = false
 USE_MAIN_MENU = true
 
-TEST_ASTEROID_GENERATION = false
-
 function OnExpose(self)
 	self.MissileVelocity = 600
 	self.MissileScale = 0.2
@@ -27,6 +25,7 @@ function OnAfterSceneLoaded(self)
 
 	self:SetUseEulerAngles(true)
 
+	G.asteroids = {}
 	G.player = self
 	
 	local distance = 1600
@@ -60,13 +59,6 @@ end
 
 function OnThink(self)
 	local dt = Timer:GetTimeDiff()
-
-	if TEST_ASTEROID_GENERATION then
-		CreateAsteroid()
-		if Util:GetRandFloat() < 0.2 then
-			DeleteAsteroids()
-		end
-	end
 
 	-- handle resetting immediately as some things need to be initialized right away
 	if G.reset then
@@ -353,10 +345,6 @@ function UpdateAsteroids(self, dt)
 end
 
 function DeleteAsteroid(asteroidToDelete)
-	if G.asteroids == nil then
-		return
-	end
-
 	for asteroidIndex, asteroid in pairs(G.asteroids) do
 		if asteroid.entity == asteroidToDelete then
 			local explosion = Game:CreateEffect(
@@ -422,35 +410,27 @@ function CreateAsteroid()
 		"",
 		"Asteroid" )
 
-	if asteroid.entity ~= nil then
-		asteroid.entity:SetScaling(asteroid.scale)
-		asteroid.rotationSpeed = Util:GetRandFloat(200) - 100
-		asteroid.rotation = 0
-		asteroid.speed = Util:GetRandFloat(100) + 100
-		asteroid.changeDirectionTimer = 0
+	asteroid.entity:SetScaling(asteroid.scale)
+	asteroid.rotationSpeed = Util:GetRandFloat(200) - 100
+	asteroid.rotation = 0
+	asteroid.speed = Util:GetRandFloat(100) + 100
+	asteroid.changeDirectionTimer = 0
 
-		asteroid.script = asteroid.entity:AddComponentOfType("VScriptComponent")
+	asteroid.script = asteroid.entity:AddComponentOfType("VScriptComponent")
+	asteroid.script:SetProperty("ScriptFile", "Scripts/Asteroid.lua")
+	asteroid.script:SetOwner(asteroid.entity)
 
-		if asteroid.script ~= nil then
-			asteroid.script:SetProperty("ScriptFile", "Scripts/Asteroid.lua")
-			asteroid.script:SetOwner(asteroid.entity)
+	asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
+	asteroid.rigidBody:SetDebugRendering(DEBUG_DRAW)
 
-			asteroid.rigidBody = asteroid.entity:AddComponentOfType("vHavokRigidBody")
+	-- set the mesh after the rigid body is created so that a default rigid body isn't generated
+	asteroid.entity:SetMesh(model)
 
-			if asteroid.rigidBody ~= nil then
-				asteroid.rigidBody:SetDebugRendering(DEBUG_DRAW)
+	local aabb = asteroid.entity:GetCollisionBoundingBox()	
+	local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0
+	local success = asteroid.rigidBody:InitFromFile(collision, radius / 100.0)
 
-				-- set the mesh after the rigid body is created so that a default rigid body isn't generated
-				asteroid.entity:SetMesh(model)
-
-				local aabb = asteroid.entity:GetCollisionBoundingBox()	
-				local radius = math.max(aabb:getSizeX(), aabb:getSizeY()) / 2.0
-				local success = asteroid.rigidBody:InitFromFile(collision, radius / 100.0)
-
-				if success then
-					table.insert(G.asteroids, asteroid)
-				end
-			end
-		end
+	if success then
+		table.insert(G.asteroids, asteroid)
 	end
 end
