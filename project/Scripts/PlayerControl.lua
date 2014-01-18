@@ -60,7 +60,8 @@ end
 function OnThink(self)
 	local dt = Timer:GetTimeDiff()
 
-	-- handle resetting immediately as some things need to be initialized right away
+	-- handle resetting immediately as some things need to be
+	-- initialized right away
 	if G.reset then
 		G.resetTime = G.resetTime - dt
 		if G.resetTime <= 0 then
@@ -96,10 +97,10 @@ function UpdateMissiles(self, dt)
 		G.missileBounces = 0
 		G.missileFired = true
 		G.missilePath = {}
-		
+
 		ShowMissile()
 		SetMissilePosition( self:GetPosition() )
-		
+
 		table.insert(G.missilePath, G.missileDirection)
 	end
 	
