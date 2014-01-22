@@ -41,17 +41,17 @@ IGNORE_FOLDER_LIST = ["obj", "thumbnails", "AndroidTemp", "AssetMgmt_data\\trans
 # src is relative to package root, dest is the path in the zip to place the file at.
 # if src is a directory it will be added recursively
 PACKAGE_PATHS = {"README.md": ("%s/README.md" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/Base.dll": ("%s/Base.dll" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/BaseUI.dll": ("%s/BaseUI.dll" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/fmod_event_net.dll": ("%s/fmod_event_net.dll" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/fmodex.dll": ("%s/fmodex.dll" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/LD28.exe": ("%s/LD28.exe" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/lua100.dll": ("%s/lua100.dll" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/vFmodEnginePlugin.vPlugin": ("%s/vFmodEnginePlugin.vPlugin" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/vHavok.vPlugin": ("%s/vHavok.vPlugin" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/Vision.dll": ("%s/Vision.dll" % TOOL_NAME),
-                 "Bin/win32_vs2010/release_dll/DX9/VisionEnginePlugin.vPlugin": ("%s/VisionEnginePlugin.vPlugin" % TOOL_NAME),
-                 "Assets/Project.pcdx9.vArc": ("%s/Project.pcdx9.vArc" % TOOL_NAME)}
+                 "Bin/win32_vs2010/dev_dll/DX9/Base.dll": ("%s/Base.dll" % TOOL_NAME),
+                 "Bin/win32_vs2010/dev_dll/DX9/BaseUI.dll": ("%s/BaseUI.dll" % TOOL_NAME),
+                 "Bin/win32_vs2010/dev_dll/DX9/fmod_event_net.dll": ("%s/fmod_event_net.dll" % TOOL_NAME),
+                 "Bin/win32_vs2010/dev_dll/DX9/fmodex.dll": ("%s/fmodex.dll" % TOOL_NAME),
+                 "Bin/win32_vs2010/dev_dll/DX9/LD28.exe": ("%s/LD28.exe" % TOOL_NAME),
+                 "Bin/win32_vs2010/dev_dll/DX9/lua100.dll": ("%s/lua100.dll" % TOOL_NAME),
+                 "Bin/win32_vs2010/dev_dll/DX9/vFmodEnginePlugin.vPlugin": ("%s/vFmodEnginePlugin.vPlugin" % TOOL_NAME),
+                 "Bin/win32_vs2010/dev_dll/DX9/vHavok.vPlugin": ("%s/vHavok.vPlugin" % TOOL_NAME),
+                 "Bin/win32_vs2010/dev_dll/DX9/Vision.dll": ("%s/Vision.dll" % TOOL_NAME),
+                 "Bin/win32_vs2010/dev_dll/DX9/VisionEnginePlugin.vPlugin": ("%s/VisionEnginePlugin.vPlugin" % TOOL_NAME),
+                 "Assets/LD28.pcdx9.vArc": ("%s/LD28.pcdx9.vArc" % TOOL_NAME)}
 
 # Define the command line options. Need to put this after getDatestamp
 # is defined.
@@ -207,7 +207,7 @@ def main(packagePath, verbose=False):
     Generate exes, the package according to rules in PACKAGE_PATHS.
     Final package is placed at 'packagePath'
     """
-    LOGGER.info("FBX Importer Packaging")
+    LOGGER.info("LD28 Packaging")
 
     try:
         #makeExes(verbose)

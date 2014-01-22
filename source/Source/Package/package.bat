@@ -10,13 +10,13 @@ set VCVARS32="%VS10_BIN%\vcvars32.bat"
 
 if not exist %VCVARS32% goto NO_VS10
 
-set SOLUTION=%~dp0\..\Workspace\FBXImporter.sln
+set SOLUTION=%~dp0\..\LD28_win32_VS2010_DX9.sln
 set PACKAGE=%~dp0\package.py
 
 :: Setup the Visual Studio environment variables
 call %VCVARS32%
 
-:: Build the 'Dev DLL' solution which creates 'FBXImporter.exe'
+:: Build the 'Dev DLL' solution which creates 'LD28.exe'
 msbuild %SOLUTION% /t:Build /p:Configuration="Dev DLL"
 
 :: Run the packaging script

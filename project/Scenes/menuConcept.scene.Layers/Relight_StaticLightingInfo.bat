@@ -1,1 +1,0 @@
-vLux.exe "" -project "C:\projects\ludum-dare-28\project" -tempfolder "C:\projects\ludum-dare-28\project\Scenes\menuConcept.scene.Layers" -out "Scenes\menuConcept" -quiet -minimized -config "C:\projects\ludum-dare-28\project\Scenes\menuConcept.scene.Layers\lighting.cfg"

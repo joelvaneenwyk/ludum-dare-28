@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "554879136751641900000159"
-               BuildableName = "ProjectTemplate_ios-xcode_dev_v7.app"
-               BlueprintName = "ProjectTemplate"
-               ReferencedContainer = "container:ProjectTemplate_ios.xcodeproj">
+               BuildableName = "LD28_ios-xcode_dev_v7.app"
+               BlueprintName = "LD28"
+               ReferencedContainer = "container:LD28_ios.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "554879136751641900000159"
-            BuildableName = "ProjectTemplate_ios-xcode_dev_v7.app"
-            BlueprintName = "ProjectTemplate"
-            ReferencedContainer = "container:ProjectTemplate_ios.xcodeproj">
+            BuildableName = "LD28_ios-xcode_dev_v7.app"
+            BlueprintName = "LD28"
+            ReferencedContainer = "container:LD28_ios.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "554879136751641900000159"
-            BuildableName = "ProjectTemplate_ios-xcode_dev_v7.app"
-            BlueprintName = "ProjectTemplate"
-            ReferencedContainer = "container:ProjectTemplate_ios.xcodeproj">
+            BuildableName = "LD28_ios-xcode_dev_v7.app"
+            BlueprintName = "LD28"
+            ReferencedContainer = "container:LD28_ios.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "554879136751641900000159"
-            BuildableName = "ProjectTemplate_ios-xcode_dev_v7.app"
-            BlueprintName = "ProjectTemplate"
-            ReferencedContainer = "container:ProjectTemplate_ios.xcodeproj">
+            BuildableName = "LD28_ios-xcode_dev_v7.app"
+            BlueprintName = "LD28"
+            ReferencedContainer = "container:LD28_ios.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

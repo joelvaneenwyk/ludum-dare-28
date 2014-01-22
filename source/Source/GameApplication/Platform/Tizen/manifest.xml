@@ -13,11 +13,11 @@
         <Privileges>
                 <Privilege>http://tizen.org/privilege/power</Privilege>
         </Privileges>
-        <UiApp Main="True" MenuIconVisible="True" Name="ProjectTemplate">
+        <UiApp Main="True" MenuIconVisible="True" Name="LD28">
             <UiScalability BaseScreenSize="Normal" CoordinateSystem="Logical" LogicalCoordinate="720"/>
             <UiTheme SystemTheme="Black"/>
             <DisplayNames>
-                <DisplayName Locale="eng-GB">ProjectTemplate</DisplayName>
+                <DisplayName Locale="eng-GB">LD28</DisplayName>
             </DisplayNames>
             <Icons>
                 <Icon Section="MainMenu" Type="Xhigh">icon.png</Icon>

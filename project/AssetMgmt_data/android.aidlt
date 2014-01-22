@@ -2,8 +2,6 @@ fonts/agency52_00.dds#android-default	AssetMgmt_data/transformed/agency52_007vhm
 fonts/agency52_00.dds#android-pvr	AssetMgmt_data/transformed/agency52_007vhmgpjclgdtc.pvr	sRGB=false
 fonts/agency52_01.dds#android-default	AssetMgmt_data/transformed/agency52_01brztjt0clgdtc.etc	sRGB=false
 fonts/agency52_01.dds#android-pvr	AssetMgmt_data/transformed/agency52_01brztjt0clgdtc.pvr	sRGB=false
-meshes/proxyship.vcolmesh	Meshes/proxyShip.vcolmesh	
-meshes/proxyship.vmesh	Meshes/proxyShip.vmesh	LODSwitchDistances=
 models/asteroid01.anim	Models/asteroid01.anim	
 models/asteroid01.model	Models/asteroid01.model	LODSwitchDistances=
 models/asteroid01.vcolmesh	Models/asteroid01.vcolmesh	
@@ -40,6 +38,9 @@ models/shipproxy.vcolmesh	Models/shipProxy.vcolmesh
 models/sphere.anim	Models/sphere.anim	
 models/sphere.model	Models/sphere.model	LODSwitchDistances=
 models/sphere.vcolmesh	Models/sphere.vcolmesh	
+models/titlecontrols.anim	Models/titleControls.anim	
+models/titlecontrols.model	Models/titleControls.model	LODSwitchDistances=
+models/titlecontrols.vcolmesh	Models/titleControls.vcolmesh	
 particles/blastwave.dds#android-default	AssetMgmt_data/transformed/blastwave41r24b8clgdtc.rgba	sRGB=false
 particles/blastwave.dds#android-pvr	AssetMgmt_data/transformed/blastwave41r24b8clgdtc.pvr	sRGB=false
 particles/flare_1.dds#android-default	AssetMgmt_data/transformed/flare_1gqjshl4clgdtc.rgba	sRGB=false
@@ -62,6 +63,8 @@ textures/basegrey.tga#android-default	AssetMgmt_data/transformed/basegreygp6mlm0
 textures/basegrey.tga#android-pvr	AssetMgmt_data/transformed/basegreygp6mlm0clgdtc.pvr	sRGB=false
 textures/basered.tga#android-default	AssetMgmt_data/transformed/basered823pp0xclgdtc.rgba	sRGB=false
 textures/basered.tga#android-pvr	AssetMgmt_data/transformed/basered823pp0xclgdtc.pvr	sRGB=false
+textures/bulleticon.tga#android-default	AssetMgmt_data/transformed/bulleticon5cpmpk0clgdtc.rgba	sRGB=false
+textures/bulleticon.tga#android-pvr	AssetMgmt_data/transformed/bulleticon5cpmpk0clgdtc.pvr	sRGB=false
 textures/fx/fx_bulletsamplecolor.tga#android-default	AssetMgmt_data/transformed/fx_bulletsamplecolor72zddvxclgdtc.etc	sRGB=false
 textures/fx/fx_bulletsamplecolor.tga#android-pvr	AssetMgmt_data/transformed/fx_bulletsamplecolor72zddvxclgdtc.pvr	sRGB=false
 textures/fx/fx_firesamplecolor.tga#android-default	AssetMgmt_data/transformed/fx_firesamplecolordl06b0sclgdtc.etc	sRGB=false

@@ -1,0 +1,22 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LD28", "GameApplication\LD28_tizen_vs2010_anarchy.vcxproj", "{4910E2EB-2888-4829-9FE1-3E7B6FA0ED76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|hkTizen = Debug|hkTizen
+		Dev|hkTizen = Dev|hkTizen
+		Release|hkTizen = Release|hkTizen
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4910E2EB-2888-4829-9FE1-3E7B6FA0ED76}.Debug|hkTizen.ActiveCfg = Debug|hkTizen
+		{4910E2EB-2888-4829-9FE1-3E7B6FA0ED76}.Debug|hkTizen.Build.0 = Debug|hkTizen
+		{4910E2EB-2888-4829-9FE1-3E7B6FA0ED76}.Dev|hkTizen.ActiveCfg = Dev|hkTizen
+		{4910E2EB-2888-4829-9FE1-3E7B6FA0ED76}.Dev|hkTizen.Build.0 = Dev|hkTizen
+		{4910E2EB-2888-4829-9FE1-3E7B6FA0ED76}.Release|hkTizen.ActiveCfg = Release|hkTizen
+		{4910E2EB-2888-4829-9FE1-3E7B6FA0ED76}.Release|hkTizen.Build.0 = Release|hkTizen
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,11 +1,3 @@
-// TKBMS v1.0 -----------------------------------------------------
-//
-// PLATFORM       : ALL 
-// PRODUCT        : VISION 
-// VISIBILITY     : PUBLIC
-//
-// ------------------------------------------------------TKBMS v1.0
-
 #include "GameApplicationPCH.h"
 
 #include <Vision/Runtime/Framework/VisionApp/VAppImpl.hpp>
@@ -15,14 +7,29 @@
 
 #include <Vision/Runtime/Framework/VisionApp/Modules/VLoadingScreen.hpp>
 
-class ProjectTemplateApp : public VAppImpl
+// use plugins if supported
+VIMPORT IVisPlugin_cl* GetEnginePlugin_vFmodEnginePlugin();
+
+#if defined( HAVOK_PHYSICS_2012_KEYCODE )
+VIMPORT IVisPlugin_cl* GetEnginePlugin_vHavok();
+#endif
+
+#if defined( HAVOK_AI_KEYCODE )
+VIMPORT IVisPlugin_cl* GetEnginePlugin_vHavokAi();
+#endif
+
+#if defined( HAVOK_BEHAVIOR_KEYCODE )
+VIMPORT IVisPlugin_cl* GetEnginePlugin_vHavokBehavior();
+#endif
+
+class LD28App : public VAppImpl
 {
 public:
-	ProjectTemplateApp()
+	LD28App()
 	{
 	}
 
-	virtual ~ProjectTemplateApp()
+	virtual ~LD28App()
 	{
 	}
 
@@ -35,12 +42,12 @@ public:
 	virtual void DeInit() HKV_OVERRIDE;
 
 protected:
-	bool AddFileSystems();
+	bool AddFileSystems(VArray<VString> *customSearchPaths = NULL);
 };
 
-VAPP_IMPLEMENT_SAMPLE(ProjectTemplateApp);
+VAPP_IMPLEMENT_SAMPLE(LD28App);
 
-void ProjectTemplateApp::SetupAppConfig(VisAppConfig_cl& config)
+void LD28App::SetupAppConfig(VisAppConfig_cl& config)
 {
   // Set custom file system root name ("havok_sdk" by default)
   config.m_sFileSystemRootName = "template_root";
@@ -70,7 +77,7 @@ void ProjectTemplateApp::SetupAppConfig(VisAppConfig_cl& config)
 #endif  
 }
 
-void ProjectTemplateApp::PreloadPlugins()
+void LD28App::PreloadPlugins()
 {
 	VISION_PLUGIN_ENSURE_LOADED(vHavok);
 	VISION_PLUGIN_ENSURE_LOADED(vFmodEnginePlugin);
@@ -80,70 +87,69 @@ void ProjectTemplateApp::PreloadPlugins()
 //---------------------------------------------------------------------------------------------------------
 // Init function. Here we trigger loading our scene
 //---------------------------------------------------------------------------------------------------------
-void ProjectTemplateApp::Init()
+void LD28App::Init()
 {
-	VLoadingScreen *loadingScreen = GetAppModule<VLoadingScreen>();
-
-	VLoadingScreenBase::Settings loadingScreenSettings("Textures/Anarchy_Splash_1024x512.dds");
-	loadingScreen->SetSettings(loadingScreenSettings);
-
-	VisAppLoadSettings settings("Scenes/main.pcdx9.vscene");
-	AddFileSystems();
+	VisAppLoadSettings settings("Scenes/main.vscene");
+	AddFileSystems(&settings.m_customSearchPaths);
 	LoadScene(settings);
 }
 
 //---------------------------------------------------------------------------------------------------------
 // Gets called after the scene has been loaded
 //---------------------------------------------------------------------------------------------------------
-void ProjectTemplateApp::OnAfterSceneLoaded(bool bLoadingSuccessful)
+void LD28App::OnAfterSceneLoaded(bool bLoadingSuccessful)
 {
 }
 
 //---------------------------------------------------------------------------------------------------------
 // Main Loop of the application until we quit
 //---------------------------------------------------------------------------------------------------------
-bool ProjectTemplateApp::Run()
+bool LD28App::Run()
 {
   return true;
 }
 
-void ProjectTemplateApp::DeInit()
+void LD28App::DeInit()
 {
   // De-Initialization
   // [...]
 }
 
-bool ProjectTemplateApp::AddFileSystems()
+bool LD28App::AddFileSystems(VArray<VString> *customSearchPaths)
 {
-	bool failed = false;
+#if defined(WIN32)
+	VStaticString<FS_MAX_PATH> sPackagePath = "/LD28.pcdx9.vArc";
+#elif defined(ANDROID)
+	VStaticString<FS_MAX_PATH> sPackagePath = "/LD28.android.vArc";
+#endif
 
-	VStaticString<FS_MAX_PATH> sPackagePath = "/Project.pcdx9.vArc";
 	VStaticString<FS_MAX_PATH> sProjectPath;
 
+	bool added = false;
+	bool pathExists = false;
+
 	VStaticString<FS_MAX_PATH> sRootPath;
-	if (VPathHelper::MakeAbsoluteDir("", sRootPath.AsChar()) != NULL)
+	if (VPathHelper::MakeAbsoluteDir("../../../../Assets", sRootPath.AsChar()) != NULL)
 	{
 		sProjectPath = sRootPath;
 		sProjectPath += sPackagePath;
-		if (!VFileHelper::Exists(sProjectPath))
+
+		pathExists = VFileHelper::Exists(sProjectPath);
+
+		if (!pathExists && VPathHelper::MakeAbsoluteDir("", sRootPath.AsChar()) != NULL)
 		{
-			if (VPathHelper::MakeAbsoluteDir("../../../../Assets", sRootPath.AsChar()) != NULL)
-			{
-				sProjectPath = sRootPath;
-				sProjectPath += sPackagePath;
-				if (!VFileHelper::Exists(sProjectPath))
-				{
-					failed = true;
-				}
-			}
+			sProjectPath = sRootPath;
+			sProjectPath += sPackagePath;
+			pathExists = VFileHelper::Exists(sProjectPath);
 		}
 	}
 
-	if (!failed)
+	if (pathExists)
 	{
-		bool success = Vision::File.AddFileSystem("template_root", sProjectPath, VFileSystemFlags::ADD_SEARCH_PATH);
-		VASSERT(success);
+		added = Vision::File.AddFileSystem("template_root", sProjectPath, VFileSystemFlags::ADD_SEARCH_PATH);
 	}
 
-	return !failed;
+	VASSERT(added);
+
+	return added;
 }

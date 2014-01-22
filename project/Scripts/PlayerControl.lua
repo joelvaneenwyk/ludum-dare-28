@@ -10,30 +10,55 @@ function OnExpose(self)
 	self.MissileVelocity = 600
 	self.MissileScale = 0.2
 	self.MoveSpeed = 300
-	self.RotateSpeed = 5
+	self.RotateSpeed = 0.1
+	self.FontPath = "Fonts/agency52"
 end
 
 function OnAfterSceneLoaded(self)
-	Debug:Enable(true)
-
 	G.screenWidth, G.screenHeight = Screen:GetViewportSize()
+	G.isWindows = (Application:GetPlatformName() == "WIN32DX9" or 
+				   Application:GetPlatformName() == "WIN32DX11")
+	G.inEditor = (Application:GetEditorMode() ~= Vision.EDITOR_NONE)
 
-	self.FontPath = "Fonts/agency52"
-
-	Input:SetKeyAsSingleHit(Vision.KEY_SPACE)
-	Input:SetKeyAsSingleHit(Vision.KEY_ENTER)
+	Debug:Enable(G.inEditor or DEBUG_DRAW)
+	
+	self.controls = Input:CreateMap("InputMap")	
+	self.character = self:GetComponentOfType("vHavokCharacterController")
 
 	self:SetUseEulerAngles(true)
 
 	G.asteroids = {}
 	G.player = self
 	
-	local distance = 1600
+	local distance = (Game:GetCamera():GetPosition() - self:GetPosition()):getLength() * 1.5
 	local p1 = Screen:Project3D(0, 0, distance)
 	local p2 = Screen:Project3D(G.screenWidth, G.screenHeight, distance)
 	G.extentX = math.abs((p2.x - p1.x) / 2)
 	G.extentY = math.abs((p2.y - p1.y) / 2)
 
+	if G.isWindows then
+		self.controls:MapTrigger("Left", "KEYBOARD", "CT_KB_A")
+		self.controls:MapTrigger("Right", "KEYBOARD", "CT_KB_D")
+		self.controls:MapTrigger("Up", "KEYBOARD", "CT_KB_W")
+		self.controls:MapTrigger("Down", "KEYBOARD", "CT_KB_S")
+		
+		self.controls:MapTrigger("Left", "KEYBOARD", "CT_KB_LEFT")
+		self.controls:MapTrigger("Right", "KEYBOARD", "CT_KB_RIGHT")
+		self.controls:MapTrigger("Up", "KEYBOARD", "CT_KB_UP")
+		self.controls:MapTrigger("Down", "KEYBOARD", "CT_KB_DOWN")
+		
+		self.controls:MapTrigger("Fire", "KEYBOARD", "CT_KB_SPACE")
+		self.controls:MapTrigger("Start", "KEYBOARD", "CT_KB_ENTER")
+		self.controls:MapTrigger("Reset", "KEYBOARD", "CT_KB_R")
+	else
+		-- create a virtual thumbstick then setup controls for it
+		Input:CreateVirtualThumbStick()
+		self.controls:MapTrigger("Left", "VirtualThumbStick", "CT_PAD_LEFT_THUMB_STICK_LEFT", {deadzone = 0.1})
+		self.controls:MapTrigger("Right", "VirtualThumbStick", "CT_PAD_LEFT_THUMB_STICK_RIGHT", {deadzone = 0.1})
+		self.controls:MapTrigger("Up", "VirtualThumbStick", "CT_PAD_LEFT_THUMB_STICK_UP", {deadzone = 0.1})
+		self.controls:MapTrigger("Down", "VirtualThumbStick", "CT_PAD_LEFT_THUMB_STICK_DOWN", {deadzone = 0.1})
+	end
+	
 	G.shipExplosionSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/shipExplosion.wav", false, "shipExplosion")
 
 	self.bounceSound =  Fmod:CreateSound(Vision.hkvVec3(0,0,0), "Sounds/bounce.wav", false, "bounceSound")
@@ -52,6 +77,10 @@ function OnAfterSceneLoaded(self)
 end
 
 function OnBeforeSceneUnloaded(self)
+	-- make sure input map and screen refs are destroyed
+    Game:DeleteAllUnrefScreenMasks()
+	Input:DestroyMap(self.controls)
+
 	if G.missileEffect then
 		G.missileEffect:Remove()
 	end
@@ -70,12 +99,12 @@ function OnThink(self)
 		end
 	end	
 
-	if Input:IsKeyPressed(Vision.KEY_ENTER) and G.MainMenu then
+	if G.MainMenu and self.controls:GetTrigger("Start") > 0 then
 		G.EndMainMenu = true
 	end
 
 	if not G.MainMenu then
-		if Input:IsKeyPressed(Vision.KEY_R) then
+		if self.controls:GetTrigger("Reset") > 0 then
 		  Reset(0)
 		end
 
@@ -90,7 +119,7 @@ end
 --== Global game utility functions
 
 function UpdateMissiles(self, dt)
-	if Input:IsKeyPressed(Vision.KEY_SPACE) and
+	if self.controls:GetTrigger("Fire") > 0 and
 	   (not G.missileFired) and
 	   (not G.reset) then		
 		G.missileDirection = G.direction
@@ -185,15 +214,15 @@ function UpdatePlayer(self, dt)
 	local delta = Vision.hkvVec3(0, 0, 0)
 	local rotate = 0
 	
-	if Input:IsKeyPressed(Vision.KEY_W) then
+	if self.controls:GetTrigger("Up") > 0 then
 		G.speed = G.speed + moveSpeed
 	end
 
-	if Input:IsKeyPressed(Vision.KEY_A) then
+	if self.controls:GetTrigger("Left") > 0 then
 		rotate = rotate - rotateSpeed
 	end
 
-	if Input:IsKeyPressed(Vision.KEY_D) then
+	if self.controls:GetTrigger("Right") > 0 then
 		rotate = rotate + rotateSpeed
 	end
 	

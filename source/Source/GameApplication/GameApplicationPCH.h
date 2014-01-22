@@ -1,11 +1,3 @@
-// TKBMS v1.0 -----------------------------------------------------
-//
-// PLATFORM       : ALL 
-// PRODUCT        : VISION 
-// VISIBILITY     : PUBLIC
-//
-// ------------------------------------------------------TKBMS v1.0
-
 #if !defined(GAMEAPPLICATIONPCH_H_INCLUDED)
 #define GAMEAPPLICATIONPCH_H_INCLUDED
 

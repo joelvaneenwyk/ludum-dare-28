@@ -55,7 +55,7 @@
 		1DE116241738092D00E51293 /* GameApplicationPCH.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameApplicationPCH.cpp; sourceTree = "<group>"; };
 		1DE116251738092D00E51293 /* GameApplicationPCH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameApplicationPCH.h; sourceTree = "<group>"; };
 		1DE116441739066500E51293 /* GamePlugin_ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GamePlugin_ios.xcodeproj; path = ../GamePlugin/GamePlugin_ios.xcodeproj; sourceTree = "<group>"; };
-		1DF33BFB1737F6CB000F2FBC /* ProjectTemplate_ios-xcode_dev_v7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjectTemplate_ios-xcode_dev_v7.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF33BFB1737F6CB000F2FBC /* LD28_ios-xcode_dev_v7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LD28_ios-xcode_dev_v7.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D6DA85E176628E1006ED258 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		2D6DA8601766290D006ED258 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		3252790000000000022733 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -107,7 +107,7 @@
 		1DF33BFC1737F6CB000F2FBC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1DF33BFB1737F6CB000F2FBC /* ProjectTemplate_ios-xcode_dev_v7.app */,
+				1DF33BFB1737F6CB000F2FBC /* LD28_ios-xcode_dev_v7.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,9 +198,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		554879136751641900000159 /* ProjectTemplate */ = {
+		554879136751641900000159 /* LD28 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4333870000000000022768 /* Build configuration list for PBXNativeTarget "ProjectTemplate" */;
+			buildConfigurationList = 4333870000000000022768 /* Build configuration list for PBXNativeTarget "LD28" */;
 			buildPhases = (
 				5051900000000000022770 /* Making symlinks to resources.... */,
 				3141660000000000022771 /* Sources */,
@@ -213,9 +213,9 @@
 			dependencies = (
 				1DE1167317394E1700E51293 /* PBXTargetDependency */,
 			);
-			name = ProjectTemplate;
+			name = LD28;
 			productName = Tutorial01;
-			productReference = 1DF33BFB1737F6CB000F2FBC /* ProjectTemplate_ios-xcode_dev_v7.app */;
+			productReference = 1DF33BFB1737F6CB000F2FBC /* LD28_ios-xcode_dev_v7.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -225,7 +225,7 @@
 			isa = PBXProject;
 			attributes = {
 			};
-			buildConfigurationList = 8895300000000000022769 /* Build configuration list for PBXProject "ProjectTemplate_ios" */;
+			buildConfigurationList = 8895300000000000022769 /* Build configuration list for PBXProject "LD28_ios" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -243,7 +243,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				554879136751641900000159 /* ProjectTemplate */,
+				554879136751641900000159 /* LD28 */,
 			);
 		};
 /* End PBXProject section */
@@ -373,7 +373,7 @@
 					"$(VISION_SDK)/Lib/ios_xcode/$(CONFIGURATION)",
 				);
 				MACH_O_TYPE = mh_execute;
-				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/ProjectTemplate";
+				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/LD28";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-fno-strict-aliasing",
 					"-std=c++98",
@@ -437,7 +437,7 @@
 					"-lhkaiPhysics2012Bridge",
 					"-lvFmodEnginePlugin",
 				);
-				PRODUCT_NAME = "ProjectTemplate_ios-xcode_debug_v7";
+				PRODUCT_NAME = "LD28_ios-xcode_debug_v7";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -508,7 +508,7 @@
 					"$(VISION_SDK)/Lib/ios_xcode/$(CONFIGURATION)",
 				);
 				MACH_O_TYPE = mh_execute;
-				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/ProjectTemplate";
+				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/LD28";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-fno-strict-aliasing",
 					"-std=c++98",
@@ -570,7 +570,7 @@
 					"-lhkaiPhysics2012Bridge",
 					"-lvFmodEnginePlugin",
 				);
-				PRODUCT_NAME = "ProjectTemplate_ios-xcode_distrib_v7";
+				PRODUCT_NAME = "LD28_ios-xcode_distrib_v7";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -609,8 +609,8 @@
 					"$(VISION_SDK)/Source",
 					"$(HAVOK_THIRDPARTY_DIR)/redistsdks/Lua/5.1.4/",
 				);
-				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/ProjectTemplate";
-				PRODUCT_NAME = "ProjectTemplate_ios-xcode_release_v7";
+				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/LD28";
+				PRODUCT_NAME = "LD28_ios-xcode_release_v7";
 				SYMROOT = ../../Bin/ios_xcode/release_v7;
 			};
 			name = release_v7;
@@ -658,7 +658,7 @@
 					"$(VISION_SDK)/Lib/ios_xcode/$(CONFIGURATION)",
 				);
 				MACH_O_TYPE = mh_execute;
-				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/ProjectTemplate";
+				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/LD28";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-fno-strict-aliasing",
 					"-std=c++98",
@@ -720,7 +720,7 @@
 					"-lhkaiPhysics2012Bridge",
 					"-lvFmodEnginePlugin",
 				);
-				PRODUCT_NAME = "ProjectTemplate_ios-xcode_release_v7";
+				PRODUCT_NAME = "LD28_ios-xcode_release_v7";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -759,8 +759,8 @@
 					"$(VISION_SDK)/Source",
 					"$(HAVOK_THIRDPARTY_DIR)/redistsdks/Lua/5.1.4/",
 				);
-				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/ProjectTemplate";
-				PRODUCT_NAME = "ProjectTemplate_ios-xcode_debug_v7";
+				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/LD28";
+				PRODUCT_NAME = "LD28_ios-xcode_debug_v7";
 				SYMROOT = ../../Bin/ios_xcode/debug_v7;
 			};
 			name = debug_v7;
@@ -776,8 +776,8 @@
 					"$(VISION_SDK)/Source",
 					"$(HAVOK_THIRDPARTY_DIR)/redistsdks/Lua/5.1.4/",
 				);
-				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/ProjectTemplate";
-				PRODUCT_NAME = "ProjectTemplate_ios-xcode_dev_v7";
+				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/LD28";
+				PRODUCT_NAME = "LD28_ios-xcode_dev_v7";
 				SYMROOT = ../../Bin/ios_xcode/dev_v7;
 			};
 			name = dev_v7;
@@ -793,8 +793,8 @@
 					"$(VISION_SDK)/Source",
 					"$(HAVOK_THIRDPARTY_DIR)/redistsdks/Lua/5.1.4/",
 				);
-				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/ProjectTemplate";
-				PRODUCT_NAME = "ProjectTemplate_ios-xcode_distrib_v7";
+				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/LD28";
+				PRODUCT_NAME = "LD28_ios-xcode_distrib_v7";
 				SYMROOT = ../../Bin/ios_xcode/distrib_v7;
 			};
 			name = distrib_v7;
@@ -842,7 +842,7 @@
 					"$(VISION_SDK)/Lib/ios_xcode/$(CONFIGURATION)",
 				);
 				MACH_O_TYPE = mh_execute;
-				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/ProjectTemplate";
+				OBJROOT = "../../Obj/ios_xcode/$(CONFIGURATION)/LD28";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-fno-strict-aliasing",
 					"-std=c++98",
@@ -903,7 +903,7 @@
 					"-lhkaiPhysics2012Bridge",
 					"-lvFmodEnginePlugin",
 				);
-				PRODUCT_NAME = "ProjectTemplate_ios-xcode_dev_v7";
+				PRODUCT_NAME = "LD28_ios-xcode_dev_v7";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -934,7 +934,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4333870000000000022768 /* Build configuration list for PBXNativeTarget "ProjectTemplate" */ = {
+		4333870000000000022768 /* Build configuration list for PBXNativeTarget "LD28" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8739460000000000022761 /* dev_v7 */,
@@ -945,7 +945,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = dev_v7;
 		};
-		8895300000000000022769 /* Build configuration list for PBXProject "ProjectTemplate_ios" */ = {
+		8895300000000000022769 /* Build configuration list for PBXProject "LD28_ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3398580000000000022765 /* dev_v7 */,
